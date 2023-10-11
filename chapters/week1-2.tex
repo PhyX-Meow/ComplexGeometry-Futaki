@@ -1,0 +1,239 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+Let \(\pi\colon E\to M\) be a smooth vector bundle of rank \(r\) (over \(\mathbb{R}\)
+or \(\mathbb{C}\)). We put \[
+    C^\infty(M,E):=\{s\colon M\to E:\pi\circ s=\Id_M\}
+,\] the set of all \(C^\infty\)-sections of \(E\).
+
+\begin{center}
+\includestandalone{../figures/1-2_vector_bundle}
+\end{center}
+
+\(C^\infty(M,E)\) is an infinity
+dimensional vector space, and is also a module over the ring \(C^\infty(M)\) of 
+all smooth functions. (For \(\mathbb{C}\) we denote by \(C_{\mathbb{C}}^\infty(M)\) 
+the ring of all complex valued smooth functions).
+
+\begin{definition}
+    A linear map \[
+        \nabla\colon C^\infty(M,E)\longrightarrow C^\infty(M,E\otimes T^*M)
+    \] is called a \textbf{linear connection} or simply \textbf{connection} if for
+    any \(f\in C^\infty(M)\) and \(s \in C^\infty(M,E)\), \[
+        \nabla (fs)=f\nabla s+s\otimes \dd{f}
+    .\] 
+\end{definition}
+\begin{definition}
+    We define \(\nabla_X s\) for a vector field \(X\in C^\infty(M,TM)\) by the
+    contraction of \(T^*M\) and \(TM\),
+    \[\begin{tikzcd}[row sep=tiny]
+        C^\infty(M,E\otimes T^*M)\times C^\infty(M,TM) & C^\infty(M,E) \\
+        (\nabla s,x) & \nabla_X s 
+        \arrow[from=1-1, to=1-2]
+        \arrow[maps to, from=2-1, to=2-2]
+    \end{tikzcd}\]
+    \(\nabla\) is also called the \textbf{covariant derivative} and \(\nabla_X s\) the
+    covariant derivative in the direction of \(X\).
+\end{definition}
+\begin{example}
+    Let \(E=M\times \mathbb{R}\to M\) the trivial line bundle of rank 1. Then
+    \(C^\infty(M,E)=C^\infty(M)\). For any section \(s\), \ie\ a smooth function
+    \(s\), the exterior derivative \[
+        \dd{s}\in C^\infty(M,E\otimes T^*M)=C^\infty(M,T^*M)
+    \] defines a connection \(\nabla\) be putting \[
+        \nabla s=\dd{s}
+    .\] In this case, \[
+        \nabla_X s=\left<\dd{s},X\right> =Xs
+    \] is the usual derivative of \(s\) by the vector field \(X\).
+\end{example}
+
+For a general vector bundle \(E\), there is no simple covariant
+derivative such as the exterior derivative \(\dd\) since \(E\) is 
+not a trivial bundle in general.
+
+But recall \(E\) has ``local triviality'': \[
+    \vphi_\lambda\colon E\Big|_{U_\lambda}=\pi^{-1}(U_\lambda)
+    \xlongrightarrow{\sim} U_\lambda\times \mathbb{R}^r
+.\] Let \(e_1,\ldots,e_r\) be a basis of \(\mathbb{R}^r\) (or
+\(\mathbb{C}^r\)), and consider the sections \(e_{\lambda,i},i=1,\ldots,
+r\) defined by \begin{align*}
+    \vphi_\lambda^{-1}\colon U_\lambda\times \mathbb{R}^r
+    &\longrightarrow E\Big|_{U_\lambda} \\
+    (p,e_i) &\longmapsto e_{\lambda,i}(p)=\vphi_\lambda^{-1}(p,e_i)
+.\end{align*}
+Such \(e_{\lambda 1},\ldots,e_{\lambda r}\) are called local frame
+or local frame field.
+
+At each point \(p\in U_\lambda\),
+\(e_{\lambda 1}(p),\ldots,e_{\lambda r}(p)\) form a basis of
+\(E_p=\pi^{-1}(p)\), the fiber over \(p\).
+Any section \(s \in C^\infty(M,E)\) is expressed over \(U_\lambda\) as
+\begin{align*}
+    s&=s^1e_{\lambda 1}+\cdots +s^r e_{\lambda r} \\
+    &= (e_{\lambda 1},\ldots,e_{\lambda r})\begin{pmatrix}
+        s^1 \\ \vdots \\ s^r
+    \end{pmatrix}
+\end{align*}
+where \(s^1,\ldots,s^r\in C^\infty(U_\lambda)\).
+
+By the definition of the connection \[
+    \nabla s=s^1\nabla e_{\lambda 1}+\cdots +s^r\nabla e_{\lambda r}
+    +e_{\lambda 1}\otimes \dd{s^1}+\cdots +e_{\lambda r}\otimes \dd{s^r}
+.\] For another open set \(U_\mu,\mu\neq \lambda\), we have a local frame
+\(e_{\mu 1},\ldots,e_{\mu r}\), and similarly \[
+    s=t^1 e_{\mu 1}+\cdots +t^r e_{\mu r}\quad
+    \text{with }t^1,\ldots,t^r\in C^\infty(U_\mu)
+.\] And \[
+    \nabla s=t^1\nabla e_{\mu 1}+\cdots +t^r\nabla e_{\mu r}
+    +e_{\mu 1}\otimes \dd{t^1}+\cdots +e_{\mu r}\otimes \dd{t^r}
+.\] When \(U_\lambda \cap U_\mu\neq \emptyset\), we have \(\tensor{f}
+{_\lambda_\mu^i_j}\in C^\infty(U_\lambda \cap U_\mu)\), such that \[
+    e_{\mu j}=\tensor{f}{_\lambda_\mu^1_j} e_{\lambda 1}+\cdots +
+    \tensor{f}{_\lambda_\mu^r_j}e_{\lambda r}
+,\] so that
+\begin{equation}\label{eq:1-2-1}
+(e_{\mu 1},\ldots,e_{\mu r})=(e_{\lambda 1},\ldots,e_{\lambda r})
+f_{\lambda \mu}
+.\end{equation}
+That is, \[
+    f_{\lambda \mu}=(\tensor{f}{_\lambda_\mu^i_j})
+\] is the non-singular matrix of ``change of basis''.
+
+By \cref{eq:1-2-1} we have \[
+    \nabla e_{\mu j}=\sum_{i=1}^{r}(\tensor{f}{_\lambda_\mu^i_j}\nabla 
+    e_{\lambda i}+e_{\lambda i}\otimes \dd{\tensor{f}{_\lambda_\mu^i_j}})
+.\] \ie\ 
+\begin{equation}\label{eq:1-2-2}
+    \nabla e_\mu=\nabla e_\lambda\cdot f_{\lambda\mu}+e_\lambda\otimes 
+    \dd{f_{\lambda\mu}}
+.\end{equation}
+
+\begin{definition}
+    On \(U_\lambda\), \(\nabla e_{\lambda i} \in C^\infty(U_\lambda,
+    E\Big|_{U_\lambda}\otimes T^*M)\), so that there are 1-forms
+    \(\tensor{\omega}{_\lambda^i_j}, i,j=1,\ldots,r\) such that \[
+        \nabla e_{\lambda j}=\sum_{i=1}^{r}e_{\lambda i}\otimes 
+        \tensor{\omega}{_\lambda^i_j}
+    .\] Hence \[
+        \nabla e_\lambda=e_\lambda\otimes \omega_\lambda, \quad
+        \text{ with }\omega_\lambda=(\tensor{\omega}{_\lambda^i_j})
+    .\] We call \(\omega_\lambda=(\tensor{\omega}{_\lambda^i_j})\) the
+    \textbf{connector 1-form} or \textbf{connection form}, or
+    \textbf{connection matrix}.
+\end{definition}
+The connection form is also referred as ``matrix-valued 1-form''.
+
+\begin{prop}
+    Over \(U_\lambda\cap U_\mu\), \(\omega_\lambda\) and \(\omega_\mu\)
+    are related by
+    \begin{equation}\label{eq:1-2-3}
+        \omega_\mu=f_{\lambda\mu}^{-1}\omega_\mu f_{\lambda\mu}
+        +f_{\lambda\mu}^{-1}\dd{f_{\lambda\mu}}
+    .\end{equation}
+\end{prop}
+\begin{proof}
+    By \cref{eq:1-2-2},
+    \begin{equation}\label{eq:1-2-4}
+        \nabla e_\mu=e_\lambda\otimes \omega_\lambda f_{\lambda\mu}
+        +e_{\lambda}\otimes f_{\lambda\mu}
+    .\end{equation}
+    On the other hand by \cref{eq:1-2-1}, we also have
+    \begin{equation}\label{eq:1-2-5}
+        \nabla_{e_\mu}=e_{\mu}\otimes \omega_\mu
+        =e_\lambda f_{\lambda\mu}\otimes \omega_\mu
+    .\end{equation}
+    Comparing \cref{eq:1-2-4,eq:1-2-5}, we obtain \[
+        f_{\lambda\mu}\omega_\mu=\omega_\lambda f_{\lambda\mu}
+        +\dd{f_{\lambda\mu}}
+    .\] This implies \cref{eq:1-2-3}
+\end{proof}
+
+Tracing back the proof above, we obtain the converse
+\begin{prop}
+    Suppose we are given matrix-valued 1-forms \(\omega_\lambda\) on
+    \(U_\lambda\), \(\lambda\in \Lambda\) satisfying \cref{eq:1-2-3}.
+    If we define \(\nabla\) by \[
+        \nabla e_{\lambda j}=\sum_{i=1}^{r} e_{\lambda i}\otimes 
+        \tensor{\omega}{_\lambda^i_j}
+    ,\] \ie\ \[
+        \nabla e_\lambda=e_\lambda\otimes\omega_\lambda
+    ,\] then \(\nabla\) defines a well-defined connection on \(E\).
+\end{prop}
+
+\begin{definition}
+    For a given connection \(\nabla\) with connection form \(\omega
+    _\lambda\) on \(U_\lambda\), we define the \textbf{curvature form}
+    \(\Omega_\lambda\) on \(U_\lambda\) by \[
+        \Omega_\lambda=\dd{\omega_\lambda}+\omega_\lambda\wedge
+        \omega_\lambda
+    .\] Here \(\omega_\lambda\wedge \omega_\lambda\) is computed by the
+    multiplication of matrices and wedge product is taken as differential
+    forms.
+\end{definition}
+Note that the definition depends on the choice of local frame
+\(e_{\lambda 1},\ldots,e_{\lambda r}\) on \(U_\lambda\).
+
+On \(U_\lambda\), omitting \(\lambda\) in formula, we have \[
+    \tensor{\Omega}{^i_j}=\dd{\tensor{\omega}{^i_j}}
+    +\sum_{k=1}^{r}\tensor{\omega}{^i_k}\wedge \tensor{\omega}{^k_j}
+.\] 
+
+\begin{prop}
+    On \(U_\lambda\cap U_\mu\neq \emptyset\), we have \[
+        \Omega_\mu=f_{\lambda\mu}^{-1}\Omega_{\lambda}f_{\lambda\mu}
+    .\] 
+\end{prop}
+\begin{proof}
+    Recall \[
+        \omega_\mu=f_{\lambda\mu}^{-1}\omega_\mu f_{\lambda\mu}
+        +f_{\lambda\mu}^{-1}\dd{f_{\lambda\mu}}
+    \] and since \(f_{\lambda\mu}f_{\lambda\mu}^{-1}=1\), \[
+        \dd{f_{\lambda\mu}}^{-1}=-f_{\lambda\mu}^{-1}\cdot
+        \dd{f_{\lambda\mu}}\cdot f_{\lambda\mu}^{-1}
+    .\] The proposition follows easily from these.
+\end{proof}
+
+Thus, at \(p\in U_\lambda\cap U_\mu\), \(\Omega_\lambda\) and
+\(\Omega_\mu\) define the same endomorphism of the fiber \(E_p\).
+So \(\{\Omega_\lambda\}_{\lambda\in \Lambda}\) defines a section of \[
+    \operatorname{End}(E)\otimes \wedge^2T^*M\cong E\otimes E^*\otimes 
+    \wedge^2T^*M
+.\] 
+
+Another description of the curvature is given by \[
+    R(X,Y)=\nabla_X\nabla_Y-\nabla_Y\nabla_X-\nabla_{[X,Y]}
+\] for any vector field \(X\) and \(Y\).
+\begin{exercise}
+    One can check \[
+        R(fX,gY)(hs)=fghR(X,Y)s
+    \] for any section \(s \in C^\infty(M,E)\) and smooth functions
+    \(f,g,h\).
+\end{exercise}
+Then we see \(R(\cdot ,\cdot )\) is a tensor in
+\(\operatorname{End}(E)\otimes \wedge^2M\).
+
+\begin{prop}
+    Let \(e_{\lambda 1},\ldots,e_{\lambda r}\) be a local frame on
+    \(U_\lambda\), then \(\Omega_\lambda\) is the matrix representation
+    of \(R\) with respect to \(e_{\lambda 1},\ldots,e_{\lambda r}\).
+\end{prop}
+\begin{proof}
+    We omit \(\lambda\) in subscript, and write \(e=(e_1,\ldots,e_r)\).
+    We have
+    \begin{align*}
+        &(\nabla_X\nabla_Y-\nabla_Y\nabla_X-\nabla_{[X,Y]})e \\
+        =& \nabla_X(e\omega(Y))-\nabla_Y(e\omega(X))-e\omega(X)\omega(Y)
+        -e(Y\omega(X)-e\omega([X,Y])) \\
+        =&e((\dd{\omega}+\omega\wedge \omega)(X,Y)) \\
+        =&e\Omega(X,Y)
+    .\end{align*}
+\end{proof}
+\begin{definition}
+    \(R\) is called the \textbf{curvature tensor}
+\end{definition}
+
+\end{document}

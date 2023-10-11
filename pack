@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+today=`date +%y%m%d`
+
+latexmk -xelatex main
+
+zip -r FuGeo.zip ./ -i \*.tex \*.pdf
+mv FuGeo.zip ~/winDesktop/Complex\ Geometry\ Notes\ $today.zip

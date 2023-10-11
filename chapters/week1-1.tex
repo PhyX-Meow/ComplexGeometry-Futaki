@@ -1,0 +1,161 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\begin{document}
+
+\section{Convention of vectors}
+
+There are two traditions of vector notations:
+\begin{itemize}
+\item \textbf{Western Style.}\[
+    \mathbb{y}=A\mathbb{x}\qquad \begin{pmatrix}
+        y_1 \\ \vdots \\ y_n
+    \end{pmatrix}=A\begin{pmatrix}
+        x_1 \\ \vdots \\ x_n
+    \end{pmatrix}\qquad
+    \text{\CJKfamily{zhkai}清華園}
+.\] 
+\item \textbf{Eastern Style.}\[
+    \mathbb{x}A=\mathbb{y}\qquad \begin{pmatrix}
+        x_1 & \cdots & x_n
+    \end{pmatrix}A=\begin{pmatrix}
+        y_1 & \cdots & y_n
+    \end{pmatrix}\qquad
+    \text{\CJKfamily{zhkai}園華清}
+.\] 
+\end{itemize}
+Throughout this Notes, we use the western style, and write vectors as column vectors.
+
+Let \(V\) be a vector space over \(\mathbb{R}\) or \(\mathbb{C}\) of \(\dim=n\). Let
+\(e_1,\ldots,e_n\) be a basis. Then any \(\mathbb{x}\in V\) is expressed as \[
+    \mathbb{x}=x^1 e_1+\cdots +x^n e_n
+.\] Since we want to identify \(V\cong \mathbb{R}^n (\mathbb{C}^n)\), we want to
+identify \(\mathbb{x}\) with a column vector. So \[
+    \mathbb{x}=(e_1,\ldots,e_n)\begin{pmatrix}
+        x^1 \\ \vdots \\ x^n
+    \end{pmatrix}
+.\] Note we used upper indices  for the coefficients \(x^i\), and lower indices for
+the basis \(e_i\). This is a standard notation in physics and differential geometry.
+
+Vector \(\mathbb{x}\) is also expressed as \[
+    \mathbb{x}=x^i e_i
+\] by omitting \(\sum_{i=1}^{n}\). When upper and lower indices appear at the same
+time, it is understood that the sum is taken. This convention is called the
+\textbf{Einstein summation convection}.
+
+Let \(e^1,\ldots,e^n\in V^*\) be the dual basis of \(e_1,\ldots,e_n\), so that \[
+    \left<e^i,e_j\right> =\delta_j^i\quad\text{(Kronecker delta)}
+.\] Then any \(\alpha\in V^*\) is expressed as \[
+    \alpha=\alpha_i e^i\quad \Big(=\sum_{i=1}^{n}\alpha_i e^i\Big)
+.\] Let \(f_1,\ldots,f_n\) be another basis of \(V\). Then \(\exists\,P\) non-singular
+matrix \st\ \[
+    (f_1,\ldots,f_n)=(e_1,\ldots,e_n)P
+,\] \ie\ \[
+    f_j=\sum_{i=1}^{n}P_j^i e_i\ \left(=P_j^i e_i=e_i p^i_j\right)
+.\] Here \(P\) is considered as an endomorphism of \(V\), so \(P\in V\otimes V^*\),
+\begin{align*}
+    P&=P_j^i e_i\otimes e^j &&\Big(\sum\text{ is omitted}\Big) \\
+    &=e_i P_j^i e^j &&(\otimes \text{ omitted})
+.\end{align*}
+
+Let \(T\colon V\to V\) be a linear map, \[
+    T(e_j)=\sum_{i=1}^{n}a_j^i e_i=\sum_{i=1}^{n}e_i a_j^i
+.\] Let \(A=(a_j^i)\), then \[
+    T(e_1,\ldots,e_n)=(Te_1,\ldots,Te_n)=(e_1,\ldots,e_n)A
+.\] \(A\) is called the matrix expressing \(T\) in terms of \(e_1,\ldots,e_n\). 
+
+Let \(B\) be the matrix expressing \(T\) in terms of \(f_1,\ldots,f_n\), so that \[
+    T(f_1,\ldots,f_n)=(Tf_1,\ldots,Tf_n)=(f_1,\ldots,f_n)B
+.\] Then 
+\begin{align*}
+    T(f_1,\ldots,f_n)&=T((e_1,\ldots,e_n)P) \\
+    &=T(e_1,\ldots,e_n)P \\
+    &=(e_1,\ldots,e_n)AP
+.\end{align*}
+On the other hand, \[
+    T(f_1,\ldots,f_n)=(f_1,\ldots,f_n)B=(e_1,\ldots,e_n)PB
+.\] Thus \(AP=PB\), and \(\boxed{B=P^{-1}AP}\).
+
+Following backward, if \(B=P^{-1}AP\) for a non-singular \(P\), then \(A\) and \(B\)
+express the same \(T\) for two different bases. So we could conclude that if
+\(B=P^{-1}AP\), then \(A\) and \(B\) are essentially the same, and express the same
+endomorphism.
+
+\section{Geometry of vector bundles}
+Let \(M\) be a smooth manifold of \(\dim=n\).
+\begin{definition}
+    \(\pi\colon E\to M\) is said to be a real (or complex) vector bundle of rank \(r\)
+    if
+    \begin{enumerate}[(i)]
+    \item \(E\) is a smooth manifold of dim \(n+r\) (or \(n+2r\));
+    \item \(\pi\) is a smooth map and the rank of \(\dd{\pi}\) is \(n\) everywhere
+        (maximal rank);
+    \item There is an open covering \(\{U_\lambda\}_{\lambda\in \Lambda}\) of \(M\)
+        with diffeomorphism \(\vphi_\lambda\colon \pi^{-1}(U_\lambda)\to U_\lambda
+        \times \mathbb{R}^r\) (or \(\mathbb{C}^r\)), such that
+        \begin{enumerate}[(a)]
+        \item For the projection \(p_\lambda\colon U_\lambda\times \mathbb{R}^n\to 
+            U_\lambda\), \(\pi=p_\lambda\circ \vphi_\lambda\). \ie\ 
+            \[\begin{tikzcd}
+                {\pi^{-1}(U_\lambda)} & {U_\lambda\times\mathbb{R}^r} \\
+                {U_\lambda}
+                \arrow["{\varphi_\lambda}", from=1-1, to=1-2]
+                \arrow["\pi"', from=1-1, to=2-1]
+                \arrow["{p_\lambda}", from=1-2, to=2-1]
+            \end{tikzcd}\]
+            commutes. Via \(\vphi_\lambda\), \(\pi^{-1}(U_\lambda)\) is identified with
+            \(U_\lambda\times \mathbb{R}^r\).
+        \item When \(U_\lambda\cap U_\mu\neq \emptyset\), \[
+            \vphi_\lambda\circ \vphi_\mu^{-1}\colon (U_\lambda\cap U_\mu)\times
+            \mathbb{R}^r\longrightarrow (U_\lambda\cap U_\mu)\times R^r
+        \] is expressed as \[
+            \vphi_\lambda\circ \vphi_\mu^{-1}(p,\mathbb{x})=(p,\vphi_{\lambda\mu}(p)
+            \mathbb{x})
+        \] with \[
+            \vphi_{\lambda\mu}\colon U_\lambda\cap U_\mu\longmapsto
+            GL(r,\mathbb{R})
+        .\] 
+        \end{enumerate}
+    \end{enumerate}
+\end{definition}
+\begin{remark}\hfill
+\begin{enumerate}[1.]
+\item \(\{\vphi_{\lambda\mu}\}_{\lambda,\mu\in \Lambda}\) are called the
+    \textbf{transition functions}.
+\item \(\pi^{-1}(p)\) is called the \textbf{fiber}, and has the structure of
+    vector space since, if we give it a vector space structure by \[
+        \left(\vphi_\lambda\Big|_{\pi^{-1}(p)}\right)^{-1}\colon p\times
+        \mathbb{R}^r\longrightarrow \pi^{-1}(p)
+    .\] Then  this is well-defined independent of \(\lambda\) by (iii) (b).
+\item Replacing \(\mathbb{R}^r\) by \(\mathbb{C}^r\) and assuming
+    \begin{enumerate}[(a)]
+    \item \(M\) is a complex manifold of \(\dim_{\mathbb{C}}M=m\);
+    \item \(E\) is also a complex manifold of \(\dim_{\mathbb{C}}=m+r\) ;
+    \item All maps are holomorphic, including \[
+        \vphi_{\lambda\mu}\colon U_\lambda\times U_\mu\longrightarrow
+        GL(r,\mathbb{C})
+    .\] 
+    \end{enumerate}
+    Then \(E\) is called a \textbf{holomorphic vector bundle}.
+\item Typical example of vector bundles are tangent bundle, cotangent bundle
+    and their tensor products. If \(U_\lambda,x^1,\ldots,x^n\) and \(U_\mu,y^1,\ldots
+    y^n\) are two coordinate neighbourhoods and \(U_\lambda\cap U_\mu\neq \emptyset\),
+    write \[
+        \pdv{y^j}=\pdv{x^i}{y^j}\pdv{x^i},\quad
+        X^i\pdv{x^i}=Y^j\pdv{y^j}
+    ,\] then \[
+        X^i\pdv{x^i}=Y^j\pdv{x^i}{y^j}\pdv{x^i}
+    .\] Hence \(X^i=\displaystyle\pdv{x^i}{y^j}Y^j\). And \(\vphi_{\lambda\mu}=\left(
+    \displaystyle\pdv{x^i}{y^j}\right)\) is the transition function of \(TM\).
+\item When the rank \(r=1\), \(E\) is called a \textbf{line bundle},
+    often denoted by \(L\).
+\item Let \(\pi\colon E\to M\) be a vector bundle and \(f\colon N\to M\) be a smooth 
+    map. Then the pull-back bundle \(f^*E\) is \[
+        f^*E=\{(x,v)\in N\times E:v\in \pi^{-1}(f(x))\}
+    .\] 
+\item \(E\) is called a trivial bundle if it is a pull-back bundle of of the product
+    bundle \(M\times \mathbb{R}^r\) (or \(M\times \mathbb{C}^r\)).
+\end{enumerate}
+\end{remark}
+
+\end{document}

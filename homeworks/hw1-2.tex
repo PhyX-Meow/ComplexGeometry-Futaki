@@ -1,0 +1,42 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+
+\title{Complex Geometry Homework 2}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+The complex projective space \(\mathbb{P}^m(\mathbb{C})\) of dim \(m\) is defined 
+to be \[
+    \mathbb{C}^{m+1}\setminus\{0\}/\sim
+\] where \[
+    (z^{0},z^{1},\ldots,z^m)\sim (w^0,w^1,\ldots,w^m)
+\] if and only if \(\exists\,\lambda\neq 0\) such that \[
+    (w^0,w^1,\ldots,w^m)=(\lambda z^0,\lambda z^1,\ldots,\lambda z^m)
+.\] Thus \(\mathbb{P}^n(\mathbb{C})\) is the space of ratios \([z^0:\cdots :z^m]\).
+
+For each \(j=0,1,\ldots,m\), consider the open set \(U_j=\{z^j\neq 0\}\), and put \[
+    t_j^0=\frac{z^0}{z^j},\ldots,t_j^m=\frac{z^m}{z^j}
+.\] Then \((t_j^0,\ldots,\hat{t_j^j},\ldots,t_j^m)\) form a local holomorphic
+coordinate to give \(\mathbb{P}^n(\mathbb{C})\) a structure of complex manifold.
+Define \(L\) by
+\begin{align*}
+    L=\Big\{\left([z^0:\cdots :z^m],(v^0,\ldots,v^m)\right)\in
+        \mathbb{P}^m(\mathbb{C})\times \mathbb{C}^{m+1}: \\
+        (v^0,\ldots,v^m)=\mu(z^0,\ldots,z^m)\text{ for some }\mu \in \mathbb{C}\Big\}
+.\end{align*}
+\begin{problem}
+    Show that \(\pi\colon L\to \mathbb{P}^m(\mathbb{C})\) \[
+        \pi([z^0:\cdots :z^m],(v^0,\ldots,v^m))=[z^0:\cdots :z^m]
+    \] is a holomorphic line bundle
+\end{problem}
+\begin{problem}
+    Describe the transition functions \[
+        \vphi_{\lambda\mu}\colon U_\lambda\cap U_\mu\longrightarrow
+        GL(1,\mathbb{C})=\mathbb{C}^\times
+    \] as functions on \(U_\mu\).
+\end{problem}
+\end{document}
