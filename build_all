@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+cd ./chapters
+latexmk -xelatex
+cd ..
+
+cd ./homeworks
+latexmk -xelatex
+cd ..
+
+latexmk -xelatex main

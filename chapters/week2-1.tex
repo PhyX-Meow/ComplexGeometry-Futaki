@@ -5,5 +5,126 @@
 \counterwithout{equation}{section}
 
 \begin{document}
+Here we go back to the difference between western and eastern culture,
+{\CJKfamily{zhkai}清華園} or {\CJKfamily{zhkai}園華清}. If we choose to write
+\(\mathbb{x}A=\mathbb{y}\), \(\mathbb{x}\) should be a row vector. Thus we should
+write \[
+    \mathbb{x}=(x^1,\ldots,x^n)\begin{pmatrix}
+        e_1 \\ \vdots \\ e_n
+    \end{pmatrix}
+.\] So \[
+    e=\begin{pmatrix} e_1\\ \vdots\\ e_n \end{pmatrix}
+\] and \[
+    (x^1,\ldots,x^n)A^{-1}A\begin{pmatrix} e_1\\ \vdots\\ e_n \end{pmatrix}
+    =(x^1,\ldots,x^n)\begin{pmatrix} e^1\\ \vdots\\ e^n \end{pmatrix}
+.\] The matrices multiply on \(e\) on the left. Thus connection matrix acts on \(e\)
+from the left, \ie\ \[
+    \nabla e=\omega e
+.\] It follows that
+\begin{align*}
+    &(\nabla_X\nabla_Y-\nabla_Y\nabla_X-\nabla_{[X,Y]})e \\
+    =&\nabla_X(\omega(Y)e)-\nabla_Y(\omega(X)e)-\omega([X,Y])e \\
+    =&(X\omega(Y)+\omega(Y)\omega(X)-Y\omega(X)-\omega(X)\omega(Y)
+    -\omega([X,Y]))e \\
+    =&((\dd{\omega}-\omega\wedge \omega)(X,Y))e
+.\end{align*}
+So for eastern culture, \(\Omega\) should be \[
+    \Omega=\dd{\omega}-\omega\wedge \omega
+.\] 
+
+\begin{remark}
+    Professor Shiing-Shen Chern ({\CJKfamily{zhkai}陈省身})'s book
+    ``Complex manifold without potential theory'' uses
+    \(\Omega=\dd{\omega}-\omega\wedge \omega\). Also this book uses the convention of
+    principal bundle with left action of the structure group.
+
+    This lecture notes employs, as most other books, western culture and principal
+    bundles have right action of the structure group and \(\Omega=\dd{\omega}+\omega
+    \wedge\omega\). (Note that typical principal bundles are the frame bundles.)
+\end{remark}
+
+\begin{definition}
+    Given a connection \(\nabla\) on a vector bundle \(E\), we define the
+    \textbf{exterior covariant derivative} \[
+        \dd^\nabla\colon \mathbb{C}^\infty(M,E\otimes \wedge^k M)
+        \longrightarrow C^\infty(M,E\otimes \wedge^{k+1}M)
+    \] by \[
+        \dd^\nabla (s\otimes \alpha)=\nabla s\wedge \alpha+s\otimes \dd{\alpha}
+    .\] Note that for \(k=0\), we have \(\dd^\nabla =\nabla\).
+\end{definition}
+\begin{prop}\hfill
+\begin{enumerate}[(1)]
+\item \(R=\dd^\nabla\circ \dd^\nabla\).
+\item \(\dd^\nabla R=0\). (2nd Bianchi identity)
+\end{enumerate}
+\end{prop}
+\begin{proof}
+    Left as exercise.
+\end{proof}
+
+\begin{definition}
+    \[
+        \op{Aut}(E)=\{\vphi\in \op{End}(E):(\vphi\colon E_p\to E_p)
+        \text{ is linear isomorphism for }p=\pi(\vphi)\}
+    \] is called the \textbf{automorphism bundle}, and an element of
+    \(C^\infty(M,\op{Aut(M)})\) is called a \textbf{gauge transformation}.
+\end{definition}
+Obviously the gauge group is a group, and acts on the space \(C^\infty(M,E)\) of 
+sections of \(E\). Let \(\mathscr{C}(E)\) be the space of connections. Then
+\(C^\infty(M,\op{Aut}(E))\) acts on \(\mathscr{C}(E)\) by 
+\[\begin{tikzcd}[row sep=small]
+	{C^\infty(M,\op{Aut}(E))\times \mathscr{C}} & {\mathscr{C}(E)} \\
+	{(\alpha,\nabla)} & {\alpha\circ\nabla\circ\alpha^{-1}=:\alpha(\nabla)}
+	\arrow[maps to, from=2-1, to=2-2]
+	\arrow[from=1-1, to=1-2]
+	\arrow["\in"{marking}, draw=none, from=2-1, to=1-1]
+\end{tikzcd}\]
+If a connection on \(E\) is given, then we can define a connection on the dual vector
+bundle \(E^*\) as follows:
+
+For \(r\in C^\infty(M,E^*)\) and \(s\in C^\infty(M,E)\), \[
+    \left<\nabla r,s\right> =\dd{\left<r,s\right>}-\left<r,\nabla s\right> 
+.\] Then we can define a connection on \(E\otimes E^*\) be derivation: \[
+    \nabla (s\otimes r)=\nabla s\otimes r+s\otimes \nabla r
+.\] 
+
+\begin{prop}
+    \(\alpha(\nabla)=\nabla -\nabla\alpha\cdot \alpha^{-1}\)
+\end{prop}
+\begin{proof}
+    For \(s\in \)
+\begin{align*}
+    \alpha(\nabla)&=\alpha \nabla(\alpha^{-1}s) \\
+    &=\alpha(-\alpha^{-1}\nabla\alpha\cdot\alpha^{-1}s+\alpha^{-1}\nabla s) \\
+    &=\nabla s-\nabla\alpha\cdot \alpha^{-1}s
+.\end{align*}
+\end{proof}
+
+As a summary, 
+\begin{align*}
+    &e=(e_1,\ldots,e_r) && \text{local frame} \\ 
+    &\nabla e=e\omega && \omega\text{ connection matrix}
+.\end{align*}
+If \(s\in C^\infty(M,E)\), \[
+    s=(e_1,\ldots,e_r)\begin{pmatrix} f^1\\ \vdots\\ f^r \end{pmatrix}=e\cdot f
+.\] \[
+    \nabla s=\nabla e\cdot f+e\cdot \dd{f}=e(\dd{f}+\omega f)
+.\] If we identify \(s\leftrightarrow f\) then \[
+    \nabla s\longleftrightarrow \dd{f}+\omega f
+.\] So, \(\omega\) is just a ``correction term'' of \(\dd\).
+
+\section{Riemannian geometry}
+For general vector bundle \(E\) there are lots of connections. But in certain
+situations, there are canonical, even unique connections. The Levi-Civita connection 
+is such a case.
+
+Let \(M\) be a smooth manifold of \(\dim n\).
+\begin{definition}
+    \(g\in C^\infty(M,T^*M\otimes T^*M)\) is a Riemannian metric on \(M\) if at 
+    \(\forall\,p\in M\), \[
+        g_p\colon T_p M\times T_p M\longrightarrow \mathbb{R}
+    \] is a positive definite symmetric bilinear form, \ie\ \(g_p\) defines an inner
+    product on the tangent space.
+\end{definition}
 
 \end{document}

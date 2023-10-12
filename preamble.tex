@@ -2,6 +2,7 @@
 
 \usepackage[dvipsnames,svgnames,x11names]{xcolor}
 \usepackage[a4paper,margin=1in]{geometry}
+\usepackage{microtype}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{mathtools}
@@ -15,7 +16,8 @@
 \usepackage{subcaption}
 \usepackage{tikz}
 \usepackage{tikz-3dplot}
-\usepackage{tikz-cd}
+% \usepackage{tikz-cd}
+\usepackage{quiver}
   \tikzset{every picture/.style={line width=0.75pt}}
 \usepackage{pgfplots}
   \pgfplotsset{compat=newest}
@@ -51,6 +53,7 @@
 \newcommand{\xrr}{\xlongrightarrow}
 \newcommand{\into}{\hookrightarrow}
 \newcommand{\pdif}[2]{\frac{\partial #1}{\partial #2}}
+\renewcommand{\op}{\operatorname}
 
 \theoremstyle{plain}\newtheorem{theorem}{Theorem}
 \theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
