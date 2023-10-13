@@ -1,0 +1,143 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+If we express \(g\) as \[
+    g=\sum_{i,j=1}^{n}g_{ij}\dd{x^i}\otimes \dd{x^j},\quad
+    g_{ij}=g\left(\pdv{x^i},\pdv{x^j}\right)
+.\] Then the matrix \((g_{ij})\) is a positive definite symmetric matrix at each point
+\(p\in M\).
+
+\(g\) is  also expressed as \[
+    g=g_{ij}\dd{x^i}\dd{x^j}
+.\] In this expression, \(\dd{x^i}\dd{x^j}\) should be understood as the symmetric
+product \[
+    \dd{x^i}\dd{x^j}=\frac{1}{2}(\dd{x^i}\otimes \dd{x^j}+\dd{x^j}\otimes \dd{x^i})
+.\] This expression lacks accuracy, but is convenient.
+
+\begin{definition}
+    The pair \((M,g)\) is called a \textbf{Riemannian manifold}.
+\end{definition}
+There are many Riemannian metrics, one can construct many using partition of unity.
+
+\begin{theorem}
+    On a Riemannian manifold \((M,g)\) there is a unique connection \(\nabla\) on
+    the tangent bundle \(TM\), called the \textbf{Levi-Civita connection} or \textbf{
+    Riemannian connection}, such that
+    \begin{enumerate}[(1)]
+    \item For any vector fields \(X\) and \(Y\), \[
+        \nabla_X Y-\nabla_Y X=[X,Y]
+    .\] 
+    \item For any vector fields \(X,Y,Z\), \[
+        Xg(Y,Z)=g(\nabla_X Y,Z)+g(Y,\nabla_X,Z)
+    .\] 
+    \end{enumerate}
+\end{theorem}
+\begin{remark}\hfill
+\begin{enumerate}[(1)]
+    \item is referred as ``torsion-free'' or ``symmetric''.
+    \item is referred as ``metric compatible''.
+\end{enumerate}
+\end{remark}
+
+We can prove the existence and uniqueness of the Levi-Civita connection as follows
+\begin{proof}
+    Suppose \(\nabla\) exists, then by (2) \(\nabla\) should satisfy
+    \begin{align}
+        Xg(Y,Z)&=g(\nabla_X Y,Z)+g(Y,\nabla_X,Z) \tag{3} \\
+        Yg(Z,X)&=g(\nabla_Y Z,X)+g(Z,\nabla_Y,X) \tag{4} \\
+        Zg(X,Y)&=g(\nabla_Z X,Y)+g(X,\nabla_Z,Y) \tag{5}
+    .\end{align}
+    Compute \(\text{(3)}+\text{(4)}-\text{(5)}\) using (1) we get
+    \begin{align*}
+        &Xg(Y,Z)+Yg(Z,X)-Zg(X,Y) \\
+        =&g(\nabla_X Y+\nabla_Y X,Z)+g([Y,Z],X)+g([X,Z],Y) \\
+        =&2g(\nabla_X Y,Z)-g([X,Y],Z)+g([Y,Z],X)+g([X,Z],Y)
+    .\end{align*}
+    Thus 
+    \begin{align*}
+        g(\nabla_X Y,Z)=&\frac{1}{2}\big(Xg(Y,Z)+Yg(Z,X)-Zg(X,Y) \\
+        &+g([X,Y],Z)-g([Y,Z],X)-g([X,Z],Y)\big)
+    .\end{align*}
+    \(\nabla_X,Y\) is defined by this equation. From this expression one get
+    uniqueness. One can check this \(\nabla\) satisfies all the conditions of
+    Levi-Civita connection (Exercise), which gives existence.
+\end{proof}
+
+For local coordinates \(x^1,\ldots,x^n\) we have \[
+    [\pdv{x^i},\pdv{x^j}]=0
+.\] So
+\begin{equation}\label{eq:2-2:6}
+    g\left(\nabla_{\pdv{x^i}}\pdv{x^j},\pdv{x^k}\right)
+    =\frac{1}{2}\left(\pdv{g_{jk}}{x^i}+\pdv{g_{ik}}{x^j}-\pdv{g_{ij}}{x^k}\right)
+.\end{equation}
+We set \[
+    \nabla_{\pdv{x^i}}\pdv{x^j}=\Gamma_{ij}^k\pdv{x^k}
+.\] These \(\Gamma_{ij}^k\) are called the \textbf{Christoffel symbols}.
+
+If we set \((g^{ij})=(g_{ij})^{-1}\), the inverse matrix, then \cref{eq:2-2:6} shows \[
+    \Gamma_{ij}^k=\frac{1}{2}g^{jp}\left(\pdv{g_{jp}}{x^i}+\pdv{g_{ip}}{x^j}
+    -\pdv{g_{ij}}{x^p}\right)
+.\] Of course \[
+    \nabla\pdv{x^j}=\Gamma_{ij}^k\pdv{x^k}\otimes \dd{x^i}
+.\] So \[
+    \omega=(\tensor{\omega}{^i_j})=(\Gamma_{kj}^i\dd{x^k})
+\] is the connection matrix with respect to \(\pdv{x^1},\ldots,\pdv{x^k}\).
+
+Note that the torsion-freeness is equivalent to \(\Gamma_{ij}^k=\Gamma_{ji}^k\). This
+is the reason why torsion-free is referred as ``symmetric''.
+
+Recall that the curvature tensor \(R\) was defined by \[
+    R(X,Y)=\nabla_X\nabla_Y-\nabla_Y\nabla_X-\nabla_{[X,Y]}
+.\] In Riemannian geometry, another \(R\) is defined by \[
+    R(X,Y,Z,W)=g(Z,R(X,Y)W)
+.\] This new \(R\) is a tensor field in \(C^\infty(M,\otimes^4 T^*M)\), and called
+the \textbf{Riemannian curvature tensor}. (There are many different conventions of
+\(R\), but our convention gives the standard sign convention).
+\begin{prop}
+    Show the following:
+    \begin{enumerate}[(a)]
+    \item \(R(X,Y,Z,W)=-R(Y,X,Z,W)\).
+    \item \(R(X,Y,Z,W)=R(Z,W,X,Y)\).
+    \item \(R(X,Y,Z,W)+R(Y,W,Z,X)+R(W,X,Z,Y)=0\), (The 1st Bianchi identity).
+    \item \((\nabla_X R)(Y,Z)=(\nabla_Y R)(Z,X)+(\nabla_Z R)(X,Y)=0\),
+        (The 2nd Bianchi identity).
+    \end{enumerate}
+\end{prop}
+\begin{proof}
+    Left as exercise.
+\end{proof}
+
+\begin{definition}
+    Let \(X,Y\in T_p M\) be orthonormal, that is \(\|X\|=\|Y\|=1\) and \(g(X,Y)=0\),
+    (\(\|X\|=\sqrt{g(X,X)}\)). Then \(R(X,Y,X,Y)\) is called the \textbf{sectional
+    curvature} of the plane spanned by \(X\) and \(Y\).
+\end{definition}
+It is easy to check if  \[
+    X'=X\cos\theta+Y\sin\theta,\quad Y'=-X\sin\theta+Y\cos\theta
+,\] then \[
+    R(X',Y',X',Y')=R(X,Y,X,Y)
+.\] Thus the sectional curvature is a function on the Grassmannian bundle
+\(\op{Gr}(2,TM)\) of 2-planes.
+
+\begin{definition}
+    Let \(e_1,\ldots,e_n\) be an orthonormal frame of \(T_p M\), we define
+    \(\Ric\in C^\infty(M,\otimes^2 T^*M)\) by \[
+        \Ric(X,Y)=\sum_{i=1}^{n}R(X,e_i,Y,e_i)
+    .\] \(\Ric\) is a symmetric 2-tensor, and is called the \textbf{Ricci curvature}.
+    It is usually expressed as \[
+        \Ric=R_{ij}\dd{x^i}\otimes \dd{x^j}
+    ,\] and \(R_{ij}\) is also called the Ricci curvature.
+
+    \[
+        S:=\sum_{i,j=1}^{n}R(e_i,e_j,e_i,e_j)=g^{ij}R_{ij}=g^{ik}g^{jl}R_{ijkl}
+    ,\] is called the \textbf{scalar curvature}. For \(n=2\), that is, for surfaces,
+    sectional curvature \(R_{1212}\) and the Ricci curvature \(R_{11}=R_{22}\) and
+    the scalar curvature \(S\) coincide up to multiple constants, to classical
+    Gaussian curvature.
+\end{definition}
+
+\end{document}

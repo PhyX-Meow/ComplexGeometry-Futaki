@@ -95,7 +95,7 @@ By the definition of the connection \[
     e_{\mu j}=\tensor{f}{_\lambda_\mu^1_j} e_{\lambda 1}+\cdots +
     \tensor{f}{_\lambda_\mu^r_j}e_{\lambda r}
 ,\] so that
-\begin{equation}\label{eq:1-2-1}
+\begin{equation}\label{eq:1-2:1}
 (e_{\mu 1},\ldots,e_{\mu r})=(e_{\lambda 1},\ldots,e_{\lambda r})
 f_{\lambda \mu}
 .\end{equation}
@@ -103,11 +103,11 @@ That is, \[
     f_{\lambda \mu}=(\tensor{f}{_\lambda_\mu^i_j})
 \] is the non-singular matrix of ``change of basis''.
 
-By \cref{eq:1-2-1} we have \[
+By \cref{eq:1-2:1} we have \[
     \nabla e_{\mu j}=\sum_{i=1}^{r}(\tensor{f}{_\lambda_\mu^i_j}\nabla 
     e_{\lambda i}+e_{\lambda i}\otimes \dd{\tensor{f}{_\lambda_\mu^i_j}})
 .\] \ie\ 
-\begin{equation}\label{eq:1-2-2}
+\begin{equation}\label{eq:1-2:2}
     \nabla e_\mu=\nabla e_\lambda\cdot f_{\lambda\mu}+e_\lambda\otimes 
     \dd{f_{\lambda\mu}}
 .\end{equation}
@@ -130,32 +130,32 @@ The connection form is also referred as ``matrix-valued 1-form''.
 \begin{prop}
     Over \(U_\lambda\cap U_\mu\), \(\omega_\lambda\) and \(\omega_\mu\)
     are related by
-    \begin{equation}\label{eq:1-2-3}
+    \begin{equation}\label{eq:1-2:3}
         \omega_\mu=f_{\lambda\mu}^{-1}\omega_\mu f_{\lambda\mu}
         +f_{\lambda\mu}^{-1}\dd{f_{\lambda\mu}}
     .\end{equation}
 \end{prop}
 \begin{proof}
-    By \cref{eq:1-2-2},
-    \begin{equation}\label{eq:1-2-4}
+    By \cref{eq:1-2:2},
+    \begin{equation}\label{eq:1-2:4}
         \nabla e_\mu=e_\lambda\otimes \omega_\lambda f_{\lambda\mu}
         +e_{\lambda}\otimes f_{\lambda\mu}
     .\end{equation}
-    On the other hand by \cref{eq:1-2-1}, we also have
-    \begin{equation}\label{eq:1-2-5}
+    On the other hand by \cref{eq:1-2:1}, we also have
+    \begin{equation}\label{eq:1-2:5}
         \nabla_{e_\mu}=e_{\mu}\otimes \omega_\mu
         =e_\lambda f_{\lambda\mu}\otimes \omega_\mu
     .\end{equation}
-    Comparing \cref{eq:1-2-4,eq:1-2-5}, we obtain \[
+    Comparing \cref{eq:1-2:4,eq:1-2:5}, we obtain \[
         f_{\lambda\mu}\omega_\mu=\omega_\lambda f_{\lambda\mu}
         +\dd{f_{\lambda\mu}}
-    .\] This implies \cref{eq:1-2-3}
+    .\] This implies \cref{eq:1-2:3}
 \end{proof}
 
 Tracing back the proof above, we obtain the converse
 \begin{prop}
     Suppose we are given matrix-valued 1-forms \(\omega_\lambda\) on
-    \(U_\lambda\), \(\lambda\in \Lambda\) satisfying \cref{eq:1-2-3}.
+    \(U_\lambda\), \(\lambda\in \Lambda\) satisfying \cref{eq:1-2:3}.
     If we define \(\nabla\) by \[
         \nabla e_{\lambda j}=\sum_{i=1}^{r} e_{\lambda i}\otimes 
         \tensor{\omega}{_\lambda^i_j}
