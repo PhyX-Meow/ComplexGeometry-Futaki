@@ -11,7 +11,14 @@
 \usepackage{extarrows}
 \usepackage{enumerate}
 \usepackage{tensor}
-\usepackage{physics}
+\usepackage{physics2}
+  \usephysicsmodule{ab,xmat}
+\usepackage{fixdif}
+  \newcommand{\dd}{\d}
+\usepackage{derivative}
+  \newcommand{\dv}{\odv}
+  \newcommand{\pd}[1]{\pdv{}{#1}}
+  \newcommand{\eval}[1]{#1\Big|}
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{tikz}
@@ -25,7 +32,7 @@
   \tcbuselibrary{most}
 \usepackage[colorlinks=true,linkcolor=blue]{hyperref}
 \usepackage{cleveref}
-\usepackage[hyperref=true,backend=biber,style=alphabetic,backref=true,url=false]{biblatex}
+% \usepackage[hyperref=true,backend=biber,style=alphabetic,backref=true,url=false]{biblatex}
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 \usepackage[default]{fontsetup}
 \usepackage{fancyhdr}
@@ -52,12 +59,12 @@
 \newcommand{\acts}{\curvearrowright}
 \newcommand{\xrr}{\xlongrightarrow}
 \newcommand{\into}{\hookrightarrow}
-\newcommand{\pdif}[2]{\frac{\partial #1}{\partial #2}}
-\renewcommand{\op}{\operatorname}
+\newcommand{\op}{\operatorname}
 
 \theoremstyle{plain}\newtheorem{theorem}{Theorem}
 \theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
 \theoremstyle{definition}\newtheorem{example}[theorem]{Example}
+\theoremstyle{definition}\newtheorem{problem}[theorem]{Problem}
 \theoremstyle{plain}\newtheorem{axiom}[theorem]{Axiom}
 \theoremstyle{plain}\newtheorem{corollary}[theorem]{Corollary}
 \theoremstyle{plain}\newtheorem{lemma}[theorem]{Lemma}
@@ -65,7 +72,6 @@
 \theoremstyle{plain}\newtheorem{prop}[theorem]{Proposition}
 \theoremstyle{plain}\newtheorem{conjecture}[theorem]{Conjecture}
 \theoremstyle{plain}\newtheorem{conj}[theorem]{Conjecture}
-\theoremstyle{plain}\newtheorem{problem}[theorem]{Problem}
 \theoremstyle{remark}\newtheorem{notation}[theorem]{Notation}
 \theoremstyle{definition}\newtheorem*{question}{Question}
 \theoremstyle{definition}\newtheorem*{answer}{Answer}
@@ -90,3 +96,11 @@
 \setCJKfamilyfont{zhyou}{FZXiYuan-M01}[BoldFont=FZZhunYuan-M02]
 
 \allowdisplaybreaks{}
+
+\newcommand{\isFullBook}[2]{
+  \ifnum\pdfstrcmp{\FullBook}{True}=0
+    \ifnum\pdfstrcmp{}{#1}=0\unskip\else#1\fi
+  \else
+    \ifnum\pdfstrcmp{}{#2}=0\unskip\else#2\fi
+  \fi\ignorespaces{}
+}

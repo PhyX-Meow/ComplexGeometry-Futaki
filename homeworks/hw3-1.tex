@@ -1,0 +1,52 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\theoremstyle{definition}\newtheorem*{example*}{Example}
+\theoremstyle{definition}\newtheorem*{definition*}{Definition}
+
+\title{Complex Geometry Homework 5}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{example*}
+  Let \[
+    H=\{[0:z^1:\cdots :z^m]\in \mathbb{P}^m(\mathbb{C}):(z^1,\ldots,z^m)\neq 0\}
+  \] be the hyperplane in \(\mathbb{P}^m(\mathbb{C})\). The associated line bundle
+  \([H]\) is called the hyperplane bundle, denoted by \(\mathcal{O}(1)\). And
+  \(L_{-H}\) is denoted by \(\mathcal{O}(-1)\).
+\end{example*}
+
+\begin{problem}
+  Show that \(\mathcal{O}(-1)\) is isomorphic to \(L\) in homework 2.
+\end{problem}
+\begin{problem}
+  By problem 1, \(\mathcal{O}(-1)=L\to \mathbb{P}^m(\mathbb{C})\) is a holomorphic
+  line bundle. Its zero section, \ie\ the subset of \(L\) consisting of zero vectors
+  in each fiber, is a submanifold of \(L\) isomorphic (bi-holomorphic) to
+  \(\mathbb{P}^m(\mathbb{C})\). Show that \[
+    L\setminus\text{zero section}\underset{\text{bi-holomorphic}}{\cong}
+    \mathbb{C}^{m+1}\setminus\{0\}
+  .\] 
+\end{problem}
+\begin{problem}
+  Let \(n=m+1\) in problem 2, so we have \(\mathcal{O}(-1)=L\to \mathbb{P}^{n-1}
+  (\mathbb{C})\). Let \(U\) be a neighborhood of the zero section in \(L\), and
+  \(V\) be a neighborhood of \(0\) in \(\mathbb{C}^n\). By problem 2, we may take
+  \(U\) and \(V\) so that \[
+    U\setminus\text{zero section}\cong V\setminus\{0\}
+  .\] Now let \(M\) be a complex manifold of \(\dim n\), and take \(p\in M\). Take
+  a neighborhood \(V\) of \(p\) such that \[
+    V\setminus\{p\}\cong U\setminus\text{zero section in }L.
+  \] Modify \(M\) be first removing \(V\) and then inserting \(U\) in the place
+  of \(V\).
+
+  Show that the resulting space \(\hat{M}\) is a complex manifold of dimension \(n\).
+\end{problem}
+\begin{definition*}
+  \(\hat{M}\) is called the \textbf{blow-up} (or \textbf{monoidal transformation}) of
+  \(M\) at \(p\).
+\end{definition*}
+\end{document}

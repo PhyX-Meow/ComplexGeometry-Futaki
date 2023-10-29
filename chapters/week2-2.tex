@@ -7,7 +7,7 @@
 \begin{document}
 If we express \(g\) as \[
     g=\sum_{i,j=1}^{n}g_{ij}\dd{x^i}\otimes \dd{x^j},\quad
-    g_{ij}=g\left(\pdv{x^i},\pdv{x^j}\right)
+    g_{ij}=g\left(\pd{x^i},\pd{x^j}\right)
 .\] Then the matrix \((g_{ij})\) is a positive definite symmetric matrix at each point
 \(p\in M\).
 
@@ -68,24 +68,24 @@ We can prove the existence and uniqueness of the Levi-Civita connection as follo
 \end{proof}
 
 For local coordinates \(x^1,\ldots,x^n\) we have \[
-    [\pdv{x^i},\pdv{x^j}]=0
+    [\pd{x^i},\pd{x^j}]=0
 .\] So
 \begin{equation}\label{eq:2-2:6}
-    g\left(\nabla_{\pdv{x^i}}\pdv{x^j},\pdv{x^k}\right)
+    g\left(\nabla_{\pd{x^i}}\pd{x^j},\pd{x^k}\right)
     =\frac{1}{2}\left(\pdv{g_{jk}}{x^i}+\pdv{g_{ik}}{x^j}-\pdv{g_{ij}}{x^k}\right)
 .\end{equation}
 We set \[
-    \nabla_{\pdv{x^i}}\pdv{x^j}=\Gamma_{ij}^k\pdv{x^k}
+    \nabla_{\pd{x^i}}\pd{x^j}=\Gamma_{ij}^k\pd{x^k}
 .\] These \(\Gamma_{ij}^k\) are called the \textbf{Christoffel symbols}.
 
 If we set \((g^{ij})=(g_{ij})^{-1}\), the inverse matrix, then \cref{eq:2-2:6} shows \[
     \Gamma_{ij}^k=\frac{1}{2}g^{jp}\left(\pdv{g_{jp}}{x^i}+\pdv{g_{ip}}{x^j}
     -\pdv{g_{ij}}{x^p}\right)
 .\] Of course \[
-    \nabla\pdv{x^j}=\Gamma_{ij}^k\pdv{x^k}\otimes \dd{x^i}
+    \nabla\pd{x^j}=\Gamma_{ij}^k\pd{x^k}\otimes \dd{x^i}
 .\] So \[
     \omega=(\tensor{\omega}{^i_j})=(\Gamma_{kj}^i\dd{x^k})
-\] is the connection matrix with respect to \(\pdv{x^1},\ldots,\pdv{x^k}\).
+\] is the connection matrix with respect to \(\pd{x^1},\ldots,\pd{x^k}\).
 
 Note that the torsion-freeness is equivalent to \(\Gamma_{ij}^k=\Gamma_{ji}^k\). This
 is the reason why torsion-free is referred as ``symmetric''.

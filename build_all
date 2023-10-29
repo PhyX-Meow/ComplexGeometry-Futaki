@@ -1,11 +1,11 @@
 #!/usr/bin/bash
 
 cd ./chapters
-latexmk -xelatex
+latexmk -synctex=1 -xelatex
 cd ..
 
 cd ./homeworks
-latexmk -xelatex
+latexmk -synctex=1 -xelatex
 cd ..
 
-latexmk -xelatex main
+latexmk -synctex=1 -xelatex main

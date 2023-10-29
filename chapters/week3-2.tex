@@ -5,5 +5,203 @@
 \counterwithout{equation}{section}
 
 \begin{document}
+\begin{definition}
+  We call \(h\in C^\infty(M,\bar{E}^*\otimes E^*)\) a Hermitian metric on \(E\) iff \[
+    h:\bar{E}_p\times E_p\longrightarrow \mathbb{C}
+  \] is a positive definite Hermitian inner product at any \(p\).
+  Equivalently, for \(e_1,\ldots,e_r\) a local holomorphic frame, \[
+    \big(h(\bar{e}_i,e_j)\big)_{r\times r}
+  \] is a positive definite Hermitian matrix. We write \[
+    h_{\bar{i}j}=h(\bar{e}_i,e_j)
+  .\] 
+\end{definition}
+
+\begin{definition}
+  For a complex manifold \(M\), a Hermitian metric \(g\) of the holomorphic tangent
+  bundle is called a \underline{Hermitian metric of \(M\)}. We write \[
+    g_{\bar{i}j}=g\left(\pd{\bar{z}^i},\pd{z^j}\right)
+  .\]  
+\end{definition}
+\begin{remark}
+  It is more convenient to have the convention of anti-holomorphic for the first
+  term and holomorphic for the second term. But many mathematicians use the opposite
+  convention. Therefore we will change the convention later to adapt to most
+  people's convention.
+
+  But for the time being, we use the convention of \(g_{\bar{i}j}\). This is because
+  we employed the western culture and endomorphisms are expressed as \[
+    (a\indices{^i_j}) \text{ for } \op{End}(E)\cong E\otimes E^*
+  .\] I believe you will feel more comfortable with this convention in the 
+  computations below.
+\end{remark}
+
+\begin{example}
+  Consider the hyperplane bundle \(H=\mathcal{O}(1)\to \mathbb{P}^1(\mathbb{C})\).
+  On \(V_0=\{z^0\neq 0\}\), \(s=\frac{z^1}{z^0}\) is the local coordinate, We put \[
+    h_0=\frac{1}{1+|s|^2}
+  .\] On \(U_1=\{z^1\neq 0\}\), \(t=\frac{z^0}{z^1}\) is the coordinate, we put \[
+    h_1=\frac{1}{1+|t|^2}
+  .\] Then \(h_0\) on \(U_0\) and \(h_1\) on \(U_1\) define a well-defined 
+  Hermitian metric on \(H=\mathcal{O}(1)\).
+\end{example}
+\begin{proof}
+  It is sufficient to check \[
+    h_1=\tensor[^t]{\bar{f}}{_{01}}h_0 f_{01}\quad
+    \text{(Remember }f_{01}=s=\frac{1}{t}\text{)}
+  .\] The RHS (right hand side) is \[
+    \bar{s}\frac{1}{1+|s|^2}s=\frac{1}{1+|t|^2}\quad \text{ since }s=\frac{1}{t}
+  .\] 
+\end{proof}
+
+\begin{example}
+  \(T'\mathbb{P}^1(\mathbb{C})=H\otimes H=\mathcal{O}(2)\).
+\end{example}
+\begin{proof}
+  On \(U_0\), \(\pd{s}\) is a basis of \(T'\mathbb{P}^1(\mathbb{C})\). On \(U_1\),
+  we take \(-\pd{t}\) as a basis. The minus sign is just for convenience.
+
+  Over \(U_0\cap U_1\), \(s=\frac{1}{t}\) and \[
+    -\pd{t}=-\pdv{s}{t}\pd{s}=\frac{1}{t^2}\pd{s}=s^2\pd{s}
+  .\] If \(a_0\pd{s}=a_1(-\pd{t})\), then \(a_0=a_1s^2\). Hence \(f_{01}=s^2\).
+\end{proof}
+
+\begin{example}
+  By putting \[
+    g\left(\pd{\bar{s}},\pd{s}\right)=\frac{1}{(1+|s|^2)^2}
+  \] on \(U_0\) and \[
+    g\left(\pd{\bar{t}},\pd{t}\right)=\frac{1}{(1+|t|^2)^2}
+  \] on \(U_1\), we obtain a Hermitian metric.
+\end{example}
+\begin{proof}
+  Left as exercise.
+\end{proof}
+
+\begin{example}[Fubini-Study metric]
+  On \(U_\lambda\subset \mathbb{P}^m(\mathbb{C})\) we have local coordinates \[
+    t_{\lambda}^j=\frac{z^j}{z^\lambda},\ j=0,\ldots,\hat{\lambda},\ldots,m
+  .\] We define on \(U_\lambda=\{z^\lambda\neq 0\}\), \[
+    g_{\bar{i}j}^{(\lambda)}=\pdv{}{\bar{t}_\lambda^i,\bar{t}_\lambda^j}
+    \log\Big(|t_\lambda^0|^2+\cdots +\overset{\mathclap\lambda\text{ th}}{1}+\cdots
+    +|t_\lambda^m|^2\Big)
+  .\] This is well-defined independent of \(\lambda\) and is called the 
+  \textbf{Fubini-Study} metric.
+\end{example}
+\begin{proof}
+  Left as exercise.
+\end{proof}
+
+\begin{lemma}
+  On a holomorphic vector bundle \(E\to M\), the \(\bar{\partial}\) operator \[
+    \bar{\partial}\colon C^\infty(M,E)\longrightarrow C^\infty(M,E\otimes T^{*\prime
+    \prime}M)
+  \] is well-defined.
+\end{lemma}
+\begin{proof}
+  The point is that the transition functions are holomorphic, so that the
+  \(\bar{\partial}\) operator defined for local trivialization is well-defined.
+  More precisely, if \(M=\bigcup_{\lambda\in \Lambda}U_\lambda\), and 
+  \(e_{\lambda 1},\ldots,e_{\lambda r}\) is a local holomorphic frame. Any \(C^\infty\)
+  section of \(E\) can be expressed as \[
+    s=s^1 e_{\lambda 1}+\cdots +s^r e_{\lambda r}, s^j \in C^\infty(U_\lambda)
+  .\] Then we define \[
+    \bar{\partial}s=e_{\lambda 1}\otimes \bar{\partial}s^1+\cdots 
+    +e_{\lambda r}\otimes \bar{\partial}s^r
+  .\] Because the transition functions are holomorphic, \ie\ 
+  \begin{gather*}
+    e_\mu=e_\lambda\vphi_{\lambda\mu}\qquad \bar{\partial}\vphi_{\lambda\mu}=0 \\
+    e_\mu t=e_\lambda s\iff s=\vphi_{\lambda\mu}t
+  .\end{gather*} 
+  Then \[
+    e_{\lambda i}\bar{\partial}s^i=e_{\lambda i}\bar{\partial}(\vphi\indices{_\lambda
+    _\mu^i_j}t^i)=e_{\lambda i}\vphi\indices{_\lambda_\mu^i_j}\bar{\partial}t^j
+    =e_{\mu j}\bar{\partial}t^j
+  .\] 
+\end{proof}
+
+Just as the Levi-Civita connection for a Riemannian metric, there is a unique
+connection, called the \textbf{Chern connection}, for a Hermitian metric on a
+holomorphic vector bundle, as in the following theorem.
+\begin{theorem}
+  Let \(E\to M\) be a holomorphic vector bundle, \(h\) a Hermitian metric on \(E\).
+  Then there exists a unique connection \(\nabla\) on \(E\) such that
+  \begin{enumerate}[(1)]
+  \item If we decompose \(\nabla\) as \[
+      \nabla =\nabla'+\nabla''\colon C^\infty(M,E)\longrightarrow
+      C^\infty(M,E\otimes T^{*\prime}M)\oplus C^\infty(M,E\otimes T^{*\prime\prime}M)
+    ,\] then \(\nabla''=\bar{\partial}\).
+  \item \(\nabla h=0\), \ie\ \[
+      \dd (h(\bar{s},t))=h(\overline{\nabla s},t)+h(s,\nabla t)
+    .\] 
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  Suppose such a connection exists. Let \(e_1,\ldots,e_r\) be a local holomorphic
+  frame, then by (1), \[
+    \nabla e_j=(\nabla'+\bar{\partial})e_j=\nabla'e_j 
+    \quad \text{(since \(\bar{\partial}1=0\))}
+  .\] So the connection form \(\omega\) is type \((1,0)\), \[
+    \nabla e_j=e_i \otimes \omega\indices{^i_j}
+    \quad\text{\ie\ }\nabla e=e\otimes \omega
+  .\] On the other hand, by (2),
+  \begin{align*}
+    \dd{h_{\bar{i}j}}&=\dd{(h(\bar{e}_i,e_j))}=h(\overline{\nabla e_i},e_j)
+    +h(\bar{e}_i,\nabla e_j) \\
+    &=h(\overline{e_k\otimes \omega\indices{^k_i}},e_j)+h(\bar{e}_i,e_k\otimes 
+    \omega\indices{^k_j}) \\
+    &=h_{\bar{k}j}\overline{\omega\indices{^k_i}}+h_{\bar{i}k}\omega\indices{^k_j}
+  .\end{align*}
+  Taking (1,0)-part of both sides, we have \[
+    \partial h_{\bar{i}j}=h_{\bar{i}k}\omega\indices{^k_j}
+  .\] Hence \[
+    \omega\indices{^i_j}=h^{i\bar{k}}\partial h_{\bar{k}j},\quad
+    \text{where }h^{i\bar{k}}h_{\bar{k}j}=\delta_j^i
+  .\] Thus \[
+    \boxed{\omega=h^{-1}\partial h}
+  .\] Over \(U_\lambda\cap U_\mu\neq \emptyset\), one have 
+  \begin{align*}
+    \omega_\lambda&=h_{\lambda}^{-1}\partial h_{\lambda}\text{ on }U_\lambda, \\
+    \omega_\mu&=h_{\mu}^{-1}\partial h_{\mu}\text{ on }U_\mu, \\
+    h_\mu=\tensor[^t]{\overline{\vphi}}{_\lambda_\mu}h_{\lambda}\vphi_{\lambda\mu}
+  .\end{align*}
+  One can show \[
+    \omega_{\mu}=\vphi_{\lambda\mu}^{-1}\omega_{\lambda}\vphi_{\lambda\mu}
+    +\vphi_{\lambda\mu}^{-1}\dd{\vphi_{\lambda\mu}}
+  .\] By \ifdefined\FullBook{}
+    \cref{thm:1-2:prop2},
+  \else
+  Proposition 5 in notes of week 1-2,
+  \fi \(\{\omega_{\lambda}\}_{\lambda\in \Lambda}\) defines a globally well-defined
+  connection on \(E\).
+\end{proof}
+
+\begin{definition}
+  We call this connection the \textbf{Chern connection} of \((E,h)\). (Chern is of
+  course the English name of {\CJKfamily{zhkai}陈省身}).
+\end{definition}
+
+\begin{theorem}
+  Given a Hermitian metric \(h\) on a holomorphic vector bundle \(E\), the connection
+  form \(\omega\) of the Chern connection is given by \[
+    \omega=h^{-1}\partial h=\left(h^{i\bar{k}}\partial h_{\bar{k}j}\right)
+  ,\] and the curvature form is given by \[
+    \boxed{\Omega=\bar{\partial}\omega=\bar{\partial}(h^{-1}\partial h)}
+  \] with respect to a local frame \(e_1,\ldots,e_r\), where \[
+    h_{\bar{i}j}=h(\bar{e}_i,e_j),h^{i\bar{k}}h_{\bar{k}j}=\delta^i_j
+  .\] 
+\end{theorem}
+\begin{proof}
+  We have seen already \(\omega=h^{-1}\partial h\). For curvature,
+  \begin{align*}
+    \Omega&=\dd{\omega}+\omega\wedge \omega \\ 
+    &=(\partial+\bar{\partial})h^{-1}\partial h
+    +h^{-1}\partial h\wedge h^{-1}\partial h \\
+    &=\underline{-h^{-1}\partial h\cdot h^{-1}\wedge \partial h}
+    -h^{-1}\bar{\partial}h\cdot h^{-1}\wedge \partial h \\
+    &\phantom{=\ } +h^{-1}\bar{\partial}\partial h
+    +\underline{h^{-1}\partial h\wedge h^{-1}\partial h} \\
+    &=\bar{\partial}(h^{-1}\partial h)
+  .\end{align*}
+  Note that \(\partial h^{-1}=-h^{-1}\partial h\cdot h^{-1}\)
+\end{proof}
 
 \end{document}
