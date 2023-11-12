@@ -1,0 +1,45 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+
+\title{Complex Geometry Homework 7}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{problem}
+  Complete the computation in the notes. \[
+    \int_{U_0}\frac{k\sqrt{-1}}{2\pi}\frac{\dd{s}\wedge \dd{\bar{s}}}{(1+|s|^2)^2}=k
+  .\] 
+\end{problem}
+\begin{problem}
+  Show that \[
+    K_{\mathbb{P}^m(\mathbb{C})}=\mathcal{O}(-m-1)
+  .\] From this we see \[
+    c_1(\mathbb{P}^m(\mathbb{C}))=(m+1)c_1(\mathcal{O}_{\mathbb{P}^m}(1))
+  .\] 
+\end{problem}
+\begin{problem}
+  Let \(T\in C^\infty(M,\op{End}E)\) be a section of the endomorphism bundle of \(E\),
+  and \(A=(a\indices{^i_j})\) be the matrix representation of \(T\) with respect to a
+  local frame \(e=(e_1,\ldots,e_r)\), \ie\ \[
+    Te=eA,\quad Te_j=a\indices{^i_j}e_i
+  .\] (\(a\indices{^i_j}\) are local smooth functions).
+
+  Show that \[
+    (\nabla T)e=e\otimes (\dd{A}+\omega A-A\omega)=e\otimes (\dd{A}+[\omega,A])
+  .\] Hint: Just compute \[
+    (\nabla T)e=\nabla (Te)-T(\nabla e).\qquad (*)
+  \] 
+\end{problem}
+\begin{problem}
+  If \(T\in C^\infty(M,\op{End}E\otimes \bigwedge^p T^*M)\) is an endomorphism valued
+  \(p\)-form, so that \(a\indices{^i_j}\) are \(p\)-forms. Show that \[
+    (\dd^\nabla T)e=e\otimes \dd{A}+\omega\wedge A-(-1)^p A\wedge \omega
+  .\] Use this to prove the Bianchi identity \[
+    \dd^\nabla R=0
+  .\] It is also possible to prove Bianchi identify only using \((*)\).
+\end{problem}
+\end{document}

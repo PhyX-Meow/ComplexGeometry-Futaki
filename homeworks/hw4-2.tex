@@ -1,0 +1,36 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+
+\title{Complex Geometry Homework 8}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{problem}
+  Prove the lemma in the notes.
+  \begin{enumerate}[(1)]
+  \item \[
+      c_1(E)=\frac{\sqrt{-1}}{2\pi}\bar{\partial}h(h^{-1}\partial h)
+      =-\frac{\sqrt{-1}}{2\pi}\partial\bar{\partial}\log\det h
+    .\] 
+  \item \(\det h\) gives a Hermitian metric of \(\bigwedge^r E\).
+  \item Show that the two definitions \(c_1(M)=c_1(T'M)\) and \(c_1(M)=-c_1(K_M)\)
+    coincide.
+  \end{enumerate}
+\end{problem}
+\begin{problem}
+  Explain how one can extend the proof of 1-dimensional case to prove Theorem A.
+\end{problem}
+\begin{problem}
+  Let \(M\) be a compact complex surface \((m=2)\), \(\pi\colon \tilde{M}\to M\) be
+  the blow-up of \(M\) at \(p\in M\), \(E=\pi^{-1}(p)\) be the exceptional divisor.
+  Show that \[
+    E\cdot E=-1.
+  \] (\(\pi\) is defined by \(\pi(E)=\{p\}\) and \(\pi\Big|_{\tilde{M}\setminus E}\)
+  from \(\tilde{M}\setminus E\) to \(M\setminus\{p\}\) is bi-holomorphism.)
+\end{problem}
+
+\end{document}

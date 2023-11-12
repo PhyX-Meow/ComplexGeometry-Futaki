@@ -1,0 +1,266 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+
+\ifdefined\FullBook{}\else
+\begin{theorem}
+  Given a Hermitian metric \(h\) on a holomorphic vector bundle \(E\), the connection
+  form \(\omega\) of the Chern connection is given by \[
+    \omega=h^{-1}\partial h=\left(h^{i\bar{k}}\partial h_{\bar{k}j}\right)
+  ,\] and the curvature form is given by \[
+    \boxed{\Omega=\bar{\partial}\omega=\bar{\partial}(h^{-1}\partial h)}
+  \] with respect to a local frame \(e_1,\ldots,e_r\), where \[
+    h_{\bar{i}j}=h(\bar{e}_i,e_j),h^{i\bar{k}}h_{\bar{k}j}=\delta^i_j
+  .\] 
+\end{theorem}
+\begin{proof}
+  We have seen already \(\omega=h^{-1}\partial h\). For curvature,
+  \begin{align*}
+    \Omega&=\dd{\omega}+\omega\wedge \omega \\ 
+    &=(\partial+\bar{\partial})h^{-1}\partial h
+    +h^{-1}\partial h\wedge h^{-1}\partial h \\
+    &=\underline{-h^{-1}\partial h\cdot h^{-1}\wedge \partial h}
+    -h^{-1}\bar{\partial}h\cdot h^{-1}\wedge \partial h \\
+    &\phantom{=\ } +h^{-1}\bar{\partial}\partial h
+    +\underline{h^{-1}\partial h\wedge h^{-1}\partial h} \\
+    &=\bar{\partial}(h^{-1}\partial h)
+  .\end{align*}
+  Note that \(\partial h^{-1}=-h^{-1}\partial h\cdot h^{-1}\)
+\end{proof}
+\fi
+
+\begin{corollary}
+  Let \(L\to M\) be a holomorphic line bundle with a Hermitian metric \(h\), so that
+  \(h\) is \(1\times 1\) matrix with respect to a nowhere zero holomorphic section
+  \(s\) on an open set \(U\): \[
+    h_U=h(\bar{s},s)
+  .\] Then the curvature 2-form is given by \[
+    \Omega=-\partial\bar{\partial}\log h_U
+  .\] 
+\end{corollary}
+
+\begin{lemma}
+  \(\partial\bar{\partial}\log h_U\) is independent of the local section \(s\) and
+  defines a global 2-form.
+\end{lemma}
+\begin{proof}
+  If \(t\) is another nowhere zero holomorphic section on \(V\), over \(U\cap V\) there
+  is a nowhere zero holomorphic function \(\vphi\) such that \[
+    t=\vphi s
+  .\] Then \[
+    h_V=h(\bar{t},t)=h(\overline{\vphi s},\vphi s)=|\vphi|^2 h_U
+  .\] Thus
+  \begin{align*}
+    \partial\bar{\partial}\log h_V&=\partial\bar{\partial}\log\vphi+
+    \partial\bar{\partial}\log \bar{\vphi}+\partial\bar{\partial}h_U \\
+    &=\partial\bar{\partial}\log h_U
+  .\end{align*} 
+\end{proof}
+
+By this lemma, there is no confusion even if we write \(\Omega=-\partial\bar{\partial}
+\log h\) instead of \(h_U\).
+
+\begin{definition}
+  \[
+    c_1(L,h)=\frac{\sqrt{-1}}{2\pi}\Omega=-\frac{\sqrt{-1}}{2\pi}\partial\bar{\partial}
+    \log h
+  \] is called the first Chern form of \((L,h)\).
+\end{definition}
+\begin{theorem}\hfill
+\begin{enumerate}[(1)]
+\item \(c_1(L,h)\) is a real closed \((1,1)\)-form.
+\item The de Rham class \([c_1(L,h)]\) is independent of choice of the metric \(h\).
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[(1)]
+\item It is clear that \(c_1(L,h)\) is closed and of type \((1,1)\). It is real since
+  \[
+    \overline{\sqrt{-1}\partial\bar{\partial}\log h}=-\sqrt{-1}\bar{\partial}\partial 
+    \log h=\sqrt{-1}\partial\bar{\partial}\log h
+  .\] 
+\item Let \(h'\) be another Hermitian metric, choose \(s\) and \(t\) as in the proof
+  of previous lemma. Then \[
+    h_V=|\vphi|^2 h_U,\quad h'_V=|\vphi|^2h'_U
+  .\] So \[
+    \frac{h_V}{h'_V}=\frac{h_U}{h'_U}
+  .\] This implies that \(f:=\frac{h_U}{h'_U}\) is a globally defined positive
+  smooth function on \(M\). Thus 
+  \begin{align*}
+    c_1(L,h)-c_1(L,h')&=-\frac{\sqrt{-1}}{2\pi}\partial\bar{\partial}\log
+    \frac{h_U}{h'_U}=-\frac{\sqrt{-1}}{2\pi}\partial\bar{\partial}\log f\\
+    &=\dd\left(-\frac{\sqrt{-1}}{2\pi}\bar{\partial}\log f\right)
+  .\end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{definition}
+  The de Rham class \[
+    c_1(L):=[c_1(L,h)] \in H^2(M;\mathbb{R})
+  \] is called the \textbf{first Chern class} of \(L\).
+\end{definition}
+\begin{remark}
+  This class is in fact an integral class, \ie\ lie in the image of \[
+    H^2(M;\mathbb{Z})\longrightarrow H^2(M;\mathbb{R})
+  \] coming from the short exact sequence \[
+    0\to \mathbb{Z}\to \mathbb{R}\to \mathbb{R}/\mathbb{Z}\to 0
+  .\] There are other formulations of Chern classes, see for example
+  \emph{Milnor-Stasheff, Bott-Tu, \ldots}.
+\end{remark}
+
+\begin{example}
+  Consider \[
+    \mathcal{O}_{\mathbb{P}^m}(k)=[H]^{\otimes k}=[kH]\to \mathbb{P}^m(\mathbb{C})
+  \] with \(m=1\). As divisors and line bundles are identified, we will remove
+  \([\ ]\) and write \(H\) instead of \([H]\), and call hyperplane bundle. As in the
+  homework \[
+    H^{-1}=L=\mathcal{O}(-1)
+  .\] This line bundle seems to have many names, but we call \(L=\mathcal{O}(-1)\)
+  the tautological line bundle after \emph{Milnor-Stasheff}.
+
+  As was seen in the note 2 of week 3, \[
+    h_{U_0}=\frac{1}{(1+|s|^2)^k}
+  \] defines a Hermitian metric \(h\) on \(\mathcal{O}_{\mathbb{P}^1}(k)\). So \[
+    c_1(\mathcal{O}_{\mathbb{P}^1}(k),h)=-\frac{\sqrt{-1}}{2\pi}\partial\bar{\partial}
+    \log \frac{1}{(1+|s|^2)^k}
+    =\frac{k\sqrt{-1}}{2\pi}\cdot \frac{\dd{s}\wedge \dd{\bar{s}}}{(1+|s|^2)^2}
+  .\] \[
+    \left<c_1(\mathcal{O}_{\mathbb{P}^1}(k)),[\mathbb{P}^1(\mathbb{C})]\right> 
+    =\int_{U_0}\frac{k\sqrt{-1}}{2\pi}\cdot\frac{\dd{s}\wedge\dd{\bar{s}}}{(1+|s|^2)^2}
+    =k
+  .\]
+  The verification of last integral is left as exercise.
+\end{example}
+
+\begin{corollary}
+  \(\left<c_1(T'\mathbb{P}^1(\mathbb{C})),[\mathbb{P}^1(\mathbb{C})]\right> =2\)
+  since \(T'\mathbb{P}^1(\mathbb{C})=\mathcal{O}(2)\).
+\end{corollary}
+
+\begin{remark}
+  This ``2'' is the Euler characteristic of \(\mathbb{P}^1(\mathbb{C})\cong
+  \mathbb{S}^2\). It is a general fact that for \(\dim_{\mathbb{C}}M=m\), \[
+    c_m(M)=c_m(T'M)=\chi(M)
+  .\] See \textbf{Milnor-Stasheff}.
+\end{remark}
+
+\begin{definition}
+  Let \(M\) be an \(m\)-dimensional compact complex manifold. Recall \[
+    K_M=\bigwedge^m T^{*\prime}M=\Big(\bigwedge^m T'M\Big)^{-1}
+  .\] We define the first Chern class \(c_1(M)\) of \(M\) by \[
+    c_1(M)=-c_1(K_M)=+c_1\Big(\bigwedge^m T'M\Big)
+  .\] 
+\end{definition}
+
+\begin{definition}
+  Let \(E\to M\) be a holomorphic vector bundle of rank \(r\), \(h\) be a Hermitian
+  metric so that the curvature 2-form is expressed as \[
+    \Omega=\bar{\partial}(h^{-1}\partial h)
+  \] for a local holomorphic frame. Define \(2k\)-forms \(c_k(h)\) be \[
+    \det(I+\frac{t\sqrt{-1}}{2\pi}\Omega)=1+tc_1(h)+\cdots +t^r c_r(h)
+  .\] Where \(I=(\delta^i_j)\) is the identity matrix.
+  
+  Since \(c_k(h)\) is closed \(2k\)-form and the de Rham class \([c_k(h)]\) is
+  independent of \(h\), we define \[
+    c_k(E)=[c_k(h)]
+  \] and call it the \textbf{\(k\)-th Chern class} of \(E\).
+\end{definition}
+
+\begin{remark}
+  We postpone the proof of the fact that the de Rham class \([c_k(h)]\) is independent
+  of \(h\). This fact is a part of Chern-Weil theory.
+\end{remark}
+
+\begin{definition}
+  \(c_k(M):=c_k(T'M)\) is called the \(k\)-th Chern class of \(M\).  
+\end{definition}
+\begin{lemma}\hfill
+\begin{enumerate}[(1)]
+\item \[
+    c_1(E)=\frac{\sqrt{-1}}{2\pi}\bar{\partial}h(h^{-1}\partial h)
+    =-\frac{\sqrt{-1}}{2\pi}\partial\bar{\partial}\log\det h
+  .\] 
+\item \(\det h\) gives a Hermitian metric of \(\bigwedge^r E\).
+\item The two definitions \(c_1(M)=c_1(T'M)\) and \(c_1(M)=-c_1(K_M)\) coincide.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+  Left as exercise.
+\end{proof}
+
+\ifdefined\FullBook{}
+\begin{theorem}\label{thm:4-1:A}
+\else
+\begin{theorem}[A]
+\fi
+  Let \(L_D\) be the line bundle associated with a divisor \(D\). Then \(c_1(L_D)\) is
+  the Poincaré dual of the homology class \([D]\) represented by \(D\). That is to say,
+  for any 2-dimensional homology class \(\alpha\), we have \[
+    \left<c_1(L_D),\alpha\right> =[D]\cdot\alpha
+  .\] Note \([D]\in H_{2m-2}(M)\), \(\alpha\in H_2(M)\), and the ``\(\cdot\)'' means
+  the homological intersection.
+\end{theorem}
+
+We prove this for \(m=1\) (so \(M\) is a compact Riemann surface). You may consider
+how you can extend the proof to general dimension (exercise).
+\begin{theorem}[1 dim case of theorem A]
+  Let \(M\) be a compact 1-dimensional complex manifold. Let \(D=\{p_1,\ldots,p_l\}\)
+  be distinct \(l\) points on \(M\), \ie\ a divisor. Then \[
+    \left<c_1(L_D),[M]\right> =l\quad(=[D]\cdot M)
+  .\] 
+\end{theorem}
+\begin{proof}
+  Take an open covering \(M=\bigcup_{\lambda\in \Lambda}U_\lambda\) such that
+  \(p_1\in U_1,\ldots,p_l\in U_l\) and that no other \(U_\lambda\) contains
+  \(p_1,\ldots,p_l\).
+  \begin{center}
+    \includestandalone{../figures/4-1_divisor}
+  \end{center}
+  There exists holomorphic function \(f_\lambda\) on \(U_\lambda\) such that \[
+    D\cap U_\lambda=\{f_\lambda=0\},\ j=1,\ldots,l
+  \] and \(f_j\) vanishes at \(p_j\) with first order. The transition function
+  of \(L_D\) is \[
+    f_{\lambda\mu}=\frac{f_\lambda}{f_\mu}
+  .\] Thus \[
+    f_{\lambda}=f_{\lambda\mu}f_{\mu}
+  \] and \(\{f_{\lambda}\}_{\lambda\in \Lambda}\) gives a holomorphic section \(s\)
+  of \(L_D\). We also have that zero set of \(s\) is exactly \(\{p_1,\ldots,p_l\}\).
+  Next we take a Hermitian metric of \(h\) so that \[
+    h_{U_{\lambda}}\equiv 1,\ \lambda=1,\ldots,l
+  \] with respect to local trivialization of \(L_{D}\Big|_{U_{\lambda}}\).
+
+  Note this is allowed because \(c_1(L_D)\) is independent of \(h\) and for any
+  positive function on \(M\), \(fh\) is again a Hermitian metric.
+
+  Then \(\frac{\sqrt{-1}}{2\pi}\log h(\bar{s},s)\) is a smooth function on
+  \(M\setminus\{p_1,\ldots,p_l\}\). Further, over \(U_\lambda\setminus\{p_\lambda\}\),
+  \begin{align*}
+    \partial\bar{\partial}\frac{\sqrt{-1}}{2\pi}\log h(\bar{s},s)
+    &=\frac{\sqrt{-1}}{2\pi}\partial\bar{\partial}\log(h_U \bar{s}_U s_U)
+    =\frac{\sqrt{-1}}{2\pi}\partial\bar{\partial}\log h_U \\
+    &=-c_1(L,h)
+  .\end{align*} Thus
+  \begin{align*}
+    \left<c_1(L),[M]\right> &=\lim_{\eps \to 0} \int_{M\setminus\bigcup_{i=1}^l
+    B(p_i,\eps)}-\frac{\sqrt{-1}}{2\pi}\partial\bar{\partial}\log h(\bar{s},s) \\
+    &\text{(where }B(p_i,\eps)\text{ is the disk of radius }\eps\text{ around }p_i
+    \text{)} \\
+    &=\lim_{\eps \to 0} \int_{M\setminus\bigcup_{i=1}^l B(p_i,\eps)}
+    -\frac{1}{2\pi\sqrt{-1}}\dd\partial\log h(\bar{s},s) \\
+    &\overset{\mathclap{\text{Stokes}}}{=}\hspace{.5em}\lim_{\eps \to 0} \sum_{i=1}^{l}
+    \int_{\partial B(p_i,\eps)}\frac{1}{2\pi\sqrt{-1}}\partial\log h(\bar{s},s) \\
+    &=\lim_{\eps \to 0} \sum_{i}\int_{|s|=\eps}\frac{1}{2\pi\sqrt{-1}}\partial\log s \\
+    &\text{(here we used }h_U\equiv 1,s=s_U\text{)} \\
+    &=\frac{l}{2\pi\sqrt{-1}}\lim_{\eps\to 0} \int_{|s|=\eps}\frac{\dd{s}}{s}=l
+  .\end{align*} 
+\end{proof}
+
+\begin{remark}
+  This is a variant of Gauss-Bonnet theorem.
+\end{remark}
+
+\end{document}

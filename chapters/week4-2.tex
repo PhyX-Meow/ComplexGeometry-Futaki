@@ -1,0 +1,130 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+Let \(M\) be a compact complex surface \((m=2)\), and \(D\) be any divisor. Then by
+\ifdefined\FullBook{} \cref{thm:4-1:A}
+\else Theorem A.
+\fi \[
+  c_1(L_D)\cdot [D]=[D]\circ [D]
+\] where \(L_D\) is the line bundle associated to \(D\).
+
+\begin{exercise}
+  \(L_D\Big|_{D}\cong\) the normal bundle of \(D\).
+\end{exercise}
+
+Consider the blow-up \(\pi\colon \tilde{M}\to M\) of \(M\) at \(p\in M\). (c.f. homework
+5). \(E=\pi^{-1}(\{p\})\) is a divisor of \(\tilde{M}\), called the \textbf{
+exceptional divisor} (of the first kind).
+
+For \(m=2\), we can show using
+\ifdefined\FullBook{} \cref{thm:4-1:A}
+\else Theorem A.
+\fi \[
+  E\cdot E=-1
+\] \ie\ the self-intersection of the exceptional divisor on a compact complex surface
+is \(-1\).
+
+(Hint: The normal bundle of \(E\cong \mathcal{O}_{\mathbb{P}^1}(-1)\), then use the
+exercise above.)
+
+Conversely, if \(E\) is a rational curve (A rational curve is a smooth Riemann surface
+homeomorphic to \(\mathbb{S}^2\)) with \(E\cdot E=-1\), then \(E\) can be
+``blown down'' if \(M\) is an algebraic surface. (Castelnuovo-Enriques criterion,
+see \emph{Griffiths-Harris}, page 476). 
+
+Let \(M\) be a complex manifold with \(\dim_{\mathbb{C}}M=m\), \(g\) a Hermitian metric
+of \(T'M\) so that \[
+  g\in C^\infty(M,T^{*\prime}M\otimes \overline{T^{*\prime}M})
+.\] We exchange the holomorphic part and the anti-holomorphic part following the
+standard notation: \[
+  g_{i\bar{j}}:=g\left(\pd{z^i},\pd{\bar{z}^j}\right),\quad
+  g=g_{i\bar{j}}\dd{z^i}\otimes \dd{\bar{z}^j}
+.\] If we write \(z^i=x^i+\sqrt{-1}y^i\), then the real part \(\Re(g)\) is 
+\begin{align*}
+  \Re(g)&=\frac{1}{2}(g_{i\bar{j}}\dd{z^i}\otimes \dd{\bar{z}^j}
+  +\overline{g_{i\bar{j}}}\dd{\bar{z}^i}\otimes \dd{z^j}) \\
+  &=\frac{1}{2}(g_{i\bar{j}}\dd{z^i}\otimes \dd{\bar{z}^j}+g_{j\bar{i}}\dd{\bar{z}^i}
+  \otimes \dd{z^j}) \\
+  &=g_{i\bar{j}}\cdot \frac{1}{2}(\dd{z^i}\otimes \dd{\bar{z}^j}
+  +\dd{\bar{z}^j}\otimes \dd{z^i})
+.\end{align*}
+Here we used the Hermitian property \(g_{j\bar{i}}=\overline{g_{i\bar{j}}}\).
+
+Fix a point \(p\in M\), and take local coordinates \(z^1,\ldots,z^m\) so that
+\(\pd{z^1}\Big|_p,\ldots,\pd{z^m}\Big|_p\) are orthonormal. \ie\ 
+\(g_{i\bar{j}}=\delta_{ij}\) at \(p\). Then at \(p\),
+\begin{align*}
+  \Re(g)&=\frac{1}{2}\sum_{i=1}^{m}(\dd{z^i}\otimes \dd{\bar{z}^i}
+  +\dd{\bar{z}^i}\otimes \dd{z^i}) \\
+  &=\Re\sum_i (\dd{x^i}+\sqrt{-1}\dd{y^i})\otimes (\dd{x^i}-\sqrt{-1}\dd{y^i}) \\
+  &=\sum_i(\dd{x^i}\otimes \dd{x^i}+\dd{y^i}\otimes \dd{y^i})
+.\end{align*}
+That is to say, \(\Re(g)\) is a Riemannian metric on the underlying real manifold
+\(M\).
+
+\begin{question}
+  When do the Levi-Civita connection of the Riemannian metric \(\Re(g)\) and the
+  Chern connection of the Hermitian metric \(g\) coincide?
+\end{question}
+\textbf{Answer:} They coincide when the \textbf{K\"ahler condition} described
+below is satisfied.
+
+\begin{definition}
+  The following 2-form \(\gamma\) is called the \textbf{fundamental 2-form}.
+  \begin{align*}
+    \gamma&=-2\Im(g)=-2\text{ times the imaginary part of }g \\
+    &=\sqrt{-1}g_{i\bar{j}}(\dd{z^i}\dd{\bar{z}^j}-\dd{z^j}\otimes \dd{z^i}) \\
+    &=\sqrt{-1}g_{i\bar{j}}\dd{z^i}\dd{\bar{z}^j}
+  .\end{align*}
+\end{definition}
+\begin{remark}
+  \(\gamma\) is a real 2-form.
+\end{remark}
+\begin{definition}
+\begin{enumerate}[(1)]
+\item A Hermitian metric \(g\) is said to satisfy the \textbf{K\"ahler condition}
+  if \(\dd{\gamma}=0\).
+\item \(g\) is called a \textbf{K\"ahler metric} iff \(\dd{\gamma}=0\).
+\item The pair \((M,g)\) is called a \textbf{K\"ahler manifold} when \(g\) is
+  K\"ahler. 
+\end{enumerate}
+\end{definition}
+Sometimes, a complex manifold which admits a K\"ahler metric is called a K\"ahler
+manifold and a complex manifold which never admits a K\"ahler metric is called a
+non-K\"ahler manifold.
+
+\begin{theorem}
+  For a Hermitian metric \(g\), the Levi-Civita connection (after extending in
+  \(\mathbb{C}\)-linear manner) coincides with the Chern connection if and only if
+  \(g\) is K\"ahler.
+\end{theorem}
+\begin{proof}
+  Let \(\nabla\) be the Chern connection, \ie\ \(\nabla g=0\) and \(\nabla =\nabla'
+  +\bar{\partial}\). We only need to show \(\nabla\) is torsion free (or symmetric) if
+  and only if \(\dd{\gamma}=0\).
+
+  Recall \(\omega=g^{-1}\partial g=g^{i\bar{k}}\partial g_{j\bar{k}}\), so \[
+    \nabla_{\pd{z^i}}\pd{z^j}=\omega\indices{^p_j}\left(\pd{z^i}\right)
+    \pd{z^p}=g^{p\bar{k}}\pdv{g_{j\bar{k}}}{z^i}\pd{z^p}
+  .\] Thus \[
+    \left[\pd{z^i},\pd{z^j}\right]=\nabla_{\pd{z^i}}\pd{z^j}-\nabla_{\pd{z^j}}\pd{z^i}
+    \iff \pdv{g_{j\bar{k}}}{z^i}=\pdv{g_{i\bar{k}}}{z^j}
+  .\] On the other hand,
+  \begin{align*}
+    \dd{\gamma}&=\dd(\sqrt{-1}g_{i\bar{k}}\dd{z^i}\wedge\dd{\bar{z}^k}) \\
+    &=\sqrt{-1}\left(\pdv{g_{i\bar{k}}}{z^j}\dd{z^j}\wedge\dd{z^i}\wedge\dd{\bar{z}^k}
+    +\pdv{g_{i\bar{k}}}{\bar{z}^j}\dd{\bar{z}^j}\wedge\dd{z^i}\wedge
+    \dd{\bar{z}^k}\right)
+  .\end{align*}
+  Thus \[
+    \dd{\gamma}=0\iff \pdv{g_{i\bar{k}}}{z^j}=\pdv{g_{j\bar{k}}}{z^i}
+  .\] Hence \[
+    \nabla_X Y-\nabla_Y X=[X,Y]\iff \dd{\gamma}=0
+  .\] 
+\end{proof}
+
+\end{document}
