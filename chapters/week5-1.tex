@@ -1,0 +1,135 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+
+\begin{lemma}
+  \((M,g)\) is compact K\"ahler implies \(H^2(M)\neq 0\).
+\end{lemma}
+\begin{proof}
+  Since \([\gamma]\in H^2(M;\mathbb{R})\) and \[
+    \Big<\underbrace{[\gamma]\cup\cdots \cup [\gamma]}_{m},[M]\Big> 
+    =\int_{M}\overbrace{\gamma\wedge\cdots \wedge \gamma}^m\neq 0
+  .\] 
+\end{proof}
+
+\begin{corollary}
+  Let \(M\) be compact complex manifold with \(H^2(M)=0\), then \(M\) is
+  non-K\"ahler.
+\end{corollary}
+
+\begin{example}
+  \(\mathbb{P}^m(\mathbb{C})\) is K\"ahler with respect to the Fubini-Study metric.
+\end{example}
+\begin{proof}
+  We have \[
+    g_{i\bar{j}}=\pd{t^i,\bar{t}^j}\log(1+\sum_k |t^k|^2)
+  \] on \(U_0=\{z^0\neq 0\},t^i=\frac{z^i}{z^0}\). Then \[
+    \gamma_{FS}=\sqrt{-1} g_{i\bar{j}}\dd{t^i}\dd{\bar{t}^j}
+    =\sqrt{-1}\partial\bar{\partial}\log(1+\sum_k |t^k|^2)
+  .\] Hence \[
+    \dd{\gamma_{FS}}=(\partial +\bar{\partial})\Big(\sqrt{-1}\partial\bar{\partial}
+    \log(1+\sum_k|t^k|^2)\Big)=0
+  .\] 
+\end{proof}
+
+\begin{definition}
+  A compact complex manifold \(M\) is called a non-singular algebraic variety if there
+  is a sufficiently large integer \(N>0\) such that there is an embedding \[
+    f\colon M\longrightarrow \mathbb{P}^N(\mathbb{C})
+  .\] Simply stated, a compact complex submanifold of \(\mathbb{P}^N(\mathbb{C})\),
+  \(N\) large.
+\end{definition}
+Note that a submanifold of \(\mathbb{P}^N(\mathbb{C})\) is algebraic
+by the following well-known theorem:
+\begin{theorem}[Chow]
+  Any compact complex submanifold of \(\mathbb{P}^N(\mathbb{C})\) is expressed as a
+  common zero set of finite number of polynomials.
+\end{theorem}
+(See \emph{Griffiths-Harris}, page 167. Not so difficult)
+
+\begin{prop}
+  Any submanifold of a K\"ahler manifold is K\"ahler with respect to the induced
+  metric.
+\end{prop}
+\begin{proof}
+  Let \(f\colon N\into(M,g)\) be an embedding of a complex submanifold \(N\) into
+  a K\"ahler manifold \((M,g)\). In local coordinates \((z^1,\ldots,z^n)\) in \(N\)
+  and \((w^1,\ldots,w^n)\) in \(M\), \(f\) may be expressed as \[
+    f^i(z^1,\ldots,z^n)=w^i(f(z^1,\ldots,z^n)),\quad i=1,\ldots,m
+  .\] The induced metric \(f^*g\) is expressed as \[
+  (f^*g)_{pq}=g_{i\bar{j}}\pdv{f^i}{z^p}\overline{\pdv{f^j}{z^q}}
+  .\] Hence \[
+    \gamma_{f^*g}=\sqrt{-1}(f^*g)_{pq}\dd{z^p}\dd{\bar{z}^q}=f^*\gamma_g
+  .\] The pull-back and exterior derivative commutes, so \[
+    \dd{\gamma_{f^*g}}=f^* \dd{\gamma_g}=0
+  .\] 
+\end{proof}
+
+Since \(\mathbb{P}^N(\mathbb{C})\) is K\"ahler with respect to the Fubini-Study metric,
+a non-singular algebraic varieties are K\"ahler. We have \[
+  \{\text{algebraic manifolds}\}\subset \{\text{K\"ahler manifolds}\}
+  \subset \{\text{complex manifolds}\}
+.\] Recall we have a hyperplane line bundle \(H\to \mathbb{P}^N(\mathbb{C})\) whose
+metric is given by \[
+  h_{U_0}=\frac{1}{1+|t^1|^2+\cdots +|t^N|^2}\text{ on }U_0=\{z^0\neq 0\},
+  t^i=\frac{z^i}{z^0}
+.\] And \[
+  c_1(H)=-\frac{\sqrt{-1}}{2\pi}\partial\bar{\partial}\log \frac{1}{1+\sum |t^i|^2}
+  =\frac{\sqrt{-1}}{2\pi}\partial\bar{\partial}\log(1+\sum |t^i|^2)
+.\] This is the K\"ahler form of the Fubini-Study metric (up to a constant).
+
+For any non-singular algebraic variety \(M\), embedded by \(f\colon M\into
+\mathbb{P}^N(\mathbb{C})\), there is a line bundle \(L=f^*H\) with the property that
+\(c_1(L)\) is represented by a K\"ahler form (or often referred as a positive form).
+
+There are terminologies in complex geometry to express these situations.
+\begin{definition}\hfill
+\begin{enumerate}[(1)]
+\item Let \(M\) be a compact complex manifold. A holomorphic line bundle \(L\to M\)
+  is said to be ample (or positive) if \(c_1(L)\) is represented by a K\"ahler
+  form (positive form).
+\item A pair \((M,L)\) of a compact complex manifold \(M\) and an ample line bundle
+  \(L\to M\) over it is called a polarized manifold.
+\end{enumerate}
+\end{definition}
+
+Hence a non-singular algebraic variety \(M\) and \(L=f^*H\) give a polarized
+manifold. The following \underline{Kodaria embedding theorem} asserts the converse.
+
+\begin{theorem}[Kodaira embedding]
+For any polarized manifold \((M,L)\), \(\exists\,k_0>0\) \st\ for any \(k\ge k_0\),
+the map
+\begin{align*}
+  \Phi_k\colon M &\longrightarrow \mathbb{P}^N(\mathbb{C}) \\
+  p &\longmapsto [s_0(p):s_1(p):\cdots :s_N(p)]
+\end{align*}
+is an embedding. Where \[
+  N+1=\dim H^0(M,L^k)=\text{the dimension of all holomorphic sections of }L^k
+\] and \(s_0,\ldots,s_n\) are basis of \(H^0*(M,L^k)\).
+\end{theorem}
+
+Let \((M,g)\) be a compact Riemannian manifold (without boundary). For local
+coordinates \(x^1,\ldots,x^n\), the form \[
+  \dd{V_g}=\sqrt{\det g}\dd{x^1}\wedge \cdots \wedge \dd{x^n}
+\] is called the volume element. On the overlap of two coordinate neighborhoods 
+one can check \(\dd{V_g}\) coincides (left as exercise) and defines a measure globally.
+
+Let \(X=X^i\pd{x^i}\) be a vector field on \(M\). We define the \textbf{divergence}
+\(\op{div}(X)\in C^\infty(M)\) by \[
+  \dd{(\iota_X \dd{V_g})}=\op{div}(X)\dd{V_g}
+\] where \(\iota_X\) denotes the inner product (contraction by \(X\)).
+
+One can show (exercise) \[
+  \op{div}(X)=\nabla_i X^i=\pdv{X^i}{x^i}+\Gamma_{ik}^i X^k
+.\] By the Stokes theorem, we get
+\begin{theorem}[Divergence theorem]
+  \[
+    \int_{M}\op{div}(X)\dd{V_g}=0
+  .\] 
+\end{theorem}
+
+\end{document}

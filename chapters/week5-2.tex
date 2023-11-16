@@ -1,0 +1,177 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+\begin{application}\hfill
+\begin{enumerate}[(1)]
+\item \begin{align*}
+    &\int_{M}T^i \nabla_i f\dd{V_g} \\
+    =&\int_{M}\nabla_i (T^i f)\dd{V_g}-\int_{M}(\nabla_i T^i)f\dd{V_g} \\
+    =&-\int_{M}(\nabla_i T^i)f \dd{V_g}
+  .\end{align*}
+  This is ``integration by parts''.
+\item The Laplacian \(\lap f\) of \(f\in C^\infty(M)\) is defined by \[
+    \lap  f=-\nabla^i \nabla_i f=-\nabla_i \nabla^i f
+  .\] Here minus sign is used to adapt with Hodge theory. Then \[
+    \int_{M}\lap f \dd{V_g}=0
+  .\] 
+\item If \(\lap f=\lambda f\) for \(f\in C^\infty(M)\), then \(\lambda\ge 0\). And
+  \(\lambda=0\) implies \(f=\text{constant}\).
+\end{enumerate}
+\end{application}
+\begin{proof}[Proof of (3)]
+  \begin{align*}
+    \lambda\int_{M}f^2\dd{V_g}&=\int_{M}\lap f\cdot f\dd{V_g}
+    =-\int_{M}\nabla^i \nabla_i f\cdot f \\
+    &=\int_{M}\nabla_i f \nabla^i f\dd{V_g}=\|\dd{f}\|_{L^2}^2\ge 0
+  .\end{align*}
+  Thus \(\lambda\ge 0\), and \(\lambda=0\) implies \(\dd{f}\equiv 0\).
+\end{proof}
+
+\section{Hodge theory}
+We use the notation \[
+  \Omega^p=C^\infty(M,\bigwedge^p T^*M)
+\] to denote the space of all smooth \(p\)-forms on \(M\).
+
+We have the exterior derivative \[
+  \dd\colon \Omega^p\longrightarrow \Omega^{p+1}
+.\] Since \(\dd^2=0\), we have the de Rham cohomology \[
+  H_{\mathrm{dR}}^p(M)=\ker(\dd\colon\Omega^p\to \Omega^{p+1})/\img(\dd\colon
+  \Omega^{p-1}\to \Omega^p)
+.\] Let \(\dd^*\colon \Omega^p\to \Omega^{p-1}\) be the formal adjoint of
+\(\dd\colon \Omega^p\to\Omega^{p+1}\) by \[
+  (\dd{\alpha},\beta)_{L^2}=(\alpha,\dd^*\beta)_{L^2},\quad
+  \alpha\in \Omega^{p-1},\beta\in \Omega^p
+.\] The Hodge Laplacian \(\lap_{\mathrm{d}}\) is defined by \[
+  \lap_{\mathrm{d}}=\dd^*\dd+\dd \dd^*\colon \Omega^p\longrightarrow\Omega^p
+\] for each \(p=0,\ldots,n\). (Note \(\d^*=0\) on \(\Omega^0\)).
+
+\begin{definition}
+  \(\alpha\in \Omega^p\) is called a harmonic \(p\)-form if \[
+    \lap_{\mathrm{d}} \alpha=0
+  .\] 
+\end{definition}
+\begin{lemma}
+  \(\alpha\) is harmonic \(\iff \dd{\alpha}=0\) and \(\dd^*\alpha=0\).
+\end{lemma}
+\begin{proof}
+  \[
+    (\lap \alpha,\alpha)_{L^2}=(\dd^*\dd{\alpha}+\dd \dd^*\alpha,\alpha)_{L^2}
+    =(\dd{\alpha},\dd{\alpha})_{L^2}+(\dd^*\alpha,\dd^*\alpha)_{L^2}
+  .\]
+\end{proof}
+
+\begin{theorem}[Hodge]
+  Let \((M,g)\) be a compact oriented Riemannian manifold.
+  \begin{enumerate}[(1)]
+  \item The vector space \(\mathcal{H}_{\dd}^p(M)\) of all harmonic \(p\)-form is
+    finite dimensional.
+  \item Orthogonal projection \(H_{\dd }\colon \Omega^p\to \mathcal{H}_{\dd{}}^p(M)\)
+    is well-defined.
+  \item There is unique operator \(G_{\dd{}}\colon \Omega^p\to \Omega^p\) called the
+    Green operator, such that
+    \begin{gather*}
+      G_{\dd} H_{\dd} =H_{\dd} G_{\dd} =0, \\
+      \dd{G_{\dd{}}}=G_{\dd{}}\dd{},\quad \dd^*G_{\dd{}}=G_{\dd{}}\dd^*, \\
+      \op{Id}_{\Omega^p}=H_{\dd{}}+\lap_{\dd{}}G_{\dd{}}
+    .\end{gather*} 
+  \end{enumerate}
+\end{theorem}
+We postpone the proof of this theorem to a later occasion, but I recommend to read
+Frank Warner's book \emph{Foundations of Differentiable Manifolds and Lie Groups},
+pages 220-250. Here you can study the standard theory of linear elliptic operators.
+
+One consequence of Hodge theory is the following isomorphism:
+
+\begin{theorem}
+  \(\mathcal{H}_{\dd{}}^p(M)\cong H_{\mathrm{dR}}^p(M)\).
+\end{theorem}
+\begin{proof}
+  Since \(\lap\alpha=0\) implies \(\dd{\alpha}=0\), we have a natural map \[
+    \mathcal{H}_{\dd{}}^p(M)\longrightarrow H_{\mathrm{dR}}^p(M),\quad
+    \alpha\longmapsto [\alpha]
+  .\] To show this is injective, suppose \(\alpha\) is harmonic and \([\alpha]=0\).
+  Then \(\alpha=\dd{\beta}\) for some \(\beta\in \Omega^{p-1}\). Since \(\dd^*\alpha=0
+  \), we have \[
+    0=(\dd^*\alpha,\beta)_{L^2}=(\alpha,\dd{\beta})_{L^2}=(\alpha,\alpha)_{L^2}
+  .\] Hence \(\alpha=0\).
+
+  To show subjectivity, suppose \(\dd{\alpha}=0\). Then using
+  \(\op{Id}=H_{\dd{}}+\lap_{\dd{}}G_{\dd{}}\), we have \[
+    \alpha=H_{\dd{}}\alpha+(\dd \dd^*+\dd^*\dd)G_{\dd{}}\alpha
+  .\] Using the commutativity of \(G_{\dd{}}\) and \(\dd,\dd^*\) we have \[
+    \alpha=H_{\dd{}}\alpha+\dd{(\dd^*G_{\dd{}}\alpha)}
+  .\] So \([\alpha]=[H_{\dd{}}\alpha]\), \ie\ the harmonic form \(H_{\dd{}}\alpha\)
+  represents \([\alpha]\).
+\end{proof}
+Note that in general, \[
+  \alpha=H_{\dd{}}\alpha+\dd \dd^*G_{\dd{}}\alpha+\dd^*\dd G_{\dd{}}\alpha
+\] gives a decomposition into \[
+  \text{harmonic part}+\dd\text{-image part}+\dd^*\text{-image part}
+.\] 
+
+Next we consider a holomorphic vector bundle \(\pi\colon E\to M\) over a compact
+complex manifold with a Hermitian (maybe not K\"ahler) metric \(h_{M}\) on \(M\).
+The fundamental 2-form \(\gamma=\sqrt{-1}h^M_{i\bar{j}}\dd{z^i}\dd{\bar{z}^j}\) of
+\(h_M\) gives a measure \[
+  \gamma^m=\overbrace{\gamma\wedge \cdots \wedge \gamma}^m,\quad m=\dim_{\mathbb{C}}M
+.\] We also give a Hermitian metric \(h_E\) on \(E\). Recall we have a
+\(\bar{\partial}\) operator \[
+  \bar{\partial}\colon \Omega^{p,q}(E)\longrightarrow\Omega^{p,q+1}(E)
+\] where \(\Omega^{p,q}(E)=C^\infty(M,E\otimes\bigwedge^p T'M\wedge\bigwedge^q T''M)\)
+is the space of all \(E\)-valued \((p,q)\)-forms on \(M\). Since
+\(\bar{\partial}\circ \bar{\partial}=0\), we can consider \[
+  H_{\bar{\partial}}^{p,q}(M,E)
+  =\frac{\ker(\bar{\partial}\colon \Omega^{p,q}(E)\to \Omega^{p,q+1}(E))}
+  {\img(\bar{\partial}\colon \Omega^{p,q-1}(E)\to \Omega^{p,q}(E))},
+\] called the \textbf{Dolbeault cohomology}.
+
+Using \(h_M\) and \(h_E\) we can consider \(L^2\)-inner product on \(\Omega^{p,q}(E)\).
+
+\begin{definition}
+  \[
+    \lap_{\bar{\partial}}\bar{\partial}^*\bar{\partial}+\bar{\partial}\bar{\partial}^*
+    \colon \Omega^{p,q}(E)\longrightarrow\Omega^{p,q}(E)
+  \]  is called the \(\bar{\partial}\)-Laplacian.
+\end{definition}
+\begin{definition}
+  \(\alpha\in \Omega^{p,q}(E)\) is called \(\bar{\partial}\)-harmonic if 
+  \(\lap_{\bar{\partial}}\alpha=0\). This is equivalent to \(\bar{\partial}\alpha=0\)
+  and \(\bar{\partial}^*\alpha=0\).
+\end{definition}
+
+\begin{theorem}[Hodge-Kodaira]
+  Let \(E\to M\) be a holomorphic vector bundle with Hermitian metric \(h_E\) on \(E\)
+  and \(h_M\) on \(M\).
+  \begin{enumerate}[(1)]
+  \item The space \(\mathcal{H}_{\bar{\partial}}^{p,q}(E)\) of all \(\bar{\partial}\)
+    harmonic \(E\)-valued \((p,q)\)-forms is finite dimensional.
+  \item There is a well-defined orthogonal projection \[
+      H_{\bar{\partial}}\colon \Omega^{p,q}(E)\longrightarrow
+      \mathcal{H}_{\bar{\partial}}^{p,q}(E)
+    .\]
+  \item There exists a unique operator \(G_{\bar{\partial}}\colon
+    \Omega^{p,q}\to \Omega^{p,q}(E)\), called the Green operator, such that
+    \begin{gather*}
+      G_{\bar{\partial}}H_{\bar{\partial}}=0,\quad
+      H_{\bar{\partial}}G_{\bar{\partial}}=0, \\ 
+      \bar{\partial}G_{\bar{\partial}}=G_{\bar{\partial}}\bar{\partial},\quad
+      \bar{\partial}^*G_{\bar{\partial}}=G_{\bar{\partial}}\bar{\partial}^*, \\
+      \op{Id}_{\Omega^{p,q}(E)}=H_{\bar{\partial}}
+      +\lap_{\bar{\partial}}G_{\bar{\partial}}
+    \end{gather*}
+  \end{enumerate}
+\end{theorem}
+Again, we postpone its proof in later occasion. See \emph{Griffiths-Harris}, pages
+80-100.
+
+\begin{corollary}
+  \(\mathcal{H}_{\bar{\partial}}^{p,q}(E)\cong H_{\bar{\partial}}^{p,q}(E)\), \ie\ \[
+    E\text{-valued harmonic forms}\cong \text{Dolbeault cohomology}
+  .\] 
+\end{corollary}
+
+\end{document}

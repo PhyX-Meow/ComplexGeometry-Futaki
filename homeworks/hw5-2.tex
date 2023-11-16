@@ -1,0 +1,37 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+
+\title{Complex Geometry Homework 10}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{problem}
+  On \((U,x^1,\ldots,x^n)\) and \((V,y^1,\ldots,t^n)\), consider \[
+    g_{ij}=g\left(\pd{x^i},\pd{x^j}\right)\text{ and }g_{ij}'
+    =g\left(\pd{y^i},\pd{y^j}\right)
+  .\] Show that on \(U\cap V\neq \emptyset\), \[
+    \sqrt{\det(g_{ij})}\dd{x^1}\wedge \cdots \wedge \dd{x^n}
+    = \sqrt{\det(g'_{ij})}\dd{y^1}\wedge \cdots \wedge \dd{y^n}
+  .\] 
+\end{problem}
+\begin{problem}
+  Show that \[
+    \op{div}(X)=\nabla_i X^i
+  .\] (Hint: The easiest is to use the normal coordinates).
+\end{problem}
+\begin{problem}
+  For a smooth function \(f\) on a compact manifold \((M,g)\), show that \[
+    \lap f=0\iff f\text{ is constant }
+  .\] 
+\end{problem}
+\begin{problem}
+  Apply the Hodge decomposition theorem to \(\Omega^0=C^\infty(M)\) to show that
+  for \(f\in C^\infty(M)\), \[
+    f=\lap g\text{ for some }g\iff \int_{M}f\dd{V_g}=0
+  .\]
+\end{problem}
+\end{document}

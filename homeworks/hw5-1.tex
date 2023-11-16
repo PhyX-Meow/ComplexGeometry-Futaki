@@ -1,0 +1,48 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+
+\title{Complex Geometry Homework 9}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{problem}
+  Let \(\tilde{M}\) be the blow-up of a compact complex surface \(M\) at \(p\in M\).
+  Let \(D\) be a smooth divisor in \(M\) passing through \(p\). \[
+    \tilde{D}=\overline{\pi^{-1}(D)\setminus E}\quad
+    \text{(the bar is closure)}
+  \] is called the proper transform of \(D\).
+  \begin{center}
+    \includestandalone{../figures/5-1-hw_proper_transform}
+  \end{center}
+  Show that:
+  \begin{enumerate}[(1)]
+  \item \(L_{(\tilde{D}+E)}=\pi^* L_D\).
+  \item \((\tilde{D}+E)\cdot (\tilde{D}+E)=D\cdot D\).
+  \item \(\tilde{D}\cdot \tilde{D}=-1\).
+  \end{enumerate}
+\end{problem}
+\begin{problem}
+  Consider the three lines \[
+    D_j=\{z^j=0\},j=0,1,2
+  \] in \(\mathbb{P}^2(\mathbb{C})=\{[z^0:z^1:z^2]\}\). Put \[
+    p_1=D_0\cap D_1,\quad p_2=D_1\cap D_2,\quad p_3=D_2\cap D_0
+  .\] Blow-up \(\mathbb{P}^2\) at \(p_1\) to get \(\widehat{\mathbb{P}^2}\).
+  \begin{center}
+    \includestandalone{../figures/5-1-hw_blow_up_1}
+  \end{center}
+  Blow-up \(\widehat{\mathbb{P}^2}\) at \(\tilde{D}_1\cap \tilde{D}_2\) to get
+  \(\widehat{\widehat{\mathbb{P}^2}}\).
+  \begin{center}
+    \includestandalone{../figures/5-1-hw_blow_up_2}
+  \end{center}
+  Blow-down the \((-1)\)-curve in the middle, and show that the resulting surface is
+  \(\mathbb{P}^1\times \mathbb{P}^1\).
+  \begin{center}
+    \includestandalone{../figures/5-1-hw_blow_down}
+  \end{center}
+\end{problem}
+\end{document}
