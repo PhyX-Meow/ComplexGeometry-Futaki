@@ -1,0 +1,178 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+This is standard in homological algebra.
+
+\begin{remark}
+\[
+  \iota\colon C^p(\mathcal{U},S')\lrr C^p(\mathcal{U},S)  
+\] is always injective but \[
+  \pi\colon C^p(\mathcal{U},S)\lrr C^p(\mathcal{U},S'')
+\] may not be surjective. However for any \(c''\in C^p(S'',T)\) we can choose a
+refinement \(\mathcal{W}\) of \(\mathcal{U}\) and \(c\in C^p(\mathcal{W},S)\) such
+that \(\lambda_{\mathcal{W}}^{\mathcal{U}}(c'')=\pi(c)\).
+
+(This is Lemma 4.6 in \emph{Morrow-Kodaira}, or Lemma 3.3 in \emph{Kodaira - Complex
+manifolds and deformation complex structure}).
+\end{remark}
+
+Granting this, the connecting homomorphism \(\delta^*\) is defined as follows:
+
+For \(\gamma''=[c'']\in H^p(X,S'')\), \(c''\in Z^p(\mathcal{U},S'')\), by the above
+remark we have a refinement \(\mathcal{W}\) of \(\mathcal{U}\) and \(c\in C^p(
+\mathcal{W},S)\) such that \(\lambda_{\mathcal{W}}^{\mathcal{U}}(c'')=\pi(c)\). Then \[
+  \pi(\delta c)=\delta\pi(c)=\delta(\lambda_{\mathcal{W}}^{\mathcal{U}}(c''))
+  =\lambda_{\mathcal{W}}^{\mathcal{U}}(\delta c'')=0
+.\] Thus \(\exists\,c'\in Z^{p+1}(\mathcal{W},S')\) such that \[
+  \iota(c')=\delta(c)
+.\] Finally we define \[
+  \delta^* \gamma''=[c']
+.\] As a diagram,
+\[\begin{tikzcd}[row sep=tiny]
+	0 & {S'} & S & {S''} & 0 \\
+	&& c & {c''} \\
+	\\ \\ 
+	& {c'} & {\delta c}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=5-2, to=5-3]
+	\arrow[from=2-3, to=5-3]
+\end{tikzcd}\]
+This is the standard way except that we take refinement \(\mathcal{W}\).
+
+The proof of exactness of the long exact sequence can be checked yourself, or you 
+can refer to other textbooks on algebraic topology, or it is expected that you have
+encountered it before.
+
+Reference: \emph{Morrow-Kodaira} Theorem 4.1, page 58-60. \emph{Kodaira - Complex
+manifolds and deformation of complex structures}, Theorem 3.7, page 126-132.
+\emph{Griffiths-Harris}, page 40-41
+
+\noindent\textbf{Appendix} (Exactness at \(H^p(X,S'')\)).
+
+If \(c\in Z^p(\mathcal{W},S)\), \ie\ \([c'']\in \img\pi^*\), then \(\delta c=0\),
+so \(c'=0\). Hence \(\delta^*[c'']=0\).
+
+If \(\delta^*[c'']=0\), then \(\exists\,d\in C^{p+1}(\mathcal{W},S)\), \(c'=\delta d\).
+So \(\delta(c-\iota(d))=\delta c-\iota(c')=0\) and \(\pi(c-\iota(d))=\pi(c)=c''\).
+So we can replace \(c\) by \(c-\iota(d)\). But \(\delta(c-\iota(d))=0\), so
+\(c''\in \img\pi^*\).
+
+
+
+Let \(S\) be a sheaf of Abelian groups.
+\begin{definition}
+  \(S\) is called a \textbf{fine sheaf} if for any locally finite open covering
+  \(\mathcal{U}=\{U_i\}\) of the base \(X\), there are homomorphisms
+  \(h_i\colon S\to S\) such that
+  \begin{enumerate}[(a)]
+  \item \(\mathrm{supp}\,h_i:=\overline{\{x\in X:h_i(S_x)\neq 0\}}\subset U_i\).
+  \item \(\sum_i h_i=\Id\).
+  \end{enumerate}
+\end{definition}
+\begin{example}
+  Let \(X\) be a real smooth manifold, and \(\{\rho_i\}\) a partition of unity
+  subordinate to \(\mathcal{U}=\{U_i\}\), that is, set of smooth functions \(\rho_i\)
+  such that
+  \begin{enumerate}[(i)]
+  \item \(0\le \rho_i\le 1\),
+  \item \(\mathrm{supp}\,\rho_i\subset U_i\),
+  \item \(\sum_i \rho_i=1\).
+  \end{enumerate}
+  Then the sheaf \(\mathcal{A}^p\) of germs of smooth \(p\)-forms on \(X\) is a fine
+  sheaf. In fact, we may take \(h_i\colon S\to S\) as \[
+    h_i(\sigma)=\rho_i \sigma
+  .\] 
+\end{example}
+\begin{example}
+  Similarly, the sheaf \(\mathcal{A}^{p,q}\) of germs of smooth \((p,q)\)-forms on
+  a complex manifold \(X\) is a fine sheaf.
+\end{example}
+\begin{example}
+  However, the sheaf \(\Omega^{p}\) of germs of holomorphic \(p\)-forms is \emph{not}
+  a fine sheaf.
+\end{example}
+
+\begin{theorem}
+  If \(S\) is a fine sheaf, then \[
+    H^{p}(X,S)=0\quad \text{for }p>0
+  .\] 
+\end{theorem}
+\begin{proof}
+  Take \(\gamma\in H^p(X,S)\), it is expressed as \(\gamma=[c]\), \(c=\{c_{i_0,\ldots,
+  i_p}\}\in Z^p(\mathcal{U},S)\). By the cocycle condition we have \[
+  0=(\delta c)_{i_0,\ldots,i_p,j}=\sum_{s=0}^{p}(-1)^s c_{i_0,\ldots,\widehat{i_s},
+  \ldots,i_p,j}+(-1)^{p+1}c_{i_0,\ldots,i_p}
+  \] by taking \(j=i_{p+1}\). Multiply this by \(h_i\) and take sum with respect to
+  \(j\) we get \[
+    \sum_{s=0}^{p}(-1)^s \sum_i h_i c_{i_0,\ldots,\widehat{i_s},\ldots,i_p,j}
+    +(-1)^{p+1}c_{i_0,\ldots,i_p}=0
+  .\] Put \[
+    e_{i_1,\ldots,i_p}=\sum_j h_j c_{i_1,\ldots,i_p,j}
+  \] where \(h_j c_{i_1,\ldots,i_p,j}\in \Gamma(U_{i_1}\cap\cdots\cap U_{i_p}\cap U_j,
+  S)\) is extended to be zero outside \(\mathrm{supp}\,h_i\) and considered as a
+  section over \(U_{i_1}\cap\cdots\cap U_{i_p}\). Thus we obtain \(e_{i_1,\ldots,i_p}
+  \in \Gamma(U_{i_1}\cap\cdots\cap U_{i_p},S)\), \(e=\{e_{i_1,\ldots,i_p}\}\in C^{p-1}
+  (\mathcal{U},S)\) with \[
+    \sum_{s=0}^{p}(-1)^s e_{i_0,\ldots,\widehat{i_s},\ldots,i_p}+
+    (-1)^{p+1}c_{i_0,\ldots,i_p}=0
+  .\] \ie\ \(c=(-1)^{p}\delta e\).
+\end{proof}
+
+\begin{definition}
+  A \textbf{fine resolution} of \(S\) is an exact sequence
+  \[\begin{tikzcd}
+    0 \arrow[r] & S \arrow[r,"\iota"] & \mathcal{F}_0 \arrow[r,"\dd"]
+    & \mathcal{F}_1 \arrow[r,"\dd"] & \mathcal{F}_2 \arrow[r] & \cdots
+  \end{tikzcd}\] 
+  for fine sheaves \(\mathcal{F}_0,\mathcal{F}_1,\mathcal{F}_2,\ldots\).
+\end{definition}
+
+\begin{theorem}\label{thm:7-1:fine}
+  If \(S\) is given a fine resolution as above, the cohomology \(H^p(X,S)\) is
+  computed by \[
+    H^p(X,S)= \frac{\ker\left(\dd\colon\Gamma(X,\mathcal{F}_p)\to
+    \Gamma(X,\mathcal{F}_{p+1})\right)}{\img\left(\dd\colon\Gamma(X,\mathcal{F}_{p-1})
+    \to\Gamma(X,\mathcal{F}_p)\right)}
+  .\] 
+\end{theorem}
+\begin{proof}
+  If we write \(Z_p=\ker(\dd\colon \mathcal{F}_p\to \mathcal{F}_{p+1})\) then \[
+    0\lrr Z_{p-1}\lrr \mathcal{F}_{p-1}\lrr Z_p\lrr 0
+  \] is an exact sequence. From this we can get a long exact sequence as we discussed
+  previously. Using \(H^q(X,\mathcal{F}_{p-1})=0\) for the fine sheaf \(\mathcal{F}_{
+  p-1}\) we obtain from the long exact sequence \[
+    H^q(X,Z_p)\cong H^{q+1}(X,Z_{p-1})\quad\text{ for }p-1\ge 0,q\ge 1
+  .\] Thus \[
+    H^p(X,Z_0)\cong H^{p-1}(X,Z_1)\cong \cdots \cong H^1(X,Z_{p-1})
+  .\] Since \(Z_0=S\), the left hand side is \(H^p(X,S)\). On the other hand, the
+  right hand side appears in the long exact sequence \[
+    0\lrr H^0(X,\mathcal{F}_{p-1})\lrr H^0(X,Z_p)\lrr H^1(X,Z_{p-1})\lrr
+    \underbrace{H^1(X,\mathcal{F}_{p-1})}_{=0}\lrr\cdots
+  .\] Thus \[
+    H^1(X,Z_{p-1})\cong \frac{H^0(X,Z_p)}{\img\left(H^0(X,\mathcal{F}_{p-1})
+    \to H^0(X,Z_p)\right)}
+  .\] Of course
+  \begin{gather*}
+    H^0(X,Z_p)=\Gamma(X,Z_p)=\ker\left(\dd\colon\Gamma(X,\mathcal{F}_p)\to 
+    \Gamma(X,\mathcal{F}_{p+1})\right), \\
+    \img\left(H^0(X,\mathcal{F}_{p-1})\to H^0(X,Z_p)\right)=\img\left(\dd\colon\Gamma(
+    X,\mathcal{F}_{p-1})\to \Gamma(X,\mathcal{F}_p)\right).
+  \end{gather*}
+\end{proof}
+
+\begin{remark}
+  In this proof we only used \[
+    H^q(X,\mathcal{F}_p)=0\quad\text{ for }p\ge 0,q>0
+  .\] So \(\mathcal{F}_p\) need not to be fine sheaves, if only these vanishing
+  conditions are satisfied.
+\end{remark}
+
+\end{document}

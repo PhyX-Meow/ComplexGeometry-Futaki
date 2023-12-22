@@ -1,0 +1,203 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+
+We apply the above theorem to prove the de Rham theorem and Dolbeault theorem.
+\begin{theorem}[de Rham]
+  Let \(X\) be a real manifold of \(\dim m\). Then \[
+    H^p(X,\mathbb{R})\cong H_{\mathrm{dR}}^p(X)
+  .\] Where the left hand side is the cohomology of the constant sheaf \(\mathbb{R}\)
+  and the right hand side is the de Rham cohomology.
+\end{theorem}
+\begin{proof}
+  Let \(\mathcal{A}^p\) be the sheaf of genus of smooth \(p\)-forms on \(X\), which
+  is a fine sheaf as we saw. By the Poincaré lemma, we have the fine resolution
+  of the constant sheaf \(\mathbb{R}\): \[
+    0\lrr \mathbb{R}\xrr{\iota} \mathcal{A}^0\xrr{\dd} \mathcal{A}^1\lrr \cdots
+    \lrr \mathcal{A}^n \lrr 0
+  .\] Then by the above theorem, \[
+    H^p(X,\mathbb{R})\cong \frac{\ker\left(\dd\colon\Gamma(X,\mathcal{A}^p)\to 
+    \Gamma(X,\mathcal{A}^{p+1})\right)}{\img\left(\dd\colon\Gamma(X,\mathcal{A}^{p-1})
+    \to \Gamma(X,\mathcal{A}^{p})\right)}=H_{\mathrm{dR}}^{p}(M)
+  .\] 
+\end{proof}
+
+In \emph{Frank Warner}'s text book, isomorphisms of de Rham cohomology with other
+classical cohomology theories such Alexander-Spanier, singular, differentiable
+singular, Cěch cohomology through fine resolutions of the constant sheaf. I recommend
+you read it when you have time.
+
+Combining the Hodge theory, for compact orientable manifolds, these cohomology
+groups in dimension \(p\) are all isomorphic to the space \(\mathcal{H}_{\dd}^p(M)\)
+of harmonic \(p\)-forms.
+
+For holomorphic bundle \(E\to M\), there is a parallel story. The sheaf \(\mathcal{A}
+^{p,q}\) of germs of smooth \((p,q)\)-forms with value in \(E\) are fine sheaves.
+(The germs are those of local restrictions of \(E\otimes \bigwedge^{p,q}(M)\).)
+
+By the Dolbeault lemma (exercise), we have a fine resolution of the sheaf \(\Omega^p
+(E)\) of germs of holomorphic sections of \(E\). \[
+  0\lrr \Omega^p(E)\xrr{\iota} \mathcal{A}^{p,0}(E)\xrr{\bar{\partial}}
+  \mathcal{A}^{p,1}(E)\xrr{\bar{\partial}}\cdots \xrr{\bar{\partial}}
+  \mathcal{A}^{p,m}(E)\lrr 0
+.\] Where \(m=\dim_{\mathbb{C}}M\). Using
+\ifdefined\FullBook{}
+  \cref{thm:7-1:fine},
+\else
+  the theorem in last note,
+\fi
+we obtain
+\begin{theorem}[Dolbeault]
+  \[
+    H^{q}(M,\Omega^p(E))\cong \frac{\ker\left(\bar{\partial}\colon \Gamma(M,\mathcal{A}
+    ^{p,q}(E))\to \Gamma(M,\mathcal{A}^{p,q+1}(E))\right)}{\img\left(\bar{\partial}
+    \colon\Gamma(M,\mathcal{A}^{p,q-1}(E))\to \Gamma(M,\mathcal{A}^{p,q}(E))\right)}
+    =H^{p,q}_{\bar{\partial}}(M,E)
+  .\] 
+\end{theorem}
+
+For compact complex manifold \(M\), this is isomorphic to the space \(\mathcal{H}^{p,q}
+_{\bar{\partial}}(M,E)\) of harmonic \((p,q)\)-forms with values in \(E\).
+
+We continue to study fundamental K\"ahler geometry.
+\begin{prop}
+  Let \((M,g)\) be a K\"ahler manifold and \(\gamma\) be its K\"ahler form. Then at
+  any point \(p\in M\), there is a neighborhood \(U\) of \(p\) and a real smooth
+  function \(f\) on \(U\) such that \[
+    \gamma=\sqrt{-1}\partial\bar{\partial}f
+  .\] This \(f\) is called the \textbf{K\"ahler potential} on \(U\).
+\end{prop}
+\begin{proof}
+  Since the K\"ahler form is a real closed 2-form, by Poincaré lemma, there is a
+  neighborhood \(U\) of \(p\) and a real smooth 1-form \(\psi\) such that \[
+    \gamma=\dd{\psi}
+  .\] Since \(\psi\) is a real 1-form there is a smooth type \((1,0)\)-form \(\vphi\)
+  such that \(\psi=\vphi+\bar{\vphi}\). Thus \[
+    \gamma=\dd{\psi}=(\partial +\bar{\partial})(\vphi+\bar{\vphi})=
+    \partial\vphi+(\bar{\partial}\vphi+\partial\bar{\vphi})+\bar{\partial}\bar{\vphi}
+  .\] Since \(\gamma\) is type \((1,1)\) we have \[
+    \partial\vphi=0,\quad\bar{\partial}\bar{\vphi}=0
+  .\] By Dolbeault lemma, there is a smooth complex valued function \(\eta\)
+  such that \[
+    \bar{\vphi}=\bar{\partial}\bar{\eta}\text{ and hence }\vphi=\partial\eta
+  .\] Therefore \[
+    \gamma=\bar{\partial}\vphi+\partial\bar{\vphi}=\bar{\partial}\partial\eta
+    +\partial\bar{\partial}\bar{\eta}=\partial\bar{\partial}(-\eta+\bar{\eta})
+    =\sqrt{-1}\partial\bar{\partial}f
+  .\] By putting \(f=\sqrt{-1}(\eta-\bar{\eta})\), which is real-valued.
+\end{proof}
+\begin{remark}
+  In this situation \[
+    g_{i\bar{j}}=\pdv{f}{z^i,\bar{z}^j}
+  .\]
+\end{remark}
+
+\begin{definition}
+  Let \(p\in M\), local holomorphic coordinates \(z^1,\ldots,z^m\) around \(p\) is
+  said to be \textbf{adapted coordinates} if
+  \begin{enumerate}[(i)]
+  \item \(z^1(p)=\cdots =z^m(p)=0\),
+  \item \(g_{i\bar{j}}(p)=\delta_{ij}\),
+  \item \(\Gamma_{jk}^i(p)=0\).
+  \end{enumerate}
+\end{definition}
+\begin{remark}
+  This is similar to ``normal coordinates'' in Riemannian geometry. But normal
+  coordinates are no in general holomorphic coordinates.
+\end{remark}
+\begin{prop}
+  A Hermitian manifold (\ie\ complex manifold endowed with a Hermitian metric on
+  \(T'M\)) is a K\"ahler manifold if and only if there are adapted coordinate
+  around any point \(p\in M\).
+\end{prop}
+\begin{proof}
+  ``If'' part: If  (iii) is satisfied for Hermitian connection the connection is
+  symmetric, \(\Gamma_{jk}^i=\Gamma_{kj}^i\), so it is K\"ahler.
+
+  ``Only if'' part: Take any local holomorphic coordinates \(z^1,\ldots,z^m\)
+  satisfying (i),(ii). This is possible by Schmidt's method. We consider change
+  of coordinates \[
+    z^j=w^j+\frac{1}{2}c_{ik}^j w^i w^k,\quad c_{ik}^j=c_{ki}^j
+  .\] Here \(c_{ik}^j\) are constants to be determined later. \\
+  For \(h_{i\bar{j}}=g(\pd{w^i},\pd{w^j})\), we have expression \[
+    h_{i\bar{j}}=\pdv{z^p}{w^i}g_{p\bar{q}}\pdv{\bar{z}^q}{\bar{w}^i}
+  \] where \(g_{p\bar{q}}=g(\pd{z^p},\pd{\bar{z}^q})\). \\
+  From this, \[
+    \pdv{h_{i\bar{j}}}{w^k}=\pdv{z^p}{w^k,w^i}g_{p\bar{q}}\pdv{\bar{z}^q}{\bar{w}^j}
+    +\pdv{z^p}{w^i}\pdv{g_{p\bar{q}}}{z^r}\pdv{z^r}{w^k}\pdv{\bar{z}^q}{\bar{w}^j}
+  .\] Evaluating the right hand side at \(p\) we get \[
+    \text{RHS}\big|_{p}=c_{ik}^j+\pdv{g_{i\bar{j}}}{z^k}\bigg|_{p}
+  .\] So we only need to take \[
+    c_{ik}^j=-\pdv{g_{i\bar{j}}}{z^k}\bigg|_p
+  .\] By the K\"ahler condition, \(\pdv{g_{i\bar{j}}}{z^k}=\pdv{g_{k\bar{j}}}{z^i}\),
+  so \(c_{ik^j}=c_{kj}^i\).
+\end{proof}
+
+Recall that \(\mathcal{A}^{p,q}=\Gamma(M,\wedge^p T^{*\prime}M\otimes \wedge^q
+T^{*\prime\prime}M)\), the set of all smooth \((p,q)\)-forms.
+
+\begin{definition}
+  We define two operators,
+  \begin{align*}
+    L\colon \mathcal{A}^{p,q}&\lrr\mathcal{A}^{p+1,q+1} \\
+    \alpha &\longmapsto \alpha\wedge \gamma\ (=\gamma\wedge \alpha)
+  .\end{align*}
+  \begin{align*}
+    \Lambda\colon \mathcal{A}^{p,q} &\longrightarrow \mathcal{A}^{p-1,q-1} \\
+    \left<L\alpha,\beta\right> &=\left<\alpha,\Lambda\beta\right> \text{ pointwise}
+  .\end{align*}
+  Here \(\left<\cdot,\cdot\right> \) is the inner product by the K\"ahler metric. If
+  \begin{align*}
+    \alpha &=\sum_{\substack{i_1<\cdots<i_p\\ j_1<\cdots<j_q}}
+    \alpha_{i_1,\ldots,i_p,\bar{j}_1,\ldots,\bar{j}_q}\dd{z^{i_1}}\wedge\cdots 
+    \wedge\dd{z^{i_p}}\wedge\dd{\bar{z}^{j_1}}\wedge\cdots\wedge\dd{\bar{z}^{j_q}}, \\
+    \beta &=\sum_{\substack{i_1<\cdots<i_p\\ j_1<\cdots<j_q}}
+    \beta_{i_1,\ldots,i_p,\bar{j}_1,\ldots,\bar{j}_q}\dd{z^{i_1}}\wedge\cdots 
+    \wedge\dd{z^{i_p}}\wedge\dd{\bar{z}^{j_1}}\wedge\cdots\wedge\dd{\bar{z}^{j_q}}
+  \end{align*}
+  for adapted coordinates, then \[
+    \left<\alpha,\beta\right> =\sum_{\substack{i_1<\cdots <i_p\\ j_1<\cdots <j_q}}
+    \alpha_{i_1,\ldots,i_p,\bar{j}_1,\ldots,\bar{j}_q}\overline{\beta_{i_1,\ldots,i_p,
+    \bar{j}_1,\ldots,\bar{j}_q}}
+  .\] 
+\end{definition}
+
+\begin{theorem}[Hodge identities]
+  On K\"ahler manifolds, we have
+  \begin{enumerate}[(i)]
+    \item \([L,\partial]=[L,\bar{\partial}]=0\), \([\Lambda,\partial^*]=
+      [\Lambda,\bar{\partial}^*]=0\).
+    \item \([L,\partial^*]=\sqrt{-1}\bar{\partial}\), \([L,\bar{\partial}^*]=-\sqrt{-1}
+      \partial\).
+    \item \([\Lambda,\partial]=\sqrt{-1}\bar{\partial}^*\), \([\Lambda,\bar{\partial}]
+      =-\sqrt{-1}\partial^*\).
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  Left as exercise. See \emph{Griffiths-Harris}, page 111-114, \emph{Morrow-Kodaira},
+  Proposition 5.4.
+\end{proof}
+\begin{remark}
+  \(\Lambda\) is just the contraction by \(\gamma\), thus \(\Lambda\beta=0\) if
+  \(\beta\) is a \((p,0)\)-form.
+\end{remark}
+\begin{corollary}
+  Let \(M\) be a compact K\"ahler manifold. If \(\alpha\) is a holomorphic form then
+  \(\dd{\alpha}=0\).
+\end{corollary}
+\begin{proof}
+  Let \(\alpha\) be a holomorphic \(p\)-form, then \(\partial\alpha\) is also a
+  holomorphic form. Thus \[
+    \bar{\partial}\partial\alpha=0\text{ and }\Lambda\partial\alpha=0
+  .\] It follows that \[
+    (\partial\alpha,\partial\alpha)_{L^2}=(\alpha,\partial^*\partial\alpha)_{L^2}
+    =-\sqrt{-1}(\alpha,(\Lambda\bar{\partial}-\bar{\partial}\Lambda)\partial\alpha)=0
+  .\] Hence \(\dd{\alpha}=\partial\alpha=0\).
+\end{proof}
+
+
+\end{document}
