@@ -5,5 +5,194 @@
 \counterwithout{equation}{section}
 
 \begin{document}
-111
+
+Recall we are considering \(\Omega^{p,q}(M)\), \(E=\) trivial line bundle, \(\lap_g=
+\partial^*\partial +\partial\partial^*\) makes sense for \((p,q)\)-forms.
+\begin{lemma}
+  On K\"ahler manifolds, \[
+    \lap_{\dd}=2\lap_{\bar{\partial}}=2\lap_{\partial}
+  .\] 
+\end{lemma}
+\begin{proof}
+  \begin{align*}
+    \lap_{\dd{}}&=(\partial +\bar{\partial})(\partial +\bar{\partial})^*
+    +(\partial +\bar{\partial})^*(\partial +\bar{\partial}) \\
+    &=(\partial\partial^*+\partial^*\partial)+(\partial\bar{\partial}^*
+    +\bar{\partial}^*\partial)+(\bar{\partial}\partial^*+\partial^*\bar{\partial})
+    +(\bar{\partial}\bar{\partial}^*+\bar{\partial}^*\bar{\partial})
+  .\end{align*}
+  But by Hodge identities,
+  \begin{align*}
+    \lap_{\partial}&=\partial\partial^*+\partial^*\partial
+    =\sqrt{-1}\partial (\Lambda\bar{\partial}-\bar{\partial}\Lambda)+
+    \sqrt{-1}(\Lambda \bar{\partial}-\bar{\partial}\Lambda)\partial, \\
+    \lap_{\bar{\partial}}&=\bar{\partial}\bar{\partial}^*+\bar{\partial}^*
+    \bar{\partial}=-\sqrt{-1}\bar{\partial}(\Lambda\partial -\partial\Lambda)
+    -\sqrt{-1}(\Lambda\partial-\partial\Lambda)\bar{\partial}
+  .\end{align*}
+  Hence \(\lap_{\partial}=\lap_{\bar{\partial}}\). Again by Hodge identities,
+  \begin{align*}
+    \partial\bar{\partial}^*+\bar{\partial}^*\partial&=-\sqrt{-1}\partial(\Lambda
+    \partial-\partial\Lambda)-\sqrt{-1}(\Lambda\partial-\partial\Lambda)\partial=0,\\
+    \bar{\partial}\partial^*+\partial^*\bar{\partial}&=\sqrt{-1}\bar{\partial}(\Lambda
+    \bar{\partial}-\bar{\partial}\Lambda)+\sqrt{-1}(\Lambda\bar{\partial}
+    -\bar{\partial}\Lambda)\bar{\partial}=0
+  .\end{align*}
+  From these we obtain \[
+    \lap_{\dd{}}=2\lap_{\bar{\partial}}=2\lap_{\partial}
+  .\] 
+\end{proof}
+
+Recall that \[
+  \mathcal{H}_{\dd{}}^{r}(M)=\{\alpha\in \Omega^r(M):\lap_{\dd{}}\alpha=0\}
+.\] We also apply Hodge theory for trivial holomorphic bundle \(E=M\times \mathbb{C}\),
+then \(\Omega^{p,q}(E)=\Omega^{p,q}(M)\), and \[
+  \mathcal{H}_{\bar{\partial}}^{p,q}(M)=\{\alpha\in \Omega^{p,q}(M):
+  \lap_{\bar{\partial}}\alpha=0\}
+.\] 
+\begin{corollary}
+  If \(M\) is a compact K\"ahler manifold, then \[
+    \mathcal{H}_{\dd{}}^{r}(M)\otimes \mathbb{C}
+    =\bigoplus_{p+q=r}\mathcal{H}_{\bar{\partial}}^{p,q}(M)
+  .\] 
+\end{corollary}
+Apply de Rham theorem and Dolbeault theorem, we obtain
+\begin{corollary}
+  If \(M\) is a compact K\"ahler manifold, then \[
+    H^{r}(M,\underset{\mathclap{\substack{\uparrow\\\text{constant}\\\text{sheaf}}}}
+    {\mathbb{C}})\cong\bigoplus_{p+q=r}H^q(M,\underbrace{\Omega^{p}(M)}_{\mathclap{
+    \substack{\text{sheaf of germs of}\\\text{holo }p\text{-forms}}}})
+  .\] 
+\end{corollary}
+
+One more consequence of \(\lap_{\dd{}}=2\lap_{\bar{\partial}}=2\lap_{\partial}\) on
+compact K\"ahler manifolds is that: Since \(\lap_{\dd{}}\) is a real operator, \ie\ \[
+  \lap_{\dd{}}\bar{\vphi}=\overline{\lap_{\dd{}}\vphi}
+.\] Hence \[
+  \lap_{\bar{\partial}}\bar{\vphi}=\overline{\lap_{\bar{\partial}}\vphi}
+\] and \[
+  \lap_{\bar{\partial}}\vphi=0\iff \lap_{\bar{\partial}}\bar{\vphi}=0
+.\] This proves the following:
+\begin{theorem}
+  On a compact K\"ahler manifold, \[
+    H^{q}(M,\Omega^{p}(M))\cong H^{p}(M,\Omega^q(M))
+  .\] 
+\end{theorem}
+
+Let \(E\to M\) be a holomorphic vector bundle over a compact complex manifold \(M\),
+and \(E^*\to M\) be its dual bundle. For \(\alpha\in \mathcal{A}^{p,q}(E)\),
+\(E\)-valued smooth \((p,q)\)-form and \(\beta\in \mathcal{A}^{m-p,m-q}(E^*)\), we
+define a pairing \[
+  \left<\alpha,\beta\right> =\int_{M}\left<\alpha\wedge \beta\right> 
+.\] Where \(\left<\alpha\wedge \beta\right> \) is given by the pairing of \(E\)
+and \(E^*\) and the wedge product as differential forms. Then this pairing is
+non-degenerate and thus \[
+  \mathcal{A}^{m-p,m-q}(E^*)=\left(\mathcal{A}^{p,q}(E)\right)^*
+.\] Given a Hermitian metric on \(E\), and thus its inverse on \(E^*\), and a
+Hermitian metric on \(M\), we can consider the space \(\mathcal{H}_{\bar{\partial}}^{p,
+q}(M,E)\) and \(\mathcal{H}_{\bar{\partial}}^{p,q}(M,E^*)\) of harmonic
+\((p,q)\)-forms. One can show that the natural pairing \[
+  \left<\cdot ,\cdot \right> \colon\mathcal{H}_{\bar{\partial}}^{p,q}(E)\times 
+  \mathcal{H}_{\bar{\partial}}^{m-p,m-q}(E^*)\to \mathbb{C}
+\] is non-degenerate, and thus combining the Dolbeault theorem and Hodge theory, we
+obtain the following:
+\begin{theorem}[Kodaira-Serre duality]
+  \[
+    H^{q}(M,\Omega^p(E))\cong H^{m-q}(M,\Omega^{m-p}(E^*))^*
+  .\] For \(p=0\), this is \[
+    H^{q}(M,E)\cong H^{m-q}(M,\mathcal{O}(E^*\otimes K_M))^*
+  .\]
+\end{theorem}
+\begin{remark}
+  To prove the non-degeneracy of the pairing, one may use the Hodge star operator
+  ``\(\star\)''. See page 103 of \emph{Griffiths-Harris}. The proof of this duality
+  can be given purely algebraically (without using Hodge theory), see \emph{Hartshorne
+  - Algebraic Geometry}, Chapter 3, section 7.
+\end{remark}
+
+Now we return to K\"ahler geometry.
+Recall under the K\"ahler condition \(\dd{\gamma}=0\), the Levi-Civita connection
+and the Chern connection on the tangent bundle coincides. We know the connection form
+\(\omega\) is given by \[
+  \omega=g^{-1}\partial g=(g^{i\bar{q}}\partial g_{j\bar{q}}),\quad
+  g_{i\bar{j}}=g\left(\pd{z^i},\pd{\bar{z}^j}\right)
+.\] So the Christoffel  symbol \[
+  \Gamma_{kj}^i=g^{i\bar{q}}\pdv{g_{j\bar{q}}}{z^k}
+.\] Also \[
+  \Gamma_{\bar{k}j}^i=0
+\] since the connection form is type (1,0).
+
+Also, since the covariant derivative of Chern connection of \(T'M\) gives a section
+of \(T'M\), we must have \[
+  \Gamma_{kj}^{\bar{i}}=0,\quad\Gamma_{\bar{k}j}^{\bar{i}}=0
+.\] Taking complex conjugate of these we have \[
+  \Gamma_{k\bar{j}}^{\bar{i}}=\Gamma_{\bar{k}\bar{j}}^{i}=\Gamma_{k\bar{j}}^i=0
+.\] As a conclusion, the Christoffel symbols are zero except for \[
+  \Gamma_{kj}^i\text{ and }\Gamma_{\bar{k}\bar{j}}^{\bar{i}}
+.\] The curvature is expressed by \[
+  \Omega=\dd{\omega}+\omega\wedge \omega=\bar{\partial}\omega
+  =\bar{\partial}(g^{-1}\partial g),\quad \Omega\indices{^i_j}=\bar{\partial}
+  (g^{i\bar{q}}\partial g_{\bar{q}j})
+.\] Thus \[
+  R(X,Y)\pd{z^j}=\Omega\indices{^i_j}(X,Y)\pd{z^i}
+.\] Since Riemannian curvature tensor is given by \[
+  R(X,Y,Z,W)=g(Z,R(X,Y)W)
+,\] we obtain
+\begin{align*}
+  R_{\bar{k}l\bar{p}j}&=g\left(\pd{\bar{z}^p},R\left(\pd{\bar{z}^k},\pd{z^l}\right)
+  \pd{z^j}\right)=g\left(\pd{\bar{z}^p},\Omega\indices{^i_j}\left(\pd{\bar{z}^k},
+  \pd{z^l}\right)\pd{z^i}\right) \\
+  &=g_{\bar{p}i}\pd{\bar{z}^k}\left(g^{i\bar{q}}\pdv{g_{j\bar{q}}}{z^l}\right) \\
+  &=\pdv{g_{j\bar{p}}}{z^l,\bar{z}^k}-g_{\bar{p}i}g^{i\bar{s}}g^{r\bar{q}}
+  \pdv{g_{r\bar{s}}}{\bar{z}^k}\pdv{g_{j\bar{q}}}{z^l} \\
+  &=\pdv{g_{j\bar{p}}}{z^l,\bar{z}^k}-g^{r\bar{q}}\pdv{g_{r\bar{p}}}{\bar{z}^k}
+  \pdv{g_{j\bar{q}}}{z^l}
+.\end{align*} 
+Note that Riemannian metric symmetric, \ie\ \(g_{\bar{q}j}=g_{j\bar{q}}\).
+Using the symmetries of Riemannian curvature tensor (See previous notes), \[
+  R_{i\bar{j}k\bar{l}}=R_{\bar{j}i\bar{l}k}=R_{\bar{l}k\bar{j}i}
+  =\pdv{g_{i\bar{j}}}{z^k,\bar{z}^l}-g^{p\bar{q}}\pdv{g_{i\bar{q}}}{z^k}
+  \pdv{g_{p\bar{j}}}{\bar{z}^k}
+.\] 
+Let us define ``K\"ahler-Ricci'' curvature as follows (This terminology is not
+standard. This is only in this lecture notes):
+
+Suppose local coordinates \(z^1,\ldots,z^m\) so that \(\pd{z^1},\ldots,\pd{z^m}\) are
+orthonormal basis of \(T'M\). Define for real vector field \(X\), \[
+  \op{Kähler-Ric}(X,Y)=\sum_{i=1}^{m}R(X,\pd{\bar{z}^i},Y,\pd{\bar{z}^i})
+.\] Since \(\pd{z}=\frac{1}{2}\left(\pd{x}-\sqrt{-1}\pd{y}\right)\) and \[
+  \left|\pd{z}\right|=1\iff \left|\pd{x}\right|=\left|\pd{y}\right|=\sqrt{2}
+,\] \[
+  \op{Kähler-Ric}(X,Y)=\frac{1}{4}\sum_{i}R(X,\pd{x^i},Y,\pd{x^i})
+  +R(X,\pd{y^i},Y,\pd{y^i})=\frac{1}{2}\Ric(X,Y)
+.\] 
+
+\begin{remark}
+  Since the curvature form is given by \(\bar{\partial}(g^{-1}\partial g)\), \[
+    R\indices{^\alpha_{kij}}=R\indices{^\alpha_{k\bar{i}\bar{j}}}=0,\quad
+    \alpha=1,\ldots,m,\bar{1},\ldots,\bar{m}
+  .\] By the symmetry of Riemannian curvature tensor, also \[
+    R_{ij\alpha k}=R_{\bar{i}\bar{j}\alpha k}=0,\quad
+    \alpha=1,\ldots,m,\bar{1},\ldots,\bar{m}
+  .\] Thus the only possibly non-zero components of the curvature tensor on a Kähler
+  manifold are \[
+    R_{i\bar{j}k\bar{l}}=-R_{\bar{j}ik\bar{l}}
+    =-R_{i\bar{j}\bar{l}k}=R_{\bar{j}i\bar{l}k}
+  .\] The relation is obtained by Bianchi identities.
+  So we define the tensor \(R_{i\bar{j}}\) by
+  \begin{align*}
+    R_{i\bar{j}}&=\op{Kähler-Ric}\left(\pd{z^i},\pd{\bar{z}^j}\right) \\
+    &=g^{k\bar{l}}R_{i\bar{l}\bar{j}k}=-g^{k\bar{l}}R_{i\bar{j}k\bar{l}} \\
+    &=R\indices{_{i\bar{j}}^k_k}=R\indices{^k_{ki\bar{j}}} \\
+    &=(\op{tr}R)_{i\bar{j}}
+  .\end{align*} 
+  In local coordinates,
+  \begin{align*}
+    R_{i\bar{j}}&=-g^{k\bar{l}}R_{i\bar{j}k\bar{l}}=-g^{k\bar{l}}R_{k\bar{l}i\bar{j}}\\
+    &=-g^{k\bar{l}}\pdv{g_{k\bar{l}}}{z^i,\bar{z}^j}+g^{k\bar{l}}g^{p\bar{q}}
+    \pdv{g_{k\bar{q}}}{z^i}\pdv{g_{p\bar{l}}}{\bar{z}^j} \\
+    &=-\pd{z^i,\bar{z}^j}\log\det(g_{k\bar{l}})
+  .\end{align*}
+\end{remark}
+
 \end{document}

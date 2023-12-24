@@ -81,6 +81,11 @@
 \newcommand{\into}{\hookrightarrow}
 \newcommand{\op}{\operatorname}
 
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
 \theoremstyle{plain}\newtheorem{theorem}{Theorem}
 \theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
 \theoremstyle{definition}\newtheorem{example}[theorem]{Example}

@@ -277,3 +277,6 @@ TSWLatexianTemp*
 
 # No PDF
 *.pdf
+
+# No vscode workspace settings
+.vscode
