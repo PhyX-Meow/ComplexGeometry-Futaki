@@ -1,0 +1,212 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+
+In the note of lecture 10, we studied the divergence theorem:
+For compact Riemannian manifold \((M,g)\), \[
+  \int_{M}\op{div}(X)\dd{V_g}=0
+,\] where \[
+  \op{div}(X)=\nabla_i X^i=\pdv{X^i}{x^i}+\Gamma_{ik}^i X^i
+,\] and its application, the integration by parts formula, \[
+  \int_{M}T^i \nabla_i f\dd{V_g}=-\int_{M}(\nabla_i T^i)f\dd{V_g}
+.\] We will use this to the very basic due to Bochner.
+\begin{theorem}
+  On a compact Riemannian manifold with negative Ricci curvature, there is no
+  non-zero Killing vector field, in particular, the group of isometries is
+  a finite group. (It is well-known that the isometry group is compact on a 
+  compact Riemannian manifold).
+\end{theorem}
+\begin{proof}
+  As we discussed in the previous notes, if \(X\) is a Killing vector field,
+  then \[
+    \mathcal{L}_X g=0\iff g(\nabla_Y X,Z)+g(Y,\nabla_Z X)=0,\forall\,Y,Z
+  .\] Taking \(Y=\pd{x^i},Z=\pd{x^j}\), we obtain \[
+    g_{kj}\nabla_i X^k+g_{ik}\nabla_j X^k=0
+  .\] Thus \[
+    \nabla_i X_j+\nabla_j X_i=0
+  .\] \ie\ \(\nabla X\) is skew-symmetric.
+
+  One computes
+  \begin{align*}
+    0&\le \int_{M}|\nabla X|^2\dd{V_g} \\
+    &=\int_{M}g^{ij}g^{kl}\nabla_i X_k\cdot \nabla_j X_l
+    &(X_k=g_{kp}X^p) \\
+    &=-\int_{M}g^{ij}g^{kl}(\nabla_j \nabla_i X_k)\cdot X_l \dd{V_g}
+    &(\text{integrate by parts}) \\
+    &=\int_{M}g^{ij}g^{kl}(\nabla_j \nabla_k X_i)\cdot X_l \dd{V_g}
+    &(\nabla X\text{ is skew}) \\
+    &=\int_{M}g^{ij}g^{kl}(\nabla_k \nabla_j X_i-R\indices{_{jk}^p_i}X_p)
+    \cdot X_l
+  .\end{align*} Note that \(\nabla_i X_j+\nabla_j X_i=0\) implies \(g^{ij}
+  \nabla_i X_j=0\) by multiplying \(g^{ij}\). Thus the above computes \[
+    0\le\int_{M}g^{ij}g^{kl}R\indices{_{jki}^p}X_p X_l
+    =\int_{M}R_{kq}X^k X^q
+  .\] Here \(R_{kq}=g^{ij}R_{jkiq}\) is the Ricci curvature. If \((R_{ij})\) is
+  negative definite and \(X\neq 0\), then \(\int R_{kq}X^k X^q<0\). This is
+  a contradiction.
+\end{proof}
+
+For a 1-form \(\alpha\), \(\dd^*\alpha\) was defined by \[
+  (\dd{}^*\alpha,f)_{L^2}=(\alpha,\dd{f})_{L^2},\quad\forall\,f\in C^\infty(M)
+.\] But
+\begin{align*}
+  (\alpha,\dd{f})_{L^2}&=\int_{M}g^{ij}\alpha_i \pdv{f}{x^j} \\
+  &=\int_{M}\nabla_j (\underbrace{g^{ij}\alpha_i f}_{\mathclap{
+  \text{regard as a v.f.}}})-\int_{M}\nabla_j (g^{ij}\alpha_i)\cdot f \\
+  &=-\int_{M}\nabla_j \alpha^j f &(\text{div thm})
+.\end{align*} 
+From this we see \[
+  \dd{}^*\alpha=-\nabla_j \alpha^j=-\op{div}(\sharp \alpha)
+.\] Here \(\sharp\) is the musical isomorphism.
+
+Recall that \(\alpha\) is a harmonic 1-form if and only if
+\begin{align*}
+  \lap_{\dd{}}\alpha=0&\iff \dd{\alpha}=0\text{ and }\dd{}^*\alpha=0 \\
+  &\iff\pdv{\alpha_i}{x^j}-\pdv{\alpha_j}{x^i}=0\text{ and }\nabla_i\alpha^i=0 \\
+  &\iff \nabla_j\alpha_i=\nabla_i \alpha_j\text{ and }\nabla_i \alpha^i=0
+  \quad (\text{since }\Gamma_{ji}^k=\Gamma_{ij}^k)
+.\end{align*} 
+Now we prove another very basic theorem by Bochner:
+\begin{theorem}
+  Let \(M\) be a compact Riemannian manifold with positive Ricci curvature, \ie\ 
+  \(R_{ij}\) is positive definite. Then the first Betti number \(b_1\) is zero,
+  \ie\ there is no non-trivial harmonic 1-form.
+\end{theorem}
+\begin{proof}
+  As in the case of Killing vector field, we compute
+  \begin{align*}
+    0&\le\int_{M}|\nabla \alpha|^2\dd{V_g}=\int_{M}g^{ij}g^{kl}\nabla_i \alpha_k
+    \cdot \nabla_j \alpha_l \\
+    &=-\int_{M}g^{ij}g^{kl}(\nabla_j \nabla_i \alpha_k)\cdot \alpha_l
+    &(\text{integrate by parts}) \\
+    &=-\int_{M}g^{ij}g^{kl}(\nabla_j \nabla_k \alpha_i) \cdot \alpha_l
+    &(\text{since }\nabla_i\alpha_k=\nabla_k\alpha_i) \\
+    &=-\int_{M}g^{ij}g^{kl}(\nabla_k\nabla_j-R\indices{_{jk}^p_i}\alpha_p)
+    \alpha_l & (\text{Ricci identity}) \\
+    &=-\int_{M}R_{kl}\alpha^k \alpha^l
+    &(g^{ij}\nabla_j \alpha^i=\nabla_i \alpha^i=0)
+  .\end{align*}
+  If \(R_{ij}\) is positive definite and \(\alpha\neq 0\), then the last
+  expression is negative and we have a contradiction. 
+\end{proof}
+
+In the future, if you forget the sign convention and you are not certain
+whether you are using the right sign convention. It is recommend to prove
+Bochner's theorems. If you can prove then you are using the right convention.
+
+Next, we consider the Kähler case. Recall that the Kähler metric is of the
+form \[
+  g_{i\bar{j}}=g\left(\pd{z^i},\pd{\bar{z}^j}\right)=g\left(\pd{\bar{z}^j}
+  \pd{z^i}\right)=g_{\bar{j}i}
+\] since we regard \(g\) as the \(\mathbb{C}\)-linear extension of the Riemannian
+metric. Also, \(g\) is \(J\)-invariant, \ie\ \(g(JX,JY)=g(X,Y)\). So \[
+  g\left(\pd{z^i},\pd{z^j}\right)=g\left(J\pd{z^i},J\pd{z^j}\right)
+  =g\left(\sqrt{-1}\pd{z^i},\sqrt{-1}\pd{z^j}\right)
+  =-g\left(\pd{z^i},\pd{z^j}\right)
+.\] So \(g_{ij}=0\), similarly \(g_{\bar{i}\bar{j}}=0\). And only \(g_{i\bar{j}}
+=g_{\bar{j}i}\) can be non-zero.
+
+Thus the musical isomorphism are defined as follows:
+\begin{align*}
+  \sharp\colon T^{\prime*}M &\longrightarrow T''M=\overline{T'M}
+  & \sharp\colon T^{\prime\prime*}M &\longrightarrow T'M \\
+  \alpha_i \dd{z^i} &\longmapsto g^{i\bar{j}}\alpha_i \pd{\bar{z}^j}
+  =\alpha^{\bar{j}}\pd{\bar{z}^j}
+  &\alpha_{\bar{i}} \dd{\bar{z}^i} &\longmapsto g^{j\bar{i}}\alpha_{\bar{i}}
+  \pd{z^j}=\alpha^{j}\pd{z^j}
+.\end{align*}
+\begin{align*}
+  \flat\colon T'M &\longrightarrow T^{\prime\prime*}M
+  &\flat\colon T''M &\longrightarrow T^{\prime*}M \\
+  X^i\pd{z^i} &\longmapsto g_{i\bar{j}}x^i\dd{\bar{z}^j}
+  =X_{\bar{j}}\dd{\bar{z}^j}
+  &X^{\bar{i}}\pd{\bar{z}^i} &\longmapsto g_{j\bar{i}}x^{\bar{i}}\dd{z^j}
+  =X_{j}\dd{z^j}
+.\end{align*}
+
+\section{Vanishing theorems on complex manifold}
+We move on to vanishing theorems, to state them, we use the notation
+\(\mathcal{O}(L)\) to be the sheaf of germs of holomorphic sections of a
+holomorphic line bundle \(L\). Thus \[
+  H^q(M,\mathcal{O}(L))
+\] is the \(q\)-th sheaf cohomology of \(\mathcal{O}(L)\). But this is
+isomorphic to the space of harmonic \((0,q)\)-forms with values in \(L\).
+
+On a compact Kähler manifold, the volume element is given for the Kähler
+form \(\omega=\sqrt{-1}g_{i\bar{j}}\dd{z^i}\dd{\bar{z}^j}\) by \[
+  \dd{V_g}=\frac{\omega^m}{m!}=\frac{\overbrace{\omega\wedge\cdots\wedge\omega}
+  ^m}{m!},\quad m=\dim_{\mathbb{C}}M
+.\] But here we omit the \(m!\), and take \(\omega^m\) to be the volume form.
+(We change the notation for Kähler form form \(\gamma\) to \(\omega\) since
+this is more standard).
+
+Let \(M\) be a compact Kähler manifold, for a \((0,1)\)-form \(\alpha\),
+\(\bar{\partial}^*\alpha\) was defined by \[
+  (\bar{\partial}^*\alpha,f)_{L^2}=(\alpha,\bar{\partial}f)_{L^2},
+  \quad\forall\,f\in C^\infty(M)\otimes \mathbb{C}
+.\] But
+\begin{align*}
+  (\alpha,\bar{\partial}f)_{L^2}&=\int_{M}g^{i\bar{j}}\alpha_{\bar{j}}
+  \overline{\pdv{f}{\bar{z}^i}}\omega^m \\
+  &=\int_{M}g^{i\bar{j}}\alpha_{\bar{j}}\nabla_i \bar{f}\omega^m \\
+  &=\int_{M}\nabla_i (g^{i\bar{j}}\alpha_{\bar{j}}\bar{f})\omega^m
+  -\int_{M}\nabla_i \alpha^i\cdot f\omega^m \\
+  &=-\int_{M}\nabla_i \alpha^i \cdot f\omega^m & (\text{divergence thm})
+.\end{align*}
+Thus \[
+  \bar{\partial}^*\alpha=-\nabla_i \alpha^i
+  =-\pdv{\alpha^i}{z^i}-\Gamma_{ik}^i\alpha^k
+\] Note that \(i,k\) are holomorphic indices. Then \[
+  \bar{\partial}^*\alpha=-\op{div}(\sharp\alpha)
+\] where \(\op{div}\) is with respect to holomorphic indices. This suggests
+us that for higher degree differential forms, \(\bar{\partial}^*\) is better
+expressed if we use the musical isomorphism \(\sharp\).
+
+Let \(\alpha\in \mathcal{A}^{p,q+1}\) be a \(C^\infty\) differential form of type
+\((p,q+1)\): \[
+  \alpha=\alpha_{i_1\cdots i_p \bar{j}1\cdots \bar{j}_{q+1}}
+  \dd{z^1}\wedge\cdots\wedge\dd{z^p}\wedge\dd{\bar{z}^1}\wedge\cdots\wedge
+  \dd{\bar{z}^{q+1}}
+.\] Then
+\begin{align*}
+  \sharp\alpha=&g^{i_1\bar{k}1}\cdots g^{i_p\bar{k}_p}g^{l_1\bar{j}_1}\cdots
+  g^{l_{q+1}\bar{j}_{q+1}}\\
+  &\cdot\alpha_{i_1\cdots i_p \bar{j}1\cdots \bar{j}_{q+1}}
+  \pd{\bar{z}^{k_1}}\wedge\cdots\wedge\pd{\bar{z}^{k_p}}\wedge\pd{z^{l_1}}\wedge
+  \cdots\wedge\pd{z^{l_{q+1}}} \\
+  =&\alpha^{\bar{k}_1\cdots \bar{k}_p l_1\cdots l_{q+1}}\pd{\bar{z}^{k_1}}
+  \wedge\cdots 
+.\end{align*} 
+We write \(\bar{K}=\bar{k}_1\cdots \bar{k}_p\) for short. Then as in the (1,0)
+case, we obtain \[
+  (\bar{\partial}^*\alpha)^{\bar{K}j_1\cdots j_q}
+  =-\nabla_j \alpha^{j\bar{K}j_1\cdots j_q}
+  =(-1)^{p+1}\nabla_j \alpha^{\bar{K}jj_1\cdots j_q}
+.\] The following is a direct analogue for Kähler manifolds of Bochner's
+Killing vector field vanishing theorem.
+\begin{theorem}
+  Let \(M\) be a compact Kähler manifold with negative Ricci curvature. Then
+  there is no non-trivial holomorphic vector field, and thus the group of
+  bi-holomorphic automorphisms is discrete.
+\end{theorem}
+\begin{proof}
+  The proof is similar to the Killing case:
+  \begin{align*}
+    0&\le\int_{M}g^{i\bar{k}}g_{j\bar{l}}\nabla_i X^j \nabla_{\bar{k}}
+    \overline{X^l}\omega^m \\
+    &=-\int_{M}g^{i\bar{k}}g_{j\bar{l}}(\nabla_i \nabla_{\bar{k}}X^j+
+    R\indices{_{\bar{k}i}^j_p}X^p)X^{\bar{l}} \\
+    &=+\int_{M}R\indices{^i_{ip\bar{l}}}X^p X^{\bar{l}} \\
+    &=\int_{M}R_{p\bar{l}}X^p X^{\bar{l}}
+  .\end{align*}
+  If \(X\) is non-zero and the Ricci curvature \(R_{p\bar{l}}\) is negative
+  definite, then the last term is strictly negative. This is a contradiction.
+\end{proof}
+Note that the Lie algebra of all holomorphic vector fields is the Lie algebra
+of the automorphism group.
+
+\end{document}

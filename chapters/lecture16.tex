@@ -1,0 +1,186 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+So we define the tensor \(R_{i\bar{j}}\) by
+\begin{align*}
+  R_{i\bar{j}}&=\op{Kähler-Ric}\left(\pd{z^i},\pd{\bar{z}^j}\right) \\
+  &=g^{k\bar{l}}R_{i\bar{l}\bar{j}k}=-g^{k\bar{l}}R_{i\bar{j}k\bar{l}} \\
+  &=R\indices{_{i\bar{j}}^k_k}=R\indices{^k_{ki\bar{j}}} \\
+  &=(\op{tr}R)_{i\bar{j}}
+.\end{align*}
+
+In local coordinates,
+\begin{align*}
+  R_{i\bar{j}}&=-g^{k\bar{l}}R_{i\bar{j}k\bar{l}}
+  =-g^{k\bar{l}}R_{k\bar{l}i\bar{j}} \\
+  &=g^{k\bar{l}}\pdv{g_{k\bar{l}}}{z^i,\bar{z}^j}+g^{k\bar{l}}g^{p\bar{q}}
+  \pdv{g_{k\bar{q}}}{z^i}\pdv{g_{p\bar{l}}}{\bar{z}^j} \\
+  &=-\pdv{}{z^i,\bar{z}^j}\log \det(g_{k\bar{l}})
+.\end{align*}
+As a peculiar terminology in K\"ahler geometry, ``K\"ahler-Ricci'' curvature
+is referred to as the \textbf{Ricci curvature}. As we saw before, \[
+  \frac{\sqrt{-1}}{2\pi}R_{i\bar{j}}\dd{z^i}\wedge \dd{\bar{z}^j}
+  =-\frac{\sqrt{-1}}{2\pi}\partial\bar{\partial}\log\det(g_{k\bar{l}})
+\] represents the first Chern class of \(T'M\), or equivalently, \(c_1(T'M)=
+-c_1(K_M)\) since \(h:=\det(g_{i\bar{j}})\) defines a Hermitian metric on
+\(K_M^{-1}=\bigwedge^m T'M\).
+
+Warning: The majority of Kähler geometers use the following conventions:
+{\color{Red}
+\begin{align*}
+  R_{i\bar{j}k\bar{l}}&=-\pdv{g_{i\bar{j}}}{z^k,\bar{z}^l}+g^{p\bar{q}}
+  \pdv{g_{i\bar{q}}}{z^k}\pdv{g_{p\bar{j}}}{\bar{z}^l} \\
+  &\text{(This is opposite sign compared to ours)} \\
+  R_{i\bar{j}}&=R_{i\bar{j}}\underbracket{\indices{_k^k}}_{\mathclap{
+  \text{opposite}}}=-\pdv{}{z^i,\bar{z}^j}
+.\end{align*}}
+It is up to you which convention you use.
+
+\section{Bochner technique}
+Now we turn to Bochner technique. The most primitive form of Bochner technique is
+of the Killing vector fields on compact Riemannian manifolds of negative Ricci
+curvature.
+
+An isometry of a Riemannian manifold \((M,g)\) is a diffeomorphism \(f\colon M
+\to M\) such that \[
+  f^*g=g
+.\] If a vector field \(X\) generates a flow \(f_t=\exp(tX)\) consisting of
+isometries so that \[
+  f_t^*g=g,\quad \forall\,t,
+\] we say that \(X\) is a \textbf{Killing vector field}.
+
+Taking the derivative of above equation with respect to \(t\) we get \[
+  \mathcal{L}_X g=0
+.\] This implies
+\begin{align*}
+  X(g(Y,Z))&=(\mathcal{L}_X g)(Y,Z)+g(\mathcal{L}_X Y,Z)+g(Y,\mathcal{L}_X Z) \\
+  &=g(\nabla_X Y-\nabla_Y X,Z)+g(Y,\nabla_X Z-\nabla_Z X)
+.\end{align*}
+But \[
+  X(g(Y,Z))=g(\nabla_X Y,Z)+g(Y,\nabla_X Z)
+.\] Thus \(X\) is Killing if and only if \[
+  g(\nabla_Y X,Z)+g(Y,\nabla_Z X)=0,\quad \forall\,Y,Z
+.\]
+
+Now we spend some time on the standard notation in physics and differential
+geometry (or tensor calculus).
+
+Let \(T\) be a tensor field in \(C^\infty(M,TM^{\otimes p}\otimes T^*M^{\otimes
+q})\). Then we express \(T\) locally using Einstein convention as \[
+  T=T\indices{^{i_1\cdots i_p}_{j_1\cdots j_q}}\pd{x^{i_1}}\otimes\cdots\otimes 
+  \pd{x^{i_p}}\otimes \dd{x^{j_1}}\otimes \cdots \otimes \dd{x^{j_q}}
+.\] If \(\alpha\) is a \(q\)-form, it is expressed as either \[
+  \alpha=\sum_{j_1<\cdots <j_q}\alpha_{j_1\cdots j_q}\dd{x^{j_1}}\wedge \cdots 
+  \wedge \dd{x^{j_q}},
+\] or \[
+  \alpha=\frac{1}{q!}\sum_{j_1,\ldots,j_q}\alpha_{j_1\cdots j_q}\dd{x^{j_1}}
+  \wedge\cdots\wedge\dd{x^{j_q}}
+\] where \[
+  \alpha_{j_1'\cdots j'_q}=\sign\begin{pmatrix}
+    j_1' & \cdots & j_q' \\
+    j_1 & \cdots & j_q
+  \end{pmatrix}\alpha_{j_1,\ldots,j_q}\text{ whenever }\{j_1',\ldots,j_q'\}
+  =\{j_1,\ldots,j_q\}
+.\] If we take the covariant derivative \(\nabla T\) of \(T\) we express \[
+  \nabla T=\nabla_k T\indices{^{i_1\cdots i_p}_{j_1\cdots j_q}}\pd{x^{i_1}}
+  \otimes\cdots\otimes\pd{x^{i_p}}\otimes \dd{x^k}\dd{x^{j_1}}\otimes
+  \cdots \otimes \dd{x^{j_q}}
+.\] Note that \(\nabla_k T\indices{^{i_1\cdots i_p}_{j_1\cdots j_q}}\) is 
+the notation of just the coefficient of \(\nabla T\). It looks like the \(k\)-th
+partial derivative of smooth function \(T\indices{^{i_1\cdots i_p}_{j_1\cdots
+j_q}}\), but the meaning is not so.
+
+Recall one defined Riemannian curvature tensor \(R_{ijkl}\) by \[
+  R_{ijkl}=g\left(\pd{x^k},\left(\nabla_{\pd{x^i}}\nabla_{\pd{x^j}}-
+  \nabla_{\pd{x^j}}\nabla_{\pd{x^i}}\right)\pd{x^k}\right)
+.\] Putting \[
+  R\indices{_{ij}^p_l}=R_{ijkl}g^{kp}
+,\] we have \[
+  \left(\nabla_{\pd{x^i}}\nabla_{\pd{x^j}}-\nabla_{\pd{x^j}}\nabla_{\pd{x^i}}
+  \right)\nabla_{\pd{x^l}}=R\indices{_{ij}^p_l}\pd{x^p}=R\indices{^p_{lij}}
+  \pd{x^p}
+.\] In the last term I used the symmetry of Riemannian curvature tensor. I did
+this because I have been using the convention of the curvature 2-form as a
+section of \(C^\infty(\op{End}(TM)\otimes \bigwedge^2T^*M)\). Then for
+\(Z=Z^i \pd{x^i}\), \[
+  \nabla_{\pd{x^i}}\nabla_{\pd{x^j}}Z-\nabla_{\pd{x^j}}\nabla_{\pd{x^i}}Z
+  =Z^k R\indices{^l_{kij}}\pd{x^l}
+.\] This means \[
+  \nabla_i \nabla_j Z^l-\nabla_j \nabla_i Z^l=R\indices{^l_{kij}}Z^k=
+  R\indices{_{ij}^l_k}Z^k
+.\] This equality is called the \textbf{Ricci identity}. This is the same as the
+definition of the curvature tensor. This says that if you want to change the
+order of covariant derivative, curvature term appears.
+
+For a 1-form \(\alpha=\alpha_i \dd{x^i}\) one can compute
+\begin{align*}
+  &\phantom{=}\left<\nabla_{\pd{x^i}}\nabla_{\pd{x^j}}\alpha-\nabla_{\pd{x^j}}
+  \nabla_{\pd{x^i}}\alpha,\pd{x^k}\right> \\
+  &=\pd{x^i}\left<\nabla_{\pd{x^j}}\alpha,\pd{x^k}\right>
+  -\left<\nabla_{\pd{x^i}}\alpha,\nabla_{\pd{x^i}}\pd{x^k}\right> \\
+  &\phantom{=}-\pd{x^j}\left<\nabla_{\pd{x^i}}\alpha,\pd{x^k}\right>
+  +\left<\nabla_{\pd{x^i}}\alpha,\nabla_{\pd{x^j}}\pd{x^k}\right> \\
+  &=\cdots \\
+  &=-\left<\alpha,\left(\nabla_{\pd{x^i}}\nabla_{\pd{x^j}}
+  -\nabla_{\pd{x^j}}\nabla_{\pd{x^i}}\right),\pd{x^k}\right> \\
+  &=-\left<\alpha,R\indices{_{ij}^p_k}\pd{x^p}\right> =-R\indices{_{ij}^p_k}
+  \alpha_p
+.\end{align*}
+Thus \[
+  \nabla_i \nabla_j \alpha_k-\nabla_j \nabla_i \alpha_k=-R\indices{_{ij}^p_k}
+  \alpha_p
+.\] This is the Ricci identity for \(1\)-forms. but this can be obtained from 
+the Ricci identity for vector fields as follows:
+
+First note that \(\nabla g=0\). This is because \[
+  (\nabla_X g)(Y,Z)=X(g(Y,Z))-g(\nabla_X Y,Z)-g(Y,\nabla_X Z)=0
+.\] So \(\nabla_k g_{ij}=0\) and also \(\nabla_k g^{ij}=0\). There is an
+isomorphism between \(TM\) and \(T^*M\), called the musical isomorphism,
+\begin{align*}
+  \flat\colon TM &\longrightarrow T^*M \\
+  X^i\pd{x^i} &\longmapsto g_{ki}X^i\dd{x^k}=X_k\dd{x^k}
+.\end{align*}
+\begin{align*}
+  \sharp\colon T^*M &\longrightarrow TM \\
+  \alpha^i\dd{x^i} &\longmapsto g^{ki}\alpha_i\pd{x^k}=\alpha^k\pd{x^k}
+.\end{align*}
+Here we have put \(X_k=g_{ki}X^i\) and \(\alpha^k=g^{ki}\alpha_i\). Then
+since \(\nabla_k g_{ij}=\nabla_k g^{ij}=0\), we obtain 
+\begin{align*}
+  (\nabla_i \nabla_j-\nabla_j \nabla_i)\alpha_k
+  &=(\nabla_i \nabla_j-\nabla_j \nabla_i)(g_{kl}\alpha^l) \\
+  &=g_{kl}(\nabla_i \nabla_j-\nabla_j \nabla_i)\alpha^l \\
+  &=g_{kl}R\indices{_{ij}^l_p}\alpha^p=R_{ijkp}\alpha^p=R\indices{_{ijk}^l}
+  \alpha_l \\
+  &=-R\indices{_{ij}^l_k}\alpha_l
+.\end{align*}
+For tensor product \(X\otimes \alpha\) we have \[
+  (\nabla_i \nabla_j-\nabla_j\nabla_i)(X^k\alpha_l)=R\indices{_{ij}^k_p}X^p
+  \alpha_l-R\indices{_{ij}^p_l}X^l\alpha_p
+.\] So, for \(T=T\indices{^k_l}\pd{x^k}\otimes \dd{x^l}\), \[
+  (\nabla_i \nabla_j-\nabla_j\nabla_i)(T\indices{^k_l})
+  =R\indices{_{ij}^k_p}T\indices{^p_l}-R\indices{_{ij}^p_l}T\indices{^k_p}
+.\] For higher order tensors, \[
+  T=T\indices{^{i_1\cdots i_p}_{j_1\cdots j_q}}\pd{x^{i_1}}\otimes\cdots\otimes 
+  \pd{x^{i_p}}\otimes \dd{x^{j_1}}\otimes \cdots \otimes \dd{x^{j_q}}
+.\] The Ricci identity is similar, with \(p+q\) terms on the right hand side.
+
+Here is one warning: It is not recommended to write upper indices in this way: \[
+  R_{jkl}^i
+,\] because this is unclear whether \[
+  g_{pi}R_{jkl}^i=R_{pjkl}\text{ or }R_{jpkl}
+\] The have opposite signs. You should write \(R\indices{^i_{jkl}}\) and
+\(R\indices{_j^i_{kl}}\). In tex, you can use the \emph{tensor} package, and
+write
+\begin{verbatim}
+ R\indices{^j_i_k_l}
+ R\indices{_j^i_k_l}
+\end{verbatim}
+
+
+
+\end{document}

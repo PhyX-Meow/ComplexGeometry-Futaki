@@ -1,0 +1,260 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+\begin{theorem}
+  Let \(L\to M\) be a holomorphic line bundle over a compact manifold with
+  negative \(c_1(L)\), which means for a metric \(h\) on \(L\), its first
+  Chern form \(-\frac{\sqrt{-1}}{2\pi}\partial \bar{\partial}h\) is negative
+  definite. Then \(H^0(M,\mathcal{O}(L))=0\), \ie\ there is no non-zero 
+  holomorphic section of \(L\).
+\end{theorem}
+\begin{proof}
+  Let \(\nabla\) be the connection for \(L,L\otimes T^*M,\ldots\) whenever
+  we want to take derivative. Let \(s\) be a holomorphic section of \(L\).
+  We choose a local holomorphic frame \(e\) of \(L\), and use the same notation
+  \(h\) for \(h(\bar{e},e)\). (This was already used in the statement of the
+  theorem). We write \[
+    -\partial\bar{\partial}\log h=r_{i\bar{j}}\dd{z^i}\wedge \dd{\bar{z}^j}
+  .\] So that \((r_{\bar{j}})\) is negative definite. Write \(s=s^1 e\). Then
+  note that \(\nabla\) makes \(h\) and \(\omega\) parallel,
+  \begin{align*}
+    0\le \int_{M}|\nabla s|^2\omega^m&=\int_{M}hg^{i\bar{j}}\nabla_i s^1
+    \cdot \overline{\nabla_j s^1}\omega^m \\
+    &=-\int_{M}h g^{i\bar{j}}(\nabla_{\bar{j}}\nabla_i s)\cdot \bar{s}\omega^m \\
+    &=-\int_{M}hg^{i\bar{j}}(\nabla_i\underbracket{\nabla_{\bar{j}}s}_
+    {\mathclap{0\text{ since }s\text{ holo}}}+r_{\bar{j}i}s)\bar{s}\omega^m \\
+    &=\int_{M}g^{i\bar{j}}r_{i\bar{j}}|s|^2\omega^m<0
+  .\end{align*}
+  If \(s\neq 0\), this gives a contradiction.
+\end{proof}
+
+Kodaira vanishing theorem is a harmonic form version of the above theorem for
+positive line bundles. Before doing it, we will consider the \(\bar{\partial}
+\)-Laplacian \(\lap_{\bar{\partial}}\) in the case without line bundle.
+
+Recall the curvature tensor on Kähler manifolds satisfy
+\begin{gather*}
+  R_{ijAB}=R_{ABij}=0, \\
+  R_{i\bar{j}k\bar{l}}=-R_{\bar{j}ik\bar{l}}=R_{k\bar{l}i\bar{j}}
+  =-R_{k\bar{l}\bar{j}i}
+.\end{gather*} 
+Also by the 1st Bianchi identity \[
+  R_{i\bar{j}k\bar{l}}+\underbracket{R_{ik\bar{l}\bar{j}}}_{=0}
+  +R_{i\bar{l}\bar{j}k}=0
+.\] So this means it is symmetric in \(\bar{j}\) and \(\bar{l}\), and also in
+\(i\) and \(k\). Recall also the Ricci identity is \[
+  (\nabla_i \nabla_{\bar{j}}-\nabla_{\bar{j}}\nabla_i)\alpha_k 
+  =-R\indices{_{i\bar{j}}^p_k}\alpha_p
+.\] Similarly, for a tensor field \[
+  T\indices{^i_{j\bar{k}}}\pd{z^i}\otimes \dd{z^j}\otimes \dd{\bar{z}^k}
+,\] we have \[
+  (\nabla_k\nabla_{\bar{l}}-\nabla_{\bar{l}}\nabla_k)T\indices{^i_{j\bar{k}}}
+  =R\indices{_{k\bar{l}}^i_p}T\indices{^p_{j\bar{k}}}-R\indices{_{k\bar{l}}^p_j}
+  T\indices{^i_{p\bar{k}}}-R\indices{_{k\bar{l}}^{\bar{p}}_{\bar{k}}}
+  T\indices{^i_{j\bar{p}}}
+.\] 
+\begin{remark}
+  In \emph{Morrow-Kodaira}, page 119, there is a similar formula. But it shows \[
+    [\nabla_\lambda,\nabla_{\bar{\nu}}]\xi\indices{^\alpha_{\beta\bar{\gamma}}}
+    =-\sum_{\tau}R_{\tau\bar{\lambda}\nu}^\alpha
+    \xi\indices{^\tau_{\beta\bar{\gamma}}}
+    +\sum_{\tau}R_{\beta\bar{\lambda}\nu}^\tau
+    \xi\indices{^\alpha_{\tau\bar{\gamma}}}
+    +\sum_{\tau}R_{\bar{\gamma}\bar{\lambda}\nu}^{\bar{\tau}}
+    \xi\indices{^\alpha_{\beta\bar{\tau}}}
+  .\] It appears that \(\bar{\lambda}\nu\) are typos, and for example \[
+    R_{\beta\lambda\bar{\nu}}^\tau=R\indices{_\beta^\tau_{\lambda\bar{\nu}}}
+    =-R\indices{^\tau_{\beta\lambda\bar{\nu}}}
+  .\] As I wrote before, it is very bad to write in the form \[
+    R_{\tau\lambda\bar{\nu}}^{\beta}
+  \] because the sign is missing.
+
+  In view of  Proposition 6.2 and Proposition 6.6, the sign convention of
+  \emph{Morrow-Kodaira} is the same as these notes.
+\end{remark}
+Let \(\vphi=\frac{1}{p!q!}\vphi_{i_1\cdots i_p\bar{j}_1\cdots \bar{j}_q}
+\dd{z}^{i_1}\wedge\cdots\wedge\dd{z^{i_p}}\wedge\dd{\bar{z}^{j_1}}\wedge\cdots
+\wedge\dd{\bar{z}^{j_q}}\) be a type \((p,q)\)-form on a compact Kähler manifold.
+
+\begin{theorem}[Morrow-Kodaira, Theorem 6.1]
+  \begin{align*}
+    (\lap_{\bar{\partial}}\vphi)_{i_1\cdots i_p\bar{j}_1\cdots\bar{j}_q}
+    &=-g^{i\bar{j}}\nabla_i \nabla_{\bar{j}}\vphi_{i_1\cdots i_p\bar{j}_q\cdots
+    \bar{j}_q}+\sum_{\beta=1}^q R\indices{^{\bar{k}}_{\bar{j}_\beta}}
+    \vphi_{i_1\cdots i_p\bar{j}_1\cdots \bar{j}_{\beta-1}\bar{k}\bar{j}_{\beta+1}
+    \cdots \bar{j}_q} \\
+    &\phantom{=}+\sum_{\alpha=1}^{p}\sum_{\beta=1}^{q}R\indices{^k_{i_\alpha
+    \bar{j}_\beta}^{\bar{l}}}\vphi_{i_1\cdots i_{\alpha-1}ki_{\alpha+1}\cdots
+    i_p\bar{j}_1\cdots \bar{j}_{\beta-1}\bar{l}\bar{j}_{\beta+1}\cdots\bar{j}_q}
+  .\end{align*}
+\end{theorem}
+\begin{proof}
+  Since \(\Gamma_{\bar{i}\bar{j}}^{\bar{k}}=\Gamma_{\bar{j}\bar{i}}^{\bar{k}}\),
+  using \(I=(i_1\cdots i_p)\), we have
+  \begin{align*}
+    (\bar{\partial}\vphi)_{I\bar{j}_0\cdots\bar{j}_q}&=(-1)^p\left(
+    \pd{\bar{z}^{j_0}}\vphi_{I\bar{j}_1\cdots\bar{j}_q}-\pd{\bar{z}^{j_1}}
+    \vphi_{I\bar{j}_0\bar{j}_2\cdots \bar{j}_p}+\cdots\right) \\
+    &=(-1)^p\left(\nabla_{\bar{j}_0}\vphi_{I\bar{j}_1\cdots \bar{j}_q}-
+    \nabla_{\bar{j}_1}\vphi_{I\bar{j}_0\bar{j}_2\cdots\bar{j}_q}+\cdots\right) \\
+    &=(-1)^p \sum_{\beta=0}^{q}(-1)^\beta \nabla_{\bar{j}_\beta}
+    \vphi_{I\bar{j}_0\cdots\widehat{\bar{j}_\beta}\cdots \bar{j}_q}
+  .\end{align*}
+  And then
+  \begin{align*}
+    (\bar{\partial}^*\bar{\partial}\vphi)_{I\bar{j}_1\cdots \bar{j}_q}
+    &=-(-1)^p g^{k\bar{l}}\nabla_k (\bar{\partial}\vphi)_{I\bar{l}\bar{j}_1\cdots
+    \bar{j}_q} \\
+    &=g^{i\bar{j}}\nabla_i \nabla_{\bar{j}}\vphi_{I\bar{j}_q\cdots \bar{j}_q}
+    +\sum_{\beta=1}^{q}(-1)^{\beta+1}g^{i\bar{j}}\nabla_i \nabla_{\bar{j}_\beta}
+    \vphi_{I\bar{j}\bar{j}_q\cdots\widehat{\bar{j}_\beta}\cdots \bar{j}_q}
+  .\end{align*}
+  (The sign of \emph{M-K}, page 119, last is typo, \((-1)^{\lambda+1}\) should
+  be \((-1)^\lambda\)).
+
+  Also \[
+    (\bar{\partial}^*\vphi)_{I\bar{j}_2\cdots \bar{j}_q}
+    =-(-1)^q g^{i\bar{j}}\nabla_i \vphi_{I\bar{j}\bar{j}_2\cdots \bar{j}_q}
+  .\] So \[
+    (\bar{\partial}\bar{\partial}^*\vphi)_{I\bar{j}_1\cdots \bar{j}_q}
+    =-\sum_{\beta=1}^{q}(-1)^{\beta+1}\nabla_{\bar{j}_\beta}g^{i\bar{j}}\nabla_i
+    \vphi_{I\bar{j}\bar{j}_1\cdots\widehat{\bar{j}_\beta}\cdots \bar{j}_q}
+  .\] Thus \[
+    (\lap_{\bar{\partial}}\vphi)_{I\bar{j}_1\cdots \bar{j}_q}
+    =-g^{i\bar{j}}\nabla_i \nabla_{\bar{j}}\vphi_{I\bar{j}_1\cdots \bar{j}_q}
+    -\sum_{\beta=1}^{q}(-1)^\beta g^{i\bar{j}}[\nabla_i,\nabla_{\bar{j}_\beta}]
+    \vphi_{I\bar{j}\bar{j}_1\cdots\widehat{\bar{j}_\beta}\cdots \bar{j}_q}
+  .\] The first term is identical to the first term in desired result. The
+  third term in the theorem is obtained by apply the Ricci identity to
+  \(I\)-indices. So we apply the Ricci identity to \(\bar{j}\bar{j}_1\cdots
+  \widehat{\bar{j}_\beta}\cdots \bar{j}_q\), and obtain \[
+    +\sum_{\beta=1}^{q}(-1)^\beta g^{i\bar{j}}R\indices{_{i\bar{j}_\beta}^{
+    \bar{p}}_{\bar{j}}}\vphi_{I\bar{p}\bar{j}_1\cdots\widehat{\bar{j}_\beta}
+    \cdots \bar{j}_q}+\sum_{\beta=1}^{q}(-1)^\beta g^{i\bar{j}}
+    \sum_{\gamma\neq\beta}R\indices{_{i\bar{j}_\beta}^{\bar{p}}_{\bar{j}_\gamma}}
+    \vphi_{I\bar{j}\bar{j}_1\cdots\underset{\mathclap{\substack{\uparrow\\\gamma
+    \text{-th}}}}{\bar{p}}\cdots\widehat{\bar{j}_\beta}\cdots \bar{j}_q}
+  .\] Using the symmetry of curvature tensor, we see \[
+    g^{i\bar{j}}R\indices{_{i\bar{j}_\beta}^{\bar{p}}_{\bar{j}}}
+    =g^{i\bar{j}}R\indices{_{i\bar{j}}^{\bar{p}}_{\bar{j}_\beta}}
+    =-g^{i\bar{j}}R\indices{_{\bar{j}i}^{\bar{p}}_{\bar{j}_\beta}}
+    =-R\indices{^{\bar{p}}_{\bar{j}_\beta}}
+  .\] So
+  \begin{align*}
+    \sum_{\beta=1}^{q}(-1)^\beta g^{i\bar{j}}R\indices{_{i\bar{j}_\beta}^{\bar{p}
+    }_{\bar{j}}}
+    \vphi_{I\bar{p}\bar{j}_1\cdots\widehat{\bar{j}_\beta}\cdots\bar{j}_q}
+    &=-\sum_{\beta=1}^{q}(-1)^\beta R\indices{^{\bar{p}}_{\bar{j}_\beta}}
+    \vphi_{I\bar{p}\bar{j}_1\cdots\widehat{\bar{j}_\beta}\cdots\bar{j}_q} \\
+    &=\sum_{j=1}^{q}R\indices{^{\bar{p}}_{\bar{j}_\beta}}\vphi_{I\bar{j}_1\cdots
+    \bar{j}_{\beta-1}\bar{p}\bar{j}_{\beta+1}\cdots \bar{j}_q}
+  .\end{align*} 
+  In \emph{Morrow-Kodaira}, the coefficient of this term is
+  \(-R\indices{_{\bar{j}_\beta}^{\bar{p}}}\). But in view of Proposition 6.4,
+  their Ricci \[
+    R_{\bar{j}i}^{\text{M-K}}=\partial_i\partial_{\bar{j}}\lap\det g
+    =-(-\partial_i\partial_{\bar{j}}\log\det g)=-R_{i\bar{j}}
+  .\] So our computation coincide with theirs. (Note that the majority of
+  Kähler geometers use \(R_{i\bar{j}}=-\partial_i\partial_{\bar{j}}
+  \log\det g\)).
+
+  Lastly, \[
+    \sum_{\beta=1}^{q}(-1)^\beta g^{i\bar{j}}
+    \sum_{\gamma\neq\beta}R\indices{_{i\bar{j}_\beta}^{\bar{p}}_{\bar{j}_\gamma}}
+    \vphi_{I\bar{j}\bar{j}_1\cdots\underset{\mathclap{\substack{\uparrow\\\gamma
+    \text{-th}}}}{\bar{p}}\cdots\widehat{\bar{j}_\beta}\cdots \bar{j}_q}
+    =\sum_{\beta=1}^{q}(-1)^\beta \sum_{\gamma\neq \beta}R\indices{^{\bar{j}}
+    _{\bar{j}_\beta}^{\bar{p}}_{\bar{j}_\gamma}}\vphi_{I\bar{j}\bar{j}_1\cdots
+    \bar{p}\cdots\widehat{\bar{j}_\beta}\cdots \bar{j}_q}
+  .\] But \(R\) is symmetric on 1st and 3rd indices, while \(\vphi\) is
+  skew-symmetric. Thus this term is 0.
+
+  All in all, we proved the theorem.
+\end{proof}
+
+\begin{remark}
+  You may worry that \emph{Morrow-Kodaira} is too ambiguous about the sign
+  of Ricci. But it does not affect Kodaira vanishing, as wee will see later.
+\end{remark}
+
+Let \(L\) be a holomorphic line bundle over a compact Kähler manifold \((M,g)\).
+Take a Hermitian metric \(h\) and on an open set \(U\), we take a local
+nowhere zero holomorphic section \(e\). We denote by the same letter \(h\) to
+express function \(h(e,e)\). So the curvature with respect to \(e\) is \[
+  \psi_{i\bar{j}}:=-\partial_i\partial_{\bar{j}}\log h
+.\] Curvature 2-form of \((L,h)\) is \[
+  -\sqrt{-1}\partial\bar{\partial}\log h
+\] and this is an \(1\times 1\) matrix valued 2-form.
+
+We can consider \(\bar{\partial}\)-Laplacian on \(L\)-valued \((p,q)\)-forms
+using the Kähler metric \(g\) and the Hermitian metric \(h\). As in the previous
+computations we see for \(\vphi\in \mathcal{A}^{p,q}(L)\), an \(L\)-valued
+\((p,q)\)-form,
+\begin{align*}
+  (\lap_{\bar{\partial}}\vphi)_{i_1\cdots i_p\bar{j}_1\cdots \bar{j}_q}
+  &=-g^{i\bar{j}}\nabla_i\nabla_{\bar{j}}\vphi_{i_1\cdots i_p\bar{j}_1\cdots
+  \bar{j}_q} \\
+  &\phantom{=}-\sum_{\beta=1}^q (-1)^\beta g^{i\bar{j}}[\nabla_i,\nabla_{\bar{j}
+  _\beta}]\vphi_{I\bar{j}\bar{j}_1\cdots\widehat{\bar{j}_\beta}\cdots\bar{j}_q}\\
+  &=-g^{i\bar{j}}\nabla_i\nabla_{\bar{j}}\vphi_{i_1\cdots i_p\bar{j}_1\cdots
+  \bar{j}_q} \\ &\phantom{=}+\sum_{\alpha=1}^p
+  \sum_{\beta=1}^q R\indices{^k_{j_\alpha\bar{j}_{\beta}}^{\bar{l}}}
+  \vphi_{i_1\cdots i_{\alpha-1}k i_{\alpha+1}\cdots i_p\bar{j}_1\cdots
+  \bar{j}_{\beta-1}\bar{l}\bar{j}_{\beta+1}\cdots \bar{j}_q} \\
+  &\phantom{=}+\sum_{\beta=1}^{q}(R\indices{^{\bar{k}}_{\bar{j}_\beta}}
+  +\psi\indices{^{\bar{k}}_{\bar{j}_\beta}})\vphi_{i_1\cdots i_p
+  \bar{j}_1\cdots \bar{j}_{\beta-1}\bar{k}\bar{j}_{\beta+1}\cdots \bar{j}_q}
+.\end{align*}
+To show this we simply consider a local expression \[
+  \vphi=\vphi_{i_1\cdots i_p\bar{j}_1\cdots \bar{j}_q}
+  e\otimes\dd{z^{i_1}}\wedge\cdots\wedge\dd{z^{i_p}}\wedge\dd{\bar{z}^{j_1}}
+  \wedge\cdots\wedge\dd{\bar{z}^{j_q}}
+\] and use \[
+  [\nabla_i,\nabla_{\bar{j}}]e=e\psi_{i\bar{j}}
+.\] We apply the previous formula of \(\lap_{\bar{\partial}}\) for line bundle
+\(L\).
+\begin{theorem}
+  Let \((L,h)\to (M,g)\) be a Hermitian line bundle over a compact Kähler
+  manifold. Let \((\psi_{i\bar{j}})\) be the curvature of \((L,h)\) w.r.t.
+  some local holomorphic frame and \((R_{i\bar{j}})\) be the Ricci curvature
+  of \((M,g)\). If \((\psi_{i\bar{j}}+R_{i\bar{j}})\) is positive definite
+  then \[
+    H^q(M,\mathcal{O}(L))=0\quad \text{for }q\ge 1
+  .\] 
+\end{theorem}
+\begin{proof}
+  By Dolbeault theorem and Hodge-Kodaira theorem, \[
+    H^q(M,\mathcal{O}(L))\cong \mathcal{H}^{0,q}_{\bar{\partial}}(M,L)
+  \] where the right hand side is the space of \(\bar{\partial}\)-harmonic
+  \((0,q)\)-forms. Let \(\vphi\in \mathcal{H}_{\bar{\partial}}^{0,q}(M,L)\),
+  we may apply the previous formula of \(\lap_{\bar{\partial}}\vphi\) with
+  \(I=\emptyset\). Thus  the second term on the right hand side is zero, and
+  we obtain \[
+    (\lap_{\bar{\partial}}\vphi)_{j_1\cdots j_q}
+    =-g^{i\bar{j}}\nabla_i \nabla_{\bar{j}}\vphi_{\bar{j}_1\cdots \bar{j}_q}
+    +\sum_{\beta=1}^q (R\indices{^{\bar{k}}_{\bar{j}_\beta}}
+    +\psi\indices{^{\bar{k}}_{\bar{j}_\beta}})
+    \vphi_{\bar{j}_1\cdots\underset{\mathclap{\substack{\uparrow\\\beta\text{-th}
+    }}}{\bar{k}}\cdots \bar{j}_q}
+  .\] From this, by integration by parts on the first term, we get
+  \begin{align*}
+    0=(\lap_{\bar{\partial}}\vphi,\vphi)_{L^2}&=|\bar{\partial}\vphi|^2
+    +\sum_{\beta=1}^{q}\int_{M}g^{l\bar{k}g^{i_1\bar{j}_1}}\cdots
+    g^{i_q\bar{j}_q}(\psi_{l\bar{j}_\beta}+R_{l\bar{j}_\beta})
+    \vphi_{\bar{j}_1\cdots \bar{k}\cdots \bar{j}_q}\overline{\vphi_{\bar{i}_1
+    \cdots\bar{i}_q}} \\
+    &=|\bar{\partial}\vphi|^2+\sum_{\beta=1}^{q}\int_{M}g^{i_1\bar{j}_1}\cdots
+    (\psi^{j_\beta\bar{k}}+R^{j_\beta\bar{k}})\cdots g^{i_q \bar{j}_q}
+    \vphi_{\bar{j}_1\cdots\underset{\mathclap{\substack{\uparrow\\\beta\text{-th}
+    }}}{\bar{k}}\cdots \bar{j}_q}\overline{\vphi_{\bar{i}_1\cdots\bar{j}_\beta
+    \cdots\bar{i}_{q}}}
+  .\end{align*} 
+  If \(\vphi\neq 0\), the right hand side is strictly positive. This is a
+  contradiction.
+\end{proof}
+
+\end{document}
