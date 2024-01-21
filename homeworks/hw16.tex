@@ -1,0 +1,42 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+
+\title{Complex Geometry Homework 16}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{problem}
+  Let \((M,g)\) be a K\"ahler manifold, and \(J\) the complex structure, that
+  \(J\) is an endomorphism of tangent bundle such that \[
+    J\pd{x^i}=\pd{y^i},J\pd{y^i}=-\pd{x^i}
+  \] for \(z^i=x^i+\sqrt{-1}y^i\).
+  \begin{enumerate}[(1)]
+  \item Show that for Riemannian metric \(g\) as defined in the notes, \[
+    \nabla J=0,\quad \text{and }g(JX,JY)=g(X,Y)
+  .\] 
+  \item Show that \[
+    R(JX,JY,Z,W)=R(X,Y,JZ,JW)=R(X,Y,Z,W)
+  .\] 
+  \item Show that
+  \begin{align*}
+    R(X-\sqrt{-1}JX,X+\sqrt{-1}JX,&Y-\sqrt{-1}JY,Y+\sqrt{-1}JY) \\
+    &=-4R(X,Y,X,Y)-4R(X,JY,X,JY)
+  .\end{align*}
+  \end{enumerate}
+  Here the Riemannian geometers' convention is used. So, if the
+  sectional curvature is positive (\ie\ for \(\mathbb{P}^m(\mathbb{C})\)), \[
+    R(\xi,\bar{\xi},\eta,\bar{\eta})<0
+  \] for non-zero \(\xi,\eta\in T'_p M\).
+
+  But curiously, majority of K\"ahler geometers are using the terminology that
+  \((M,g)\) has positive bisectional curvature if \[
+    R(\xi,\bar{\xi},\eta,\bar{\eta})>0
+  \] for non-zero \(\xi,\eta\in T_p' M\), using the opposite convention, \ie\ \[
+    R_{i\bar{j}k\bar{l}}=-\pdv{g_{i\bar{j}}}{z^k,\bar{z}^l}+\cdots
+  .\]
+\end{problem}
+\end{document}

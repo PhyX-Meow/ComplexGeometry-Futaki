@@ -1,0 +1,39 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+
+\title{Complex Geometry Homework 18}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{problem}
+  On Kähler manifold \((M,g)\), show that \[
+    \dd{V_g}=\frac{\omega^m}{m!}
+  .\] Where \(\dd{V_g}\) is the Riemannian volume form and \[
+    \omega=\sqrt{-1}g_{i\bar{j}}\dd{z^i}\wedge\dd{\bar{z}^j}
+  \] is the Kähler form.
+
+  (Hint: Use coordinates with \(\pd{x^1},\pd{y^1},\ldots\) are orthonormal).
+\end{problem}
+\begin{problem}
+  Let \(E\to M\) be a holomorphic vector bundle of rank \(r\) over an
+  \(m\)-dimensional complex manifold. Taking fiberwise projective space
+  \(\mathbb{P}^{r-1}(\mathbb{C})\), we obtain an \((m+r-1)\)-dimensional
+  complex manifold. This is called the projective bundle of \(E\).
+  For \(E=\mathcal{O}\oplus \mathcal{O}(k)\to \mathbb{P}^1(\mathbb{C})\),
+  which is a rank 2 bundle, the projective bundle \(\mathbb{P}(E)\) is called
+  a Hirzebruch surface, which we will denote by \(M_k\).
+  Show that \(M_1\) is isomorphic to the one-point blow-up of
+  \(\mathbb{P}^2(\mathbb{C})\).
+
+  (Hint: \(\mathbb{P}(\mathcal{O}\oplus \mathcal{O}(1))=\mathbb{P}((\mathcal{O}
+  \oplus\mathcal{O}(1))\otimes \mathcal{O}(-1)=\mathbb{P}(\mathcal{O}(-1)\oplus
+  \mathcal{O})\)).
+  \begin{center}
+    \includestandalone{../figures/18-hw-cp2-blow}
+  \end{center}
+\end{problem}
+\end{document}
