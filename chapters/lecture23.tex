@@ -1,0 +1,173 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+So we may believe that \(\pdv{M_t}{t}\) should be expressed in terms of \[
+  \pdv{f_{\alpha\beta}^i(z_\beta,t)}{t_\lambda}
+.\] Kodaira-Spencer showed this idea works. We put \[
+  \theta_{\alpha\beta}(t)=\sum_i\pdv{f_{\alpha\beta}^i(z_\beta,t)}{t_\lambda}
+  \pd{z_\alpha^i}
+.\] For a complex manifold \(M\) we denote by \(\Theta=\mathcal{O}(T'M)\), and
+call it the tangent sheaf. (This is a standard notation in deformation theory).
+
+\begin{lemma}
+\(\{\theta_{\alpha\beta}(t)\}\) is a 1-cocycle of \(\Theta_t\), \ie\ \[
+  \theta_{\alpha\beta}+\theta_{\beta\gamma}+\theta_{\gamma\alpha}=0\quad
+  \text{ on }U_\alpha\cap U_\beta\cap U_\gamma
+\] and \(\theta_{\beta\alpha}=-\theta_{\alpha\beta}\). Here \(\Theta_t=
+\mathcal{O}(T'M_t)\).
+\end{lemma}
+\begin{proof}
+  We have \[
+    z_\alpha^i=f_{\alpha\gamma}^i(z_\alpha,t)=f_{\alpha\beta}^i(z_\beta,t)
+    =f_{\alpha\beta}^i(f_{\beta\gamma}(z_\gamma,t),t)
+  .\] So \[
+    \pd{z_\beta^j}=\pdv{f_{\alpha\beta}^i}{z_\beta^j}\pd{z_\alpha^i}
+  .\] Thus
+  \begin{align*}
+    \theta_{\alpha\gamma}&=\pdv{f_{\alpha\gamma}^i}{t_\lambda} \\
+    &=\pdv{f_{\alpha\beta}^i}{t_\lambda}\pd{z_\alpha^i}+\pdv{f_{\alpha\beta}^i}
+    {z_\beta^j}\pdv{f_{\beta\gamma}^j}{t_\lambda}\pd{z_\alpha^i} \\
+    &=\pdv{f_{\alpha\beta}^i}{t_\lambda}\pd{z_\alpha^i}
+    +\pdv{f_{\alpha\beta}^i}{t_\lambda}\pd{z_\alpha^i}
+    +\pdv{f_{\beta\gamma}^j}{t_\lambda}\pd{z_\beta^j} \\
+    &=\theta_{\alpha\beta}+\theta_{\beta\gamma}
+  .\end{align*}
+  \(f_{\alpha\beta}(f_{\beta\alpha}(z,t),t)=\Id\), so \[
+    \pdv{f_{\alpha\beta}^i}{t_\lambda}\pd{z_\alpha^i}+\pdv{z_\alpha^i}{z_\beta^j}
+    \pdv{f_{\beta\alpha}^j}{t_\lambda}\pd{z_\alpha^i}=0
+  .\] Hence \(\theta_{\alpha\beta}+\theta_{\beta\alpha}=0\).
+\end{proof}
+
+\begin{definition}
+  The cohomology class \(\{\theta_{\alpha\beta}\}\) in \(H^1(\Theta_t)\) is
+  defined to be \(\pdv{M_t}{t_\lambda}\), and called the \textbf{infinitesimal
+  deformation}.
+
+  Of course, in general \[
+    \pd{t}=\sum_{\lambda=1}^{n}c_\lambda\pd{t_\lambda}
+  ,\] and we define \[
+    \pdv{M_t}{t}=\sum_{\lambda}c_\lambda\pdv{M_t}{t_\lambda}
+  .\] 
+\end{definition}
+
+\begin{prop}
+  The cohomology class \(\pdv{M_t}{t}\) does not depend on the choice of the 
+  covering \(\bigcup_{\alpha}\mathcal{U}_\alpha\) and local coordinates
+  \(z_\alpha^i\).
+\end{prop}
+\begin{proof}
+  If we choose another coordinate charts \((w_\alpha^i,t)\) on the same open
+  covering \(\bigcup_{\alpha}\mathcal{U}_\alpha\), we have two coordinate
+  change \[
+    z_\alpha^i=f_{\alpha\beta}^i(z_\beta,t),\quad
+    w_\alpha^i=g_{\alpha\beta}^i(w_\beta,t),\quad
+  \] and the coordinate change from \(w\) to \(z\), \[
+    z_\alpha^i=h_\alpha^i(w_\alpha,t)
+  .\] We put \[
+    \theta_{\alpha\beta}=\pdv{f_{\alpha\beta}^i}{t_\lambda}\pd{z_\alpha^i},\quad
+    \hat{\theta}_{\alpha\beta}=\pdv{g_{\alpha\beta}^i}{t_\lambda}\pd{w_\alpha^i}
+  .\] But since \[
+    f_{\alpha\beta}^i(h_\beta(w_\beta,t),t)=z_\alpha^i
+    =h_\alpha^i(w_\alpha,t)=h_\alpha^i(g_{\alpha\beta}(w_\beta,t),t)
+  ,\] we obtain \[
+    \pdv{f_{\alpha\beta}^i}{t_\lambda}+\pdv{z_\alpha^i}{z_\beta^j}
+    \pdv{h_\beta^j}{t_\lambda}=\pdv{h_\alpha^i}{t_\lambda}
+    +\pdv{z_\alpha^i}{w_\alpha^j}\pdv{g_{\alpha\beta}^j}{t_\lambda}
+  .\] Multiplying \(\pd{z_\alpha^i}\) and taking sum w.r.t. \(i\), we get \[
+    \theta_{\alpha\beta}+\pdv{h_\beta^i}{t_\lambda}\pd{z_\beta^i}
+    =\pdv{h_{\alpha}^i}{t_\lambda}\pd{z_\alpha^i}+\hat{\theta}_{\alpha\beta}
+  .\] Putting  \[
+    \eta_\alpha=\pdv{h_\alpha^i}{t_\lambda}\pd{z_\alpha^i} 
+  ,\] we obtain \[
+    \theta_{\alpha\beta}-\hat{\theta}_{\alpha\beta}=\eta_\alpha-\eta_\beta
+  .\] Hence \(\hat{\theta}-\theta=\delta\{\eta_\alpha\}\).
+
+  For general two open coverings \(\{U_\alpha\},\{V_\sigma\}\) with respective
+  coordinates, we consider a common refinement. On this refinement we have two
+  coordinates, but by the above arguments they define the same cohomology class.
+  Since cohomology class does not change through refinement, two coverings with
+  respective coordinate give the same cohomology class.
+\end{proof}
+
+One of main results of Kodaira-Spencer is the following:
+\begin{theorem}
+  Let  \(M\) be a compact complex manifold. If \(H^2(M,\Theta)=0\) then for any
+  \(\beta\in H^1(M,\Theta)\), there is a deformation \(M_t\), \(t\) small,
+  such that \[
+    \pdv{M_t}{t}\bigg|_{t=0}=\beta
+  .\] (c.f. Theorem 2.1 in \emph{Morrow-Kodaiara}, page 155).
+\end{theorem}
+This result was extended by Kuranishi in the case of \(H^2(M,\Theta)\neq 0\).
+His theorem is stated roughly as follows:
+\begin{theorem}
+  There is a map \(\psi\colon H^1(M,\Theta)\to H^2(M,\Theta)\) such that
+  \(\psi^{-1}(0)\) parametrizes the deformations of complex structures of \(M\).
+  (c.f. Theorem 3.1 in \emph{Morrow-Kodaira}, page 192).
+\end{theorem}
+
+The method of Kuranishi was applied in many other non-linear problems involving
+moduli spaces, notably Donaldson theory on self-duality equation on 4-manifolds.
+
+See Freed-Uhlenbeck's book.
+
+\hfill
+
+\noindent\textbf{\large More on deformation of complex structures}
+\[\begin{tikzcd}[row sep=tiny]
+	\displaystyle H^1(M,\mathcal{O}(T'M)) & \displaystyle H_{\bar{\partial}}^{0,1}
+  (M,T'M) \\
+	\displaystyle \pdv{M_t}{t}\bigg|_{t=0} & \displaystyle \eta=
+  \eta_{\bar{\alpha}}^{\beta}\pd{z^\beta}\otimes
+  \dd{\bar{z}^{\alpha}}
+	\arrow["{\displaystyle\cong}"{description}, draw=none, from=1-1, to=1-2]
+	\arrow[tail reversed, from=2-1, to=2-2]
+\end{tikzcd}\]
+\begin{prop}
+  \(\exists\,\vphi(t)\in \mathcal{A}^{0,1}(T'M)\) such that
+  \begin{enumerate}[(1)]
+  \item \(f\) holomorphic with respect to \(\bar{\partial}_t\) if and only if \[
+      \pdv{f}{\bar{z}^{\alpha}}-\vphi_{\bar{\alpha}}^{\beta}\pdv{f}{z^\beta}=0
+    .\] 
+  \item \(\vphi(0)=0\).
+  \item \(\bar{\partial}\vphi(t)-\frac{1}{2}[\vphi(t),\vphi(t)]=0\).
+  \item \(\dot{\vphi}(0)=-\eta\).
+  \end{enumerate}
+  Here for \(\vphi\in \mathcal{A}^{p}(T'M),\psi\in \mathcal{A}^q(T'M)\), \[
+    [\vphi,\psi]:=\vphi\psi-(-1)^{pq}\psi\vphi
+  .\] So \[
+    [\vphi,\vphi]=2\vphi\vphi=2\phi^\beta\partial_\beta\vphi^\gamma
+    \partial_\gamma
+  .\] More detail will be given later.
+\end{prop}
+
+\section{Chern-Weil theory}
+Let \(E\to M\) be a smooth complex vector bundle of rank \(r\) over a compact
+real smooth manifold \(M\). Let \(\nabla\) be a connection and \[
+  \dd^\nabla\colon C^\infty(M,E\otimes \wedge^p M)\lrr
+  C^\infty(M,E\otimes\wedge^{p+1}(M))
+\] be the exterior covariant derivative.
+
+Recall that \[
+  R=\dd^\nabla\circ \dd^\nabla\in C^\infty(M,\op{End}(E)\otimes\wedge^2 M)
+\] is the curvature 2-form. As a homework we studied the Bianchi identity \[
+  \dd^\nabla R=0
+.\] 
+
+Probably the best answer for the homework to prove it would be as follows:
+\begin{proof}
+  For a section \(s\in C^\infty(M,E)\), \[
+    Rs=\dd^\nabla (\dd^\nabla s)
+  .\] Then \[
+    (\dd^\nabla R)s=\dd^\nabla (Rs)-R(\dd^\nabla S)
+    =\dd^\nabla (\dd^\nabla \dd^\nabla s)-(\dd^\nabla\dd^\nabla)(\dd^\nabla s)
+    =0
+  .\] Write \(\det E:=\wedge^r E\), which is a complex line bundle and
+  \(\op{End}(\det E)\cong (\det E)\otimes(\det E)^{-1}\) is a trivial line
+  bundle.
+\end{proof}
+
+\end{document}

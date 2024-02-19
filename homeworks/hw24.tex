@@ -1,0 +1,36 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+
+\title{Complex Geometry Homework 24}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{problem}
+  Let \(e_1,\ldots,e_r\) be a local frame of \(E\), and write \[
+    Re_j=\sum_{i=1}^{r}\Omega\indices{^i_j}e_i
+  \] so that \(\Omega\indices{^i_j}\) is a 2-form. Show 
+  \begin{align*}
+    c_1(E)&=\left[\frac{\sqrt{-1}}{2\pi}\op{tr}(\Omega\indices{^i_j})\right]
+    =\left[\frac{\sqrt{-1}}{2\pi}(\Omega\indices{^1_1}+\cdots+\Omega\indices{^r
+    _r})\right] \\
+    c_2(E)&=\left[-\frac{1}{8\pi^2}\sum_{i,j}(\Omega\indices{^i_i}\wedge\Omega
+    \indices{^j_j}-\Omega\indices{^i_j}\wedge\Omega\indices{^j_i})\right] \\
+    &\ \vdots \\
+    c_r(E)&=\left[\left(\frac{\sqrt{-1}}{2\pi}\right)^r\det(\Omega\indices{^i_j}
+    )\right] \\
+    c_k(E)&=\left[\left(\frac{\sqrt{-1}}{2\pi}\right)^k \frac{1}{k!}\sum
+    \delta_{i_1\cdots i_k}^{j_1\cdots j_k}\Omega\indices{^{i_1}_{j_1}}\wedge 
+    \cdots\wedge\Omega\indices{^{i_k}_{j_k}}\right]
+  .\end{align*}
+  Where \(\delta_{i_1\cdots i_k}^{j_1\cdots j_k}\) is the signature of the 
+  permutation.
+\end{problem}
+\begin{problem}
+  For holomorphic vector bundles, show that the definition of \(c_1(E)\)
+  coincides the one given earlier using a Hermitian metric.
+\end{problem}
+\end{document}

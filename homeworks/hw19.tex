@@ -1,0 +1,32 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+
+\title{Complex Geometry Homework 19}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{problem}
+  At a point \(p\in M\) on a Kähler manifold \(M\), choose adapted coordinate
+  around \(p\). Let \(f\) be the Kähler potential of the Kähler metric \(g\).
+  Show that the curvature tensor is expressed at \(p\) by \[
+    R_{i\bar{j}k\bar{l}}=\pdv{f}{z^i,\bar{z}^j,z^k,\bar{z}^l}
+  .\] Use this to show \[
+    R_{i\bar{j}k\bar{l}}=R_{i\bar{l}k\bar{j}}=R_{k\bar{j}i\bar{l}}
+  .\] 
+\end{problem}
+\begin{problem}
+  Let \(M\) be a compact Kähler manifold of positive Ricci curvature. (such a
+  manifold is called a Fano manifold). Show that \[
+    H^q(M,\mathcal{O})=0\quad\text{ for }q\ge 1
+  .\] (Hint: Use theorem in note of lecture 19, \(H^q(M,\mathcal{O})\cong 
+  H^{0,q}(M,\mathbb{C})\).
+\end{problem}
+\begin{problem}
+  Show that \(\Lambda L-L\Lambda=n-p-q\). (You may refer to
+  \emph{Griffiths-Harris}, page 120-121).
+\end{problem}
+\end{document}

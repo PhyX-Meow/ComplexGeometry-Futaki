@@ -1,0 +1,43 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+
+\title{Complex Geometry Homework 22}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{problem}
+  Let \(M\) be a non-singular hypersurface of degree \(d\) in \(\mathbb{P}^n
+  (\mathbb{C})\), \ie\ hypersurface in \(\mathbb{P}^n(\mathbb{C})\) defined as
+  a zero set of homogeneous polynomial of degree \(d\). Show that \[
+    c_1(M)=(n+1-d)c_1(H)\big|_M
+  \] where \(H=\mathcal{O}(1)\) is the hyperplane bundle of \(\mathbb{P}^n
+  (\mathbb{C})\).
+\end{problem}
+\begin{problem}
+  Show that a hypersurface \(M\) of degree 4 in \(\mathbb{CP}^3\) is a
+  K3 surface, \ie\ \(c_1(M)=0\) and \(b_1(M)=0\).
+
+  (Hint: For \(b_1\) use Lefschetz's theorem below. See also
+  \emph{Griffiths-harris}, page 591).
+\end{problem}
+\begin{problem}
+  Prove the following Lefschetz's theorem using Kodaira-Nakano vanishing
+  theorem:
+
+  Let \(M\) be a compact complex manifold of \(\dim_{\mathbb{C}}M=m\),
+  \(V\subset M\) a non-singular hypersurface with the line bundle \(L=[V]\)
+  ample. Then the inclusion \(\iota\colon V\to M\) induces isomorphism \[
+    \iota^*\colon H^r(M,\mathbb{C})\lrr H^r(V,\mathbb{C}),\quad
+    \text{for }r\le m-2
+  \] and injection for \(r=m-1\).
+
+  (Hint: See \emph{Griffiths-Harris}, page 156-157. See also
+  \emph{J.Milnor, Morse Theory} or \emph{R.Bott, On a Theorem of Lefschetz,
+  Michigan J.Math. 6 (1959)}, 211-216. Using Morse theory one get results for
+  homotopy groups).
+\end{problem}
+\end{document}

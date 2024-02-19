@@ -1,0 +1,187 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+Now we move on to the proof of Kodaira embedding theorem. For that purpose,
+we need some preparatory results.
+
+Recall that the blow-up of a complex manifold at one point was defined in
+homework 6. We describe it here in the following way:
+
+Let \(z=(z^1,\ldots,z^n)\) be a local holomorphic coordinate around \(p\) in
+a coordinate neighborhood \(U\) of a complex manifold \(M\). Let \(t=[t^1:\cdots
+:t^m\) be the homogeneous coordinate of \(\mathbb{P}^{m-1}(\mathbb{C})\).
+Consider the complex submanifold \(W\) in \(U\times\mathbb{P}^{m-1}(\mathbb{C})\)
+defined by \[
+  W=\{(z,t)\in U\times \mathbb{P}^{m-1}(\mathbb{C}):t^i z^j-t^j z^i=0,
+  i,j=1,\ldots,m\}
+.\] Some \(t^i\) has to be non-zero, but can be 0. We can define \[
+  \pi\colon W\lrr U,\quad(z,t)\longmapsto z
+\] and also define \(E:=\pi^{-1}(0)\). Then \[
+  E=\pi^{-1}(0)=\{0\}\times \mathbb{P}^{m-1}(\mathbb{C})
+  \cong\mathbb{P}^{m-1}(\mathbb{C})
+.\] And \(\pi\colon W\setminus E\to U\setminus\{0\}\) is an isomorphism.
+Of course, \(W\) is isomorphic to a neighborhood of zero section of
+\(\mathcal{O}(-1)\to \mathbb{P}^{m-1}(\mathbb{C})\). The blow-up of \(M\) at
+\(p\) is obtained by replacing \(U\) by \(W\). (\(p\) is the point \(z=0\)).
+The blow-up has many namings: \emph{Monoidal transformation}, \emph{\(\sigma\)-
+process}, \emph{quadratic transformation}.
+
+Because of the last naming, the blow-up of \(M\) at \(p\) is often denoted by
+\(Q_p(M)\). But of course \(\tilde{M}\) is simpler and more convenient if the
+point \(p\) where blow-up is made is not so important.
+
+Let \(\pi:\tilde{M}=Q_p(M)\to M\) be the blow-up of \(M\) at \(p\),
+\(E:=\pi^{-1}(p)\) is called the exceptional divisor.
+\begin{theorem}
+  \[
+    K_{\tilde{M}}=\pi^* K_M \otimes [E]^{m-1}
+  \] where \(E\) is the line bundle associated to \(E\). In particular, \[
+    c_1(\tilde{M})=\pi^* c_1(M)-(m-1)[E]
+  \] where \([E]\) denotes the Poincaré the homology class of \(E\),
+  \ie\ \(c_1([E])\). (This way, divisors, line bundles and their first Chern
+  classes are often identified and denoted by the same letter).
+\end{theorem}
+\begin{proof}
+  \(\tilde{M}\setminus E\cong M\setminus\{p\}\) and \[
+    K_{\tilde{M}}\Big|_{\tilde{M}\setminus E}=\pi^* K_M\Big|_{M\setminus\{p\}}
+  .\] Since \([E]\big|_{\tilde{M}\setminus E}\) is trivial, the identity in the
+  theorem holds on \(\tilde{M}\setminus E\).
+  Thus we have only to show the identity along \(E\). It is sufficient to
+  consider the case when \(t^1\neq 0\). Along \(E\), we can take local
+  coordinate \[
+    u_1^2=\frac{t^2}{t^1},\ldots,u_1^m=\frac{t^m}{t^1}
+  .\] In a neighborhood of \(E\), \[
+    (z^1,u_1^2,\ldots,u_1^m)\longmapsto (z,t)
+  \] with \(E=\{z^1=0\}\) and 
+  \begin{align*}
+    z&=(z^1,z^1 u_1^2,\ldots,z^1 u_1^m), \\
+    t&=[1:u_1^2:\cdots :u_1^m]
+  \end{align*}
+  gives a local coordinate. Then using \(\frac{t^i}{t^1}=\frac{t^i}{z^1}\), \[
+    \dd{z^1}\wedge\dd{\dd{u_1^2}}\wedge\cdots\wedge\dd{u_1^m}
+    =\dd{z^1}\wedge\dd{(\frac{z^2}{z^1})}\wedge\cdots\wedge\dd{(\frac{z^m}{z^1})}
+    =\frac{1}{(z^1)^{m-1}}\dd{z^1}\wedge\cdots\wedge\dd{z^m}
+  .\] When \(t^\alpha\neq 0\), by the similar computation with \[
+  u_{\alpha}^1=\frac{t^1}{t^\alpha},\ldots,\widehat{u_{\alpha}^\alpha},
+  \cdots,u_\alpha^m=\frac{t^m}{t^\alpha},\text{ and }z^\alpha
+  ,\] we have \[
+    \dd{\dd{u_\alpha^1}}\wedge\cdots\wedge\dd{z^\alpha}\wedge\cdots\wedge
+    \dd{u_\alpha^m}=\frac{1}{(z^\alpha)^{m-1}}\dd{z^1}\wedge\cdots\wedge\dd{z^m}
+  .\] Thus the transition function \(f_{\alpha\beta}\) of \(K_{\tilde{M}}
+  \otimes \pi^*K_M^{-1}\) is computed by
+  \begin{align*}
+    \dd{u_\beta^1}\wedge\cdots\wedge\dd{z^\beta}\wedge\cdots\wedge
+    \dd{u_\beta^m}&\otimes (\dd{z^1}\wedge\cdots\wedge\dd{z^m})^{-1} \\
+    &=f_{\alpha\beta}\dd{u_\alpha^1}\wedge\cdots\wedge\dd{z^\alpha}\wedge\cdots
+    \wedge\dd{u_\alpha^m}\otimes (\dd{z^1}\wedge\cdots\wedge\dd{z^m})^{-1}
+  .\end{align*}
+  Hence \(f_{\alpha\beta}=\left(\frac{z^\alpha}{z^\beta}\right)^{m-1}\).
+  This is the transition function of \([E]^{m-1}\).
+
+  On a neighborhood \(V_\alpha\) which does not meet \(E\), we take local
+  coordinates \(z^1,\ldots,z^m\) and if
+  \begin{align*}
+    s_\alpha\dd{u_\alpha^1}\wedge\cdots\wedge\dd{z^\alpha}\wedge\cdots\wedge
+    \dd{u_\alpha^m}&\otimes (\dd{z^1}\wedge\cdots\wedge\dd{z^m})^{-1} \\
+    &=s_a\dd{z^1}\wedge\cdots\wedge\dd{z^m}
+    \otimes (\dd{z^1}\wedge\cdots\wedge\dd{z^m})^{-1}
+  .\end{align*}
+  Then we have \(s_a=\left(\frac{1}{z^\alpha}\right)^{m-1}s_{\alpha}\).
+  \ie\ \[
+    f_{a\alpha}=\left(\frac{1}{z^\alpha}\right)^{m-1}
+  .\] This is the transition function of \([E]^{m-1}\) again.
+\end{proof}
+
+\begin{lemma}\label{lem:20-ample}
+  Let \(L\to M\) be an ample line bundle and \(G\to M\) be arbitrary line bundle.
+  Let \(k\) be a positive integer. Then there is a larger number \(n_0=
+  n_0(L,G,k)\) such that for any \(n\ge n_0\), the line bundle \[
+    \pi^* L^n\otimes \pi^* G \otimes [E]^{-k}\to Q_p(M)=:\tilde{M}
+  \] is ample. Here \(L^n=L\otimes\cdots\otimes L\) (\(n\)-times).
+\end{lemma}
+\begin{proof}
+  Recall that the neighborhood of the exceptional divisor is isomorphic to \[
+    W=\{(z,t)\in U\times \mathbb{P}^{m-1}(\mathbb{C}):z^i t^j-z^j t^i=0,
+    i,j=1,\ldots,m\}
+  .\] Consider the projection \[
+    \tau\colon W\to \mathbb{P}^{m-1}(\mathbb{C})\cong E
+  .\] Recall also \[
+  [E]\big|_{E}\cong \mathcal{O}(-1)
+  \] and \[
+    [E]=\tau^* \mathcal{O}(-1)
+  .\] Thus pulling back the standard metric on \(\mathcal{O}(-1)\), 
+  \(h=1+|u_1^2|^2+\cdots +|u_1^m|^2\), its curvature is \[
+    \tau^* \bar{\partial}\partial\log(1+|u_1^2|^2+\cdots+|u_1^m|^2)
+    =-\partial\bar{\partial}\log(|z^1|^2+\cdots +|z^m|^2)
+  \] using \(u_1^i=\frac{t^i}{t^1}=\frac{z^i}{z^1}\). The curvature is negative
+  in \(E\) direction and \(0\) in normal direction to \(E\).
+
+  On the other hand, \([E]\) is trivial outside \(W\). Thus using a partition
+  of unity we have a metric \(h\) of \([E]\) whose curvature is \(0\) outside
+  \(W\) and coincides with \[
+    -\partial\bar{\partial}\log(|z^1|^2+\cdots+|z^m|^2)
+  \] on a neighborhood of \(E\) slightly smaller than \(W\).
+
+  On the hand \(L\) is ample and thus \(\pi^*L\) has positive definite curvature
+  on \(M\setminus E\), positive along \(E\) in the normal direction. So for
+  sufficiently large \(n\ge n_0\), \(\pi^*L^n\otimes [E]^{-k}\) has positive
+  definite curvature.
+
+  The same argument applies for \(\pi^*L^n\otimes \pi^*G\otimes [E]^{-k}\).
+  One problem is that \(n_0\) may depend on the point \(p\) where the blow-up
+  is made. But since the construction of the metric is continuous with respect
+  to \(p\). So for small neighborhood of \(p\), we can choose \(n_0\) to be
+  independent of \(p\). Further, as we assume \(M\) is compact, we can choose
+  finite number of such neighborhoods. Then we can take the maximum of such
+  \(n_0\).
+\end{proof}
+
+\begin{lemma}
+  Let \(S\) be a hypersurface in \(M\), and \(\ell_S\) be the ideal sheaf of
+  \(S\), \ie\ the sheaf of germs of holomorphic functions on \(M\) vanishing
+  along \(S\). Then there is a natural isomorphism \[
+    \ell_S\cong \mathcal{O}([S]^{-1})
+  .\] Where \([S]\) is the line bundle associated to the divisor \(S\).
+
+  More generally, there is an isomorphism \[
+    \mathcal{O}(L)\otimes \ell_S\cong \mathcal{O}(L\otimes [S]^{-1})
+  \] for any line bundle \(L\). (The right hand side is often denoted by
+  \(\mathcal{O}(L-S)\) additively).
+\end{lemma}
+\begin{proof}
+  Let \(\{U_i\}\) be an open covering of \(M\) and suppose that  \[
+    U_i\cap S=\{f_i=0\}
+  \] for holomorphic function \(f_i\) on \(U_i\). Then the line bundle \([S]\)
+  is defined by transition functions \[
+    f_{ij}=\frac{f_i}{f_j}
+  .\] It follows that \[
+    f_{i}=f_{ij}f_j
+  \] and \(s=\{f_i\}_i\) defines a global section of \([S]\). Then for any
+  \(t\in \mathcal{O}([S]^{-1})\), the germ \(st\) is a germ of \(\mathcal{O}(
+  [S]\otimes [S]^{-1})\cong \mathcal{O}\), vanishing along \(S\) with at least
+  1st order since \(s=\{f_i\}\) is the defining section of \(S\). Thus the
+  multiplication \(s\) gives the isomorphism
+  \begin{align*}
+    \mathcal{O}([S]^{-1}) &\longrightarrow \ell_S\subset \mathcal{O}=
+    \mathcal{O}([S]\otimes [S]^{-1})\\
+    t &\longmapsto st
+  .\end{align*}
+  Similarly 
+  \begin{align*}
+    \mathcal{O}(L-S) &\longrightarrow \mathcal{O}(L)\otimes\ell_S\subset
+    \mathcal{O}(L\otimes [S]\otimes [S]^{-1})\\
+    t &\longmapsto st
+  \end{align*}
+  is an isomorphism.
+\end{proof}
+
+\begin{remark}
+  \(\mathcal{O}(L-kS)=\)``the sheaf of germs of local sections of \(L\) vanishing
+  along \(S\) with at least order \(k\)''.
+\end{remark}
+
+\end{document}

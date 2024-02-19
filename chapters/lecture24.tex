@@ -1,0 +1,176 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+Now we go back to the Chern-Weil theory.
+
+\(\det(I+\frac{\sqrt{-1}}{2\pi}R)\) is a differential form consisting different
+degrees. We consider it as a section of \(\op{End}(\det E)\otimes\wedge^*M\) by
+\begin{align*}
+  \det(I+\frac{\sqrt{-1}}{2\pi}R)s_1\wedge\cdots\wedge s_r&:=
+  (I+\frac{\sqrt{-1}}{2\pi}R)\wedge\cdots\wedge(I+\frac{\sqrt{-1}}{2\pi}R)
+  s_1\wedge\cdots\wedge s_r \\ &:=((I+\frac{\sqrt{-1}}{2\pi}R)s_1)\wedge\cdots
+  \wedge((I+\frac{\sqrt{-1}}{2\pi}R)s_r)
+\end{align*} 
+for any frame \(s_1,\ldots,s_r\).
+
+In general, for a line bundle \(L\), any section of \(\op{End}(L)=L\otimes L^*\)
+is expressed as \(ae\otimes e^*\) with respect to a frame \(e\) and its dual
+frame. But this \(a\) is independent of the frame \(e\). Thus \[
+  C^\infty(\op{End}(L))=C^\infty(M),\quad ae \otimes e^*\longleftrightarrow a
+.\] Given a connection \(\nabla\), one can check that \[
+  \dd^\nabla a=\dd{a}
+.\] In fact if \(\omega\) is the connection form w.r.t. \(e\), \ie\ \(\nabla e
+=e\omega\), then \(\nabla e^*=-\omega e^*\), and \[
+  \nabla (ae\otimes e^*)=(\dd{a}+\omega-\omega)\otimes e\otimes e^*
+  =\dd{a}\otimes e\otimes e^*
+.\] Thus the induced connection on \(\op{End}(\det E)\) from \(\nabla\) is
+just the exterior derivative \(\dd{}\).
+
+Consider for \(t\in \mathbb{R}\), \[
+  \det(I+\frac{\sqrt{-1}t}{2\pi}R)\in C^\infty(M,\op{End}(\det E)\otimes 
+  \wedge^*M)=C^\infty(M,\wedge^*M)
+\] which is a differential form on \(M\). So \[
+  \dd^\nabla\det(I+\frac{\sqrt{-1}t}{2\pi}R)
+  =\dd{\det(I+\frac{\sqrt{-1}t}{2\pi}R)}
+.\] On the other hand for \(s_1,\ldots,s_r\in C^\infty(M,E)\), \[
+  \det(I+\frac{\sqrt{-1}t}{2\pi}R)(s_1\wedge\cdots\wedge s_r)
+  =(I+\frac{\sqrt{-1}t}{2\pi}R)s_1\wedge\cdots\wedge
+  (I+\frac{\sqrt{-1}t}{2\pi}R)s_r
+.\] By Bianchi identity,
+\begin{align*}
+  &(\dd\big(\det(I+\frac{\sqrt{-1}t}{2\pi}R)))(s_1\wedge\cdots\wedge s_r) \\
+  =&(\dd^\nabla(\det(I+\frac{\sqrt{-1}t}{2\pi}R)))(s_1\wedge\cdots\wedge s_r) \\
+  =&\dd^\nabla (I+\frac{\sqrt{-1}t}{2\pi}R)
+  -\sum_{i=1}^r\det(I+\frac{\sqrt{-1}t}{2\pi}R)s_1\wedge\cdots \wedge\dd^\nabla 
+  s_i\wedge\cdots \wedge s_r \\
+  =&\sum_{i=1}^{r}(I+\frac{\sqrt{-1}t}{2\pi}R)s_1\wedge\dd^\nabla ((I+\frac{
+  \sqrt{-1}t}{2\pi}R)s_i)\wedge\cdots \wedge(I+\frac{\sqrt{-1}t}{2\pi}R)s_r \\
+  &-\sum_{i=1}^{r}(I+\frac{\sqrt{-1}t}{2\pi}R)s_1\wedge(I+\frac{\sqrt{-1}t}{2\pi}
+  R)(\dd^\nabla s_i)\wedge\cdots \wedge(I+\frac{\sqrt{-1}t}{2\pi}R)s_r \\
+  =&\sum_{i=1}^{r}(I+\frac{\sqrt{-1}t}{2\pi}R)s_1\wedge(\dd^\nabla (I+\frac{
+  \sqrt{-1}t}{2\pi}R))s_i\wedge\cdots \wedge(I+\frac{\sqrt{-1}t}{2\pi}R)s_r \\
+  =&0
+.\end{align*}
+Hence, putting \[
+  \det(I+\frac{\sqrt{-1}t}{2\pi}R)=1+t c_1(\nabla)+\cdots +t^r c_r(\nabla)
+.\] \(c_i(\nabla)\) are closed forms for \(i=1,\ldots,r\).
+
+Next we will see if we choose another \(\nabla'\) then \(c_i(\nabla)\) and
+\(c_i(\nabla')\) are cohomologous.
+
+Let \(\alpha\) be the \(\op{End}(E)\) valued 1-form such that \[
+  \nabla'-\nabla=\alpha
+.\] Note that \[
+  (\nabla'-\nabla)fs=(\dd{f}\otimes s+f\nabla's)-(\dd{f}\otimes s+f\nabla s)
+  =f(\nabla'-\nabla)s
+.\] We set
+\begin{align*}
+  \nabla_t&=\nabla +t\alpha \\
+  R_t&=\dd^{\nabla_t}\circ \dd^{\nabla_t}=(\dd^\nabla+t\alpha)\circ
+  (\dd^\nabla+t\alpha)
+.\end{align*}
+Then \[
+  \dv{R_t}{t}=\alpha\circ\dd^{\nabla_t}+\dd^{\nabla_t}\circ\alpha
+  =\dd^{\nabla_t}\alpha
+.\] Put \[
+  \vphi=\frac{\sqrt{-1}r}{2\pi}\int_{0}^{1}\alpha\wedge (I+\frac{\sqrt{-1}}{2\pi}
+  R_t)\wedge\cdots\wedge (I+\frac{\sqrt{-1}}{2\pi}R_t)\dd{t}
+.\] Here, the integrand is defined using a frame by
+\begin{multline*}
+  \alpha\wedge (I+\frac{\sqrt{-1}}{2\pi}R_t)\wedge\cdots\wedge
+  (I+\frac{\sqrt{-1}}{2\pi}R_t)(s_1\wedge\cdots\wedge s_r)= \\
+  \quad\frac{1}{r}\biggl(\alpha(s_1)\wedge(I+\frac{\sqrt{-1}}{2\pi}R_t)s_2\wedge
+  \cdots\wedge(I+\frac{\sqrt{-1}}{2\pi}R_t)s_r)+\cdots \\
+  \quad+(I+\frac{\sqrt{-1}}{2\pi}R_t)s_1
+  \wedge\cdots\wedge(I+\frac{\sqrt{-1}}{2\pi}R_t)s_{r-1}\wedge\alpha(s_r)\biggr)
+.\end{multline*} 
+One can check this is independent of the choice of \(s_1,\ldots,s_r\).
+Using Bianchi identity again we get 
+\begin{align*}
+  \dd{\vphi}&=\frac{\sqrt{-1}r}{2\pi}\int_{0}^{1}\dd\bigl(\alpha\wedge(I+\frac{
+  \sqrt{-1}}{2\pi}R_t)\wedge\cdots\wedge(I+\frac{\sqrt{-1}}{2\pi}R_t)\bigr)
+  \dd{t} \\
+  &=\frac{\sqrt{-1}r}{2\pi}\int_{0}^{1}\dd^{\nabla_t}\bigl(\alpha\wedge(I+\frac{
+  \sqrt{-1}}{2\pi}R_t)\wedge\cdots\wedge(I+\frac{\sqrt{-1}}{2\pi}R_t)\bigr)
+  \dd{t} \\
+  &=r\int_{0}^{1}(\dd^{\nabla_t}(\frac{\sqrt{-1}}{2\pi}\alpha))\wedge(I+\frac{
+  \sqrt{-1}}{2\pi}R_t)\wedge\cdots\wedge(I+\frac{\sqrt{-1}}{2\pi}R_t)\dd{t} \\
+  &=r\int_{0}^{1}\bigl(\dv{}{t}(I+\frac{\sqrt{-1}}{2\pi}R_t)\bigr)\wedge(I+\frac{
+  \sqrt{-1}}{2\pi}R_t)\wedge\cdots\wedge(I+\frac{\sqrt{-1}}{2\pi}R_t)\dd{t} \\
+  &=\int_{0}^{1}\dv{}{t}\biggl((I+\frac{\sqrt{-1}}{2\pi}R_t)\wedge(I+\frac{\sqrt{
+  -1}}{2\pi}R_t)\wedge\cdots\wedge(I+\frac{\sqrt{-1}}{2\pi}R_t)\biggr)\dd{t} \\
+  &=\det(I+\frac{\sqrt{-1}}{2\pi}R_1)-\det(I+\frac{\sqrt{-1}}{2\pi}R_0) \\
+  &=\sum_{i=1}^{r}c_i(\nabla)-c_i(\nabla')
+.\end{align*}
+But \[
+  \op{deg}(c_i(\nabla)-c_i(\nabla'))=2i
+.\] Thus \[
+  c_i(\nabla)-c_i(\nabla')=\dd{(\text{degree }(2i-1)\text{ term of }\vphi)}
+.\] We have proved
+\begin{theorem}[\CJKfamily{zhkai}陳省身]
+  \([c_i(\nabla)]\in H^{2i}(M,\mathbb{C})\) is independent of the choice of
+  connection \(\nabla\).
+\end{theorem}
+
+\begin{definition}
+  \(c_i(E)=[c_i(\nabla)]\in H^{2i}(M,\mathbb{C})\) is called the \(i\)-th
+  \textbf{Chern class}. (In fact it always belongs to \(H^{2i}(M,\mathbb{Z})\)
+  as will be explained below). \[
+    c(E)=1+c_1(E)+\cdots +c_r(E)\in H^*(M,\mathbb{C})
+    \quad(=[\det(I+\frac{\sqrt{-1}}{2\pi}R)])
+  \] is called the \textbf{total Chern class}.
+\end{definition}
+
+\begin{lemma}
+  In fact \(c_i(E)\in H^{2i}(M,\mathbb{R})\).
+\end{lemma}
+\begin{proof}
+  Choose a Hermitian metric \(h\) of \(E\) and a connection such that
+  \(\nabla h=0\). (The existence of such a connection is left as exercise).
+  Let \(e_1,\ldots,e_r\) be an orthonormal frame of \((E,h)\). Then using
+  \(h_{\bar{i}j}=h(\bar{e}_i,e_j)=\delta_{ij}\), \[
+    0=\dd{h_{\bar{i}j}}=h(\overline{\omega\indices{^k_i}e_k},e_j)
+    +h(\bar{e}_i,\omega\indices{^k_j}e_k)=\overline{\omega_{\bar{j}i}}
+    +\omega_{\bar{i}j}
+  .\] And \[
+    \overline{R_{\bar{j}i}}=\overline{\dd{\omega_{\bar{j}i}}+\omega_{\bar{j}k}
+    \wedge\omega_{\bar{k}i}}=\dd{\omega_{\bar{i}j}}-\omega_{\bar{i}k}\wedge 
+    \omega_{\bar{k}j}=-R_{\bar{i}j}
+  .\] Where we raise or lower the indices using \(h\). Since \(R\) is
+  skew-Hermitian, \(\frac{\sqrt{-1}}{2\pi}R\) is Hermitian and \[
+    \overline{\det(I+\frac{\sqrt{-1}}{2\pi}R)}=\det(I+\frac{\sqrt{-1}}{2\pi}R)
+  .\] 
+\end{proof}
+
+Another standard definition of Chern classes is given in the book
+\emph{Milnor-Stasheff: Characteristic classes}. In their book it is shown that
+given smooth complex vector bundle \(E\to M\) of rank \(r\), there is a 
+cohomology class \(c(E)\in H^*(M,\mathbb{Z})\) with \[
+  c(E)=\sum_{i=0}^{r},\quad c_i(E),c_i(E)\in H^{2i}(M,\mathbb{Z}),\quad c_0(E)=1
+.\] And they are uniquely determined by the following three axioms:
+
+\begin{axiom}[Naturality]
+  For any manifold \(N\) and a map \(f\colon N\to M\), \[
+    c(f^*E)=f^*c(E)
+  .\] 
+\end{axiom}
+\begin{axiom}[Whitney sum formula]
+  For two vector bundles \(E\to M\) and \(F\to M\) over \(M\), \[
+    c(E\oplus F)=c(E)\cup c(F)
+  .\] 
+\end{axiom}
+\begin{axiom}[Normalization]
+   \[
+     \left<c_1(\mathcal{O}_{\mathbb{P}^1}(-1)),[\mathbb{P}^1]\right> =-1
+   .\] Here \(\mathbb{P}^1=\mathbb{P}^1(\mathbb{C})\).
+\end{axiom}
+It is easy to see the Chern classes defined using connection and curvature 
+satisfy the three Axioms. Since the uniqueness holds as
+\(\mathbb{R}\)-coefficient cohomology, they must coincide. Thus the Chern
+classes defined using curvature are actually integral classes.
+
+\end{document}

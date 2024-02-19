@@ -1,0 +1,166 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+We wish to show the immersion \[
+  \Phi_{L^\mu}\colon M\lrr \mathbb{P}^N(\mathbb{C})
+\] is an embedding. What we need to show is \[
+  \Phi_{L^\mu}(p_0)\neq \Phi_{L^\mu}(p_1),\forall\,p_0\neq p_1
+.\] Let \(\pi\colon \tilde{M}=Q_{p_0p_1}(M)\to M\) be the blow-up of \(M\) at
+\(p_0\) and \(p_1\). Note that \[
+  Q_{p_0p_1}(M)=Q_{p_0}(Q_{p_1}(M))=Q_{p_1}(Q_{p_0}(M))
+.\] Put \(E_0=\pi^{-1}(p_0)\), \(E_1=\pi^{-1}(p_1)\) and \(E=\pi^{-1}(\{p_0,p_1\}
+)\). Of course we have \[
+  [E]=[E_0]\otimes [E_1],\quad E=E_0+E_1
+.\] 
+
+We can argue exactly in the same way as the proof of the previous lemma to get:
+\begin{lemma}
+  Let \(L\to M\) be an ample line bundle, \(G\to M\) an arbitrary line bundle,
+  and \(k\) be any positive integer. Then there exists \(n_0=n_0(L,G,k)>0\)
+  depending only on \(L,G\) and \(k\) such that, for any integer \(n\ge n_0\),
+  the line bundle \[
+    \pi^*L^m\otimes \pi^*G\otimes [E]^{-k}\to \tilde{M}=Q_{p_0p_1}(M)
+  \] is ample.
+\end{lemma}
+
+As before, we have commutative diagram of exact sequences
+\[\begin{tikzcd}
+	0 & {\Gamma(\mathcal{O}(\tilde{L})\otimes\ell_E)} & {\Gamma(\mathcal{O}(\tilde{L}))} & {\Gamma(\mathcal{O}({\tilde{L}})\otimes(\mathcal{O}_{\tilde{M}}/\ell_E))} & {H^1(\cdots} \\
+	0 & {\Gamma(\mathcal{O}(L)\otimes\ell_{p_0,p_1})} & {\Gamma(\mathcal{O}(L))} & {\Gamma(\mathcal{O}(L)\otimes(\mathcal{O}_M/\ell_{p_0,p_1}))} & {H^1(\cdots}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{{\pi_1^*}}", from=2-2, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=2-2, to=2-3]
+	\arrow["{{\pi^*}}", from=2-3, to=1-3]
+	\arrow["{{\rho}}", from=2-3, to=2-4]
+	\arrow["{{\pi_2^*}}"', from=2-4, to=1-4]
+	\arrow["{{\tilde{\rho}}}", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=2-4, to=2-5]
+\end{tikzcd}\]
+with \(\pi_1^*,\pi^*\) isomorphism, and \(\pi_2^*\) injection. Thus we obtain:
+\begin{lemma}
+  If \(\Gamma(\mathcal{O}(L))\to \Gamma(\mathcal{O}(\tilde{L}))\otimes(
+  \mathcal{O}_{\tilde{M}}/\ell_E)\) is surjective then \(\Gamma(\mathcal{O}(L))
+  \to \Gamma(\mathcal{O}(L)\otimes \ell_{p_0,p_1})\) is also surjective.
+\end{lemma}
+
+Assume that the assumption of the above lemma is satisfied. Since \(\mathcal{O}_M
+/\ell_{p_0,p_1}\) is a skyscraper sheaf, \[
+  \Gamma(\mathcal{O}(L)\otimes (\mathcal{O}_M/\ell_{p_0,p_1}))\cong L_{p_0}
+  \oplus L_{p_1}\cong \mathbb{C}\oplus \mathbb{C}
+,\] and
+\begin{align*}
+  \Gamma(\mathcal{O}(L)) &\longrightarrow L_{p_0}\oplus L_{p_1} \\
+  \vphi &\longmapsto (\vphi(p_0),\vphi(p_1))
+.\end{align*}
+is surjective. Thus there exists \(\vphi_0,\vphi_1\in \Gamma(\mathcal{O}(L))\)
+such that \(\vphi_i(p_j)=\delta_{ij}\). Thus, to prove \(\Phi_{L^\mu}\) is an
+embedding, it is sufficient to show \[
+  \Gamma(\mathcal{O}(\tilde{L}^\mu))\lrr \Gamma(\mathcal{O}(\tilde{L}^\mu)
+  \otimes (\mathcal{O}_{\tilde{M}}/\ell_E))
+\] is surjective. This is true if and only if \[
+  H^1(\tilde{M},\mathcal{O}(\tilde{L}^\mu)\otimes \ell_E)\cong 
+  H^1(\tilde{M},\mathcal{O}(\tilde{L}^\mu)\otimes [E]^{-1})=0
+,\] which vanishes if \(\tilde{L}^\mu\otimes[E]^{-1}\otimes K_{\tilde{M}}^{-1}\)
+is ample by Kodaira vanishing theorem. It is ample if \(\mu\) is sufficiently
+large since \[
+  \tilde{L}^\mu\otimes [E]^{-1}\otimes K_{\tilde{M}}^{-1}
+  =\tilde{L}^\mu\otimes [E]^{-m}\otimes \pi^*K_M^{-1}
+\] apply lemma with \(G=K_M^{-1},k=m\). All in all we obtained:
+\begin{theorem}[Kodaira embedding]
+  Let \(M\) be a compact complex manifold, \(L\) an ample line bundle. Then
+  there exists \(\mu_0>0\) such that for any integer \(\mu\ge \mu_0\), \[
+    \Phi_{L^\mu}\colon M\lrr \mathbb{P}^N(\mathbb{C}),\quad
+    N+1=\dim H^0(M,\mathcal{O}(L^\mu))
+  \] is an embedding.
+\end{theorem}
+
+\begin{remark}
+  When \(\Phi_L\) gives an embedding we say \(L\) is very ample. So the Kodaira
+  embedding theorem say if \(L\) is ample then \(L^\mu\) is very ample for
+  sufficiently large \(\mu\).
+\end{remark}
+
+The result can be extended as follows:
+\begin{theorem}
+  Let \(M\) be a compact complex manifold, \(L\to M\) an ample line bundle and
+  \(G\to M\) arbitrary line bundle. Then \(\exists\,\mu_0>0\) such that for any
+  integer \(\mu\ge \mu_0\), \(L^\mu\otimes G\) is very ample.
+\end{theorem}
+\begin{proof}
+  One can repeat the proof replacing \(L^\mu\) by \(L^\mu\otimes G\) and
+  \(\tilde{L}^\mu\) by \(\tilde{L}^\mu\otimes \tilde{G}\), where \(\tilde{G}
+  =\pi^*G\). To show \(\Phi_{L^\mu\otimes G}\) is an immersion its is sufficient
+  to show for \(E=\pi^{-1}(p_0)\), \[
+    H^1(\tilde{M},\mathcal{O}(\tilde{L}^\mu\otimes\tilde{G})\otimes\ell_E^2)=0
+  .\] But this is reduced to show \[
+  H^1(\tilde{M},\mathcal{O}(\tilde{L}^\mu\otimes \tilde{G})\otimes [E]^{-2})=0
+  ,\] which is satisfied if \(\mu\) is large, since \[
+    \tilde{L}^{\mu}\otimes\tilde{G}\otimes [E]^{-2}\otimes K_{\tilde{M}}^{-1}
+    =\tilde{L}^\mu\otimes[E]^{-m-1}\otimes \pi^*(G\otimes K_M^{-1})
+  \] is ample for large \(\mu\).
+
+  To show \(\Phi_{L^\mu}\) is an embedding it is sufficient to show for
+  \(E=\pi^{-1}(\{p_0,p_1\})\), \[
+    H^1(\tilde{M},\mathcal{O}(\tilde{L}^\mu\otimes \tilde{G})\otimes \ell_E)=0
+  .\] And similarly, \[
+    \tilde{L}^{\mu}\otimes\tilde{G}\otimes [E]^{-1}\otimes K_{\tilde{M}}^{-1}
+    =\tilde{L}^\mu\otimes[E]^{-m}\otimes \pi^*(G\otimes K_M^{-1})
+  \] is ample for large \(\mu\).
+\end{proof}
+
+\section{Deformations of complex structure}
+Before we leave \emph{Morrow-Kodaira}'s book, we take up the infinitesimal
+deformation of complex structure because this is one of the main themes
+of their book.
+\begin{definition}
+  A complex analytic family of compact complex manifolds is a holomorphic
+  map \(\varpi\colon\mathscr{M}\to B\) between connected complex
+  manifolds \(\mathscr{M}\) and \(B\) satisfying the following:
+  \begin{enumerate}[i)]
+  \item \(\varpi\) is proper, \ie\ for any compact subset \(K\subset B\),
+    \(\varpi^{-1}(K)\) is compact. In particular, \(\varpi^{-1}(t)\) is compact
+    for any \(t\in B\).
+  \item \(M_t=\varpi^{-1}(t)\) is a compact submanifold of \(\mathscr{M}\).
+  \item The rank of the Jacobian of \(\varpi\) is equal to \(n=\dim B\)
+    everywhere. (Thus all \(M_t\) are diffeomorphic each other).
+  \end{enumerate}
+\end{definition}
+
+In this case, we regard \((\mathscr{M},B,\varpi)\) expresses the family
+\(\{M_t:t\in B\}\) of compact complex manifolds \(M_t=\varpi^{-1}(t)\), and we
+say \(M_t\) depends on \(t\) holomorphically. We also say \(M_s=\varpi^{-1}(s)\)
+is a deformation of \(M_t=\varpi^{-1}(t)\). We wish to define the infinitesimal
+deformation \(\pdv{M_t}{t}\). We regard the change of complex structure as
+coming from the change of local coordinate patches. To describe this we take
+the local coordinates of \(\mathscr{M}\) as follows:
+
+First take a point \(0\in B\) and choose a local coordinate \[
+  N=\{(t_1,\ldots,t_n):|t_\lambda|<\eps\}
+\] in \(B\) around \(0\) so that \((0,\ldots,0)=0\in N\subset B\). Next we take
+local coordinate of \(\varpi^{-1}(N)\) as \[
+\varpi^{-1}(N)=\bigcup_{\alpha\in A}\mathcal{U}_\alpha
+.\] Where \[
+  \mathcal{U}_{\alpha}=\{(z_\alpha,t):z_\alpha=(z^1_\alpha,\ldots,z^m_\alpha),
+  |z^i_\alpha|<1,t\in N\}
+.\] If we put \[
+  U_\alpha=\{z_\alpha:|z_\alpha|<1\}
+\] then \(\mathcal{U}_\alpha=U_\alpha\times N\). Strictly speaking,
+\(t=(t_1,\ldots,t_n)\) should be written as \[
+  \varpi^* t=(\varpi^*t_1,\ldots,\varpi^*t_n)
+.\] But we avoid this clumsy notation by omitting \(\varpi^*\).
+
+Over \(\mathcal{U}_\alpha\cap \mathcal{U}_\beta\), if \((z_\alpha,t)\in
+\mathcal{U}_\alpha\) and \((z_\beta,t)\in\mathcal{U}_\beta\) are the same point
+then they are related by \[
+  z_\alpha^i=f_{\alpha\beta}^i(z_\beta,t),\quad i=1,\ldots,m
+\] for some holomorphic functions \(f_{\alpha\beta}^i\). We consider the change
+of complex structure as the change of \(f_{\alpha\beta}^i(z_\beta,t)\) in \(t\).
+
+\end{document}

@@ -1,0 +1,119 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+Recall a line bundle is said to be \textbf{ample} or \textbf{positive} if its
+first Chern class is represented by a positive form (\ie\ a Kähler form).
+
+The assumption of last theorem is rephrased as ``If \(L\otimes K^{-1}\) is
+ample'' since \(c_1(K^{-1})\) is represented by the Ricci form. Since divisors
+and line bundle are identified, tensor products of line bundle are expressed
+additively. So \(L\otimes K^{-1}=L-K\). Thus we obtain
+\begin{theorem}\label{thm:kodaira-vanishing}
+  If \(L-K\) is ample, then \[
+    H^q(M,\mathcal{O}(L))=0\quad\text{ for }q\ge 1
+  .\] 
+\end{theorem}
+\begin{theorem}
+  If \(-L\) is positive (or \(L\) is negative), then \[
+    H^q(M,\mathcal{O}(L))=0\quad\text{ for }q\le n-1
+  .\] (We have proved for \(q=0\) using Bochner's formula).
+\end{theorem}
+\begin{proof}
+  By Serre duality, \[
+    H^q(M,\mathcal{O}(L))\cong H^{m-q}(M,\Omega^m(-L))
+    \cong H^{m-q}(M,\mathcal{O}(K-L))
+  .\] Note that \(L^*\cong -L\), and the last term is \(0\) if \((K-L)-K\) is
+  positive. \ie\ \(-L\) is positive by applying \cref{thm:kodaira-vanishing}.
+\end{proof}
+
+\section{Kodaira embedding theorem}
+The following is used in Kodaira embedding theorem.
+\begin{theorem}
+  Let \(L\to M\) be an ample line bundle. Then there is a sufficiently large
+  number \(N>0\) such that for any \(n\ge N\), \[
+    H^q(M,\mathcal{O}(L^m))=0\quad\text{ for }q\ge 1
+  .\] (\(L^m=L\otimes\cdots\otimes L\), \(m\)-times tensor product).
+\end{theorem}
+\begin{proof}
+  For a harmonic \((0,q)\)-form \(\vphi\) with value in \(L\), we have \[
+    0=(\bar{\partial}\vphi,\bar{\partial}\vphi)_{L^2}
+    +\int_{M}\sum_{\beta=1}^{q}g^{i_1\bar{j}_1}\cdots (n\psi_{l\bar{j}_p}
+    +R_{l\bar{j}_p})\cdots g^{i_q\bar{j}_q}
+    \vphi\indices{_{\bar{j}_1\cdots}^l_{\cdots \bar{j}_q}}
+    \overline{\vphi\indices{_{\bar{j}_1\cdots}^{j_p}_{\cdots \bar{j}_q}}}
+  .\] Since \((\psi_{i\bar{j}})\) is positive definite, \((n\psi_{i\bar{j}}
+  +R_{i\bar{j}})\) is positive definite for sufficiently large \(n\). Thus if
+  \(\vphi\neq 0\) then the right hand side is strictly positive. This is a
+  contradiction.
+\end{proof}
+
+Theorem 7.7 in \emph{Morrow-Kodaira} states the vanishing for \(H^q(M,
+\Omega^p(L))\) for ``sufficiently large'' \(L\). In this case it is not easy
+to state neatly as we stated above for \(p=0\), because what matters is the
+comparison of \(\psi_{i\bar{j}}\) with \(R_{i\bar{j}k\bar{l}}\).
+
+These vanishing theorems are due to Kodaira, but \cref{thm:kodaira-vanishing}
+was letter extended by Nakano in the following way.
+
+\begin{theorem}\label{thm:nakano-vanishing}
+  If \(L\) is a negative line bundle, then \(H^q(M,\Omega^p(L))=0\) for \(p+q
+  <n\).
+\end{theorem}
+We need a lemma for this. Write \(e(\psi)\alpha=\psi\wedge\alpha\) where \(\psi\)
+is the curvature of \(L\) as before.
+\begin{lemma}
+  For \(L\)-valued \(\bar{\partial}\)-harmonic \(\alpha\), \[
+    \sqrt{-1}((\Lambda e(\psi)-e(\psi)\Lambda)\alpha,\alpha)
+    =\|\nabla'\alpha\|_{L^2}^2+\|\nabla^{\prime*}\alpha\|_{L^2}^2
+  .\] Where we decompose \[
+    \dd^\nabla =\nabla'+\nabla''=\nabla'+\bar{\partial}
+  .\] 
+\end{lemma}
+\begin{proof}
+  For \(L\)-valued \((1,0)\)-form \(\alpha\), \[
+    \nabla^{\prime*}=-g^{i\bar{j}}\nabla_{\bar{j}}\alpha_i
+  .\] For bundle part, \(\nabla_{\bar{j}}=\bar{\partial}_j\) and this is the 
+  same for ordinary \((1,0)\)-form. Thus \[
+    \nabla^{\prime*}=\partial^*
+  .\] And then
+  \begin{align*}
+    (\nabla'\alpha,\nabla'\alpha)_{L^2}&=(\partial^*\nabla'\alpha,\alpha) \\
+    &=-\sqrt{-1}([\bar{\partial},\Lambda]\nabla'\alpha,\alpha) \\
+    &=-\sqrt{-1}(\Lambda \nabla'\alpha,\bar{\partial}^*\alpha)+\sqrt{-1}
+    (\Lambda(\bar{\partial}\nabla'+\nabla'\bar{\partial})\alpha,\alpha) \\
+    &=\sqrt{-1}(\Lambda e(\psi)\alpha,\alpha)
+  .\end{align*}
+  Note that we used the fact that curvature is type \((1,1)\), so \[
+    \psi=\dd^\nabla\circ \dd^\nabla =(\nabla'+\bar{\partial})\circ 
+    (\nabla'+\bar{\partial})=\nabla'\bar{\partial}+\bar{\partial}\nabla'
+  .\] Similarly,
+  \begin{align*}
+    (\nabla^{\prime*}\alpha,\nabla^{\prime*}\alpha)&=(\nabla'\partial^*\alpha,
+    \alpha) \\
+    &=-\sqrt{-1}(\nabla'(\bar{\partial}\Lambda-\Lambda\bar{\partial})\alpha,
+    \alpha) \\
+    &=-\sqrt{-1}(\nabla'\bar{\partial}\Lambda \alpha,\alpha) \\
+    &=-\sqrt{-1}((\nabla'\bar{\partial}+\bar{\partial}\nabla')\Lambda\alpha,
+    \alpha) \\
+    &=-\sqrt{-1}(e(\psi)\Lambda\alpha,\alpha)
+  .\end{align*}
+\end{proof}
+\begin{proof}[Proof of \cref{thm:nakano-vanishing}]
+  We use \(-\sqrt{-1}\psi_{i\bar{j}}\dd{z^i}\wedge \dd{\bar{z}^j}\) as a Kähler
+  form, then \[
+    L=-\sqrt{-1}e(\psi)\quad \leftarrow\text{this is the operator, not the line
+      bundle}
+  .\] Then the right hand side in lemma is \[
+    -((\Lambda L-L\Lambda)\alpha,\alpha)
+  .\] The by lemma, \[
+    ((\Lambda L-L \Lambda)\alpha,\alpha)\le 0
+  .\] But \[
+    \Lambda L-L\Lambda=n-p-q\quad\text{(Exercise)}
+  .\]  Thus if \(n-p-q>0\) then \(\alpha=0\).
+\end{proof}
+
+\end{document}
