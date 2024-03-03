@@ -1,0 +1,162 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+Let \(M\) be a compact complex manifold. Recall that from the short exact sequence \[
+  0\lrr \mathbb{Z}\xrr{j}\mathcal{O}_M\xrr{e}\mathcal{O}_M^*\lrr 0,\quad
+  e(a)=\exp(2\pi\sqrt{-1}a)
+,\] we obtain an exact sequence \[
+  H^1(M,\mathcal{O}_M^*)\xrr{\delta^*}H^2(M,\mathbb{Z})\xrr{j^*}H^1(M,\mathcal{O}_M)
+.\] On the other hand, from the inclusion \(\mathbb{Z}\to \mathbb{C}\) and the
+de Rham theorem we also have \[
+  H^2(M,\mathbb{Z})\lrr H^2(M,\mathbb{C})\xrr{\sim} H_{\mathrm{dR}}^2(M,\mathbb{C})
+.\] 
+
+\begin{definition}
+  We write \(H^{1,1}(M,\mathbb{Z})\) for the set of all elements \(\gamma\) in
+  \(H^2(M,\mathbb{Z})\) such that \(\gamma\) is represented by a (1,1)-form in
+  \(H_{\mathrm{dR}}^2(M,\mathbb{C})\) by the above map \[
+    H^2(M,\mathbb{Z})\lrr H_{\mathrm{dR}}^2(M,\mathbb{C})
+  .\] 
+\end{definition}
+As we saw in the last lecture there is a map \[
+  \delta^*\colon H^1(M,\mathcal{O}_M^*)\lrr H^2(M,\mathbb{Z}),\quad
+  [L]\longmapsto c_1(L)
+.\] If we choose a Hermitian metric of \(L\) then its curvature is type (1,1) and
+\(c_1(L)\in H^{1,1}(M,\mathbb{Z})\).
+
+\begin{theorem}
+  Let \(M\) be a compact complex manifold, then \[
+    H^{1,1}(M,\mathbb{Z})=\delta^*(H^1(M,\mathcal{O}_M^*))
+  .\] 
+\end{theorem}
+\begin{proof}
+  This follows from the exact sequence \[
+    H^1(M,\mathcal{O}_M^*)\xrr{\delta^*}H^2(M,\mathbb{Z})\xrr{j^*}H^2(M,\mathcal{O}_M)
+  \] and the next lemma.
+\end{proof}
+
+\begin{lemma}
+  \(j^*(H^{1,1}(M,\mathbb{Z}))=0\).
+\end{lemma}
+\begin{proof}
+  By de Rham theorem and Dolbeault theorem we have
+  \[\begin{tikzcd}[row sep=tiny]
+    && {H^{2}(M,\mathbb{C})} & {H_{\mathrm{dR}}^{2}(M,\mathbb{C})} \\
+    {H^{1,1}(M,\mathbb{Z})} & {H^{2}(M,\mathbb{Z})} \\
+    && {H^{2}(M,\mathcal{O}_M)} & {H_{\mathrm{Dol}}^{0,2}(M,\mathbb{C})}
+    \arrow[hook, from=2-1, to=2-2]
+    \arrow["{j^*}", from=2-2, to=3-3]
+    \arrow["\sim", from=3-3, to=3-4]
+    \arrow["\sim", from=1-3, to=1-4]
+    \arrow[from=2-2, to=1-3]
+  \end{tikzcd}\]
+  We wish to express \(c\in H^{1,1}(M,\mathbb{Z})\) both as a de Rham class and
+  Dolbeault class. First, from \[
+    H^2(M,\mathbb{Z})\lrr H^2(M,\mathbb{C})\lrr H^2(M,\mathscr{A})=0
+  ,\] for any \(c=\{c_{\lambda\mu\nu}\}\in H^2(M,Z)\), \[
+    c_{\lambda\mu\nu}=\delta\{\alpha\}_{\lambda\mu\nu}=\alpha_{\mu\nu}
+    -\alpha_{\lambda\mu}+\alpha_{\lambda\mu}
+  \] for some \(\{\alpha_{\lambda\mu}\}\in C^1(\mathcal{U},\mathscr{A})\). Since 
+  \(c_{\lambda\mu\nu}\) are constant, \[
+    \{\dd{\alpha_{\lambda\mu}}\}\in Z^1(\mathcal{U},\mathcal{A}^1)
+  .\] (Recall that \(\mathcal{A}^1\) is the sheaf of complex valued \(C^\infty\)
+  1-forms). But \(H^1(M,\mathcal{A}^1)=0\) as \(\mathcal{A}^1\) is a fine sheaf.
+  Thus \[
+    \dd{\alpha_{\lambda\mu}}=\beta_\mu-\beta_\lambda
+  \] for some \(\beta=\{\beta_\lambda\}\in C^0(\mathcal{U},\mathcal{A}^1)\). Then \[
+    \gamma=\dd{\beta_\lambda}=\dd{\beta_\mu}
+  \] is a global 2-form. This is the class \(c\) in de Rham cohomology. Let us repeat
+  the same computation in Dolbeault cohomology. For that purpose, decompose previous
+  \(\alpha_{\lambda\mu}\) by \[
+    \dd{\alpha_{\lambda\mu}}=\partial\alpha_{\lambda\mu}
+    +\bar{\partial}\alpha_{\lambda\mu}
+  .\] Then \(\{\bar{\partial}\alpha_{\lambda\mu}\}\in Z^1(\mathcal{U},\mathcal{A}^{0,1}
+  )\). But \(H^1(M,\mathcal{A}^{0,1})=0\) since \(\mathcal{A}^{0,1}\) is a fine sheaf.
+  In fact if we decompose previous \(\beta_\lambda\) as \[
+    \beta_\lambda=\beta_\lambda'+\beta_\lambda''\in \mathcal{A}^{1,0}
+    \oplus \mathcal{A}^{0,1}
+  ,\] then \[
+    \bar{\partial}\alpha_{\lambda\mu}=\beta_\mu''-\beta_\lambda''
+  .\] If we decompose previous \(\gamma\) as \[
+    \gamma=\gamma^{2,0}+\gamma^{1,1}+\gamma^{0,2}
+  ,\] then \[
+    \gamma^{0,2}=\bar{\partial}\beta_\lambda''=\bar{\partial}\beta_\mu''
+  ,\] and \(j^*c=[\gamma^{0,2}]\). Our assumption is \(c=[\gamma]\) is represented by
+  type (1,1)-form, so \[
+    \gamma=\omega+\dd{\xi}
+  \] for some closed (1,1)-form \(\omega\) and a 1-form \(\xi\). This shows \[
+    [\gamma^{0,2}]=[\bar{\partial}\xi^{0,1}]=0
+  \] in \(H^2(M,\mathcal{O})\cong H^{0,2}_{\mathrm{Dol}}(M)\).
+\end{proof}
+
+We also have the following:
+\begin{theorem}
+  For a compact complex manifold \(M\), \[
+    \op{Pic}(M)/\op{Pic}^0(M)\cong H^{1,1}(M,\mathbb{Z})
+  .\] 
+\end{theorem}
+\begin{proof}
+  By the previous result, we have a surjective map \[
+    \op{Pic}(M)\cong H^1(M,\mathcal{O}^*)\lrr H^{1,1}(M,\mathbb{Z})
+  .\] The kernel of this map is exactly \(\op{Pic}^0(M)\) so we obtain an
+  isomorphism \[
+    \op{Pic}(M)/\op{Pic}^0(M)\xrr{\sim}H^{1,1}(M,\mathbb{Z})
+  .\] We put \[
+    \rho:=\op{rank}_{\mathbb{Z}}\op{Pic}(M)/\op{Pic}^0(M)
+  ,\] where the rank is as an Abelian group.
+\end{proof}
+\begin{definition}
+  This \(\rho\) is called the \textbf{Picard number}.
+\end{definition}
+\begin{definition}
+  If a Kähler form of a Kähler metric represents \(H^{1,1}(M,\mathbb{Z})\) then we
+  call the Kähler metric the \textbf{Hodge metric}. If a compact complex manifold 
+  admits a Hodge metric then it is called a \textbf{Hodge manifold}.
+\end{definition}
+\begin{theorem}
+  A compact manifold \(M\) is a Hodge manifold if and only if there exists an ample
+  line bundle. Thus \(M\) is Hodge if and only if \(M\) is algebraic.
+\end{theorem}
+\begin{proof}
+  If \(L\) is an ample line bundle, its first Chern class is a positive form, thus
+  a Kähler form representing a class in \(H^{1,1}(M,\mathbb{Z})\). Conversely, if
+  \(M\) is Hodge then the Kähler class represents \(H^{1,1}(M,\mathbb{Z})\). But by
+  the previous theorem, there is a line bundle \(L\) such that \(c_1(L)\) is the
+  Kähler class. Hence \(L\) is the desired ample line bundle.
+
+  The last statement follows from Kodaira embedding.
+\end{proof}
+
+\begin{corollary}
+  If \(M\) is a compact Kähler manifold and \(H^2(M,\mathcal{O}_M)=0\), then \(M\)
+  is algebraic.
+\end{corollary}
+\begin{proof}
+  Since \(H^{2,0}(M,\mathbb{C})\cong H^{0,2}(M,\mathbb{C})=0\), we have
+  \(H^2(M,\mathbb{R})=H^{1,1}(M,\mathbb{R})\) and the image of \(H^2(M,\mathbb{Z})\) is
+  \(H^{1,1}(M,\mathbb{Z})\). Here we send it by \(\mathbb{Z}\to \mathbb{R}\) and
+  denote by the same letter \(H^{1,1}(M,\mathbb{Z})\). \(H^{1,1}(M,\mathbb{Q})\) is
+  dense in \(H^{1,1}(M,\mathbb{R})\) and \(H^{1,1}(M,\mathbb{Q})=H^2(M,\mathbb{Q})\)
+  because \(H^{1,1}(M,\mathbb{Z})=H^2(M,\mathbb{Z})\). The given Kähler form is
+  in \(H^2(M,\mathbb{R})\) and is approximated by a sequence of closed 2-forms
+  in \(H^2(M,\mathbb{Q})=H^{1,1}(M,\mathbb{Q})\). These 2-forms are positive forms
+  since they are converging to the Kähler form. Choose a member of such sequence,
+  and multiply an appropriate positive integer to get a positive form representing
+  \(H^{1,1}(M,\mathbb{Z})\).
+\end{proof}
+As an immediate corollary:
+\begin{corollary}
+  Any compact Riemann surface is an algebraic curve.
+\end{corollary}
+
+Using previous terminology, \((M,L)\) is a polarized manifold for some line bundle
+\(L\) if and only if \(M\) is a Hodge manifold. In this case, \(L\) is called the
+polarization. (The term ``polarization'' is used in many other contexts with differnet
+meanings).
+
+
+\end{document}

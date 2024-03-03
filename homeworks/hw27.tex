@@ -1,0 +1,30 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+
+\title{Complex Geometry Homework 27}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{problem}
+  Show that the exact sequence \[
+    0\lrr \mathbb{C}\lrr\underbrace{\mathcal{O}(1)\oplus\cdots\oplus\mathcal{O}(1)}_{
+    n+1\text{ times }} \lrr T'\mathbb{P}^m(\mathbb{C})\lrr 0
+  \] has the \(C^\infty\)-splitting \[
+    \mathbb{C}\oplus T'\mathbb{P}^m(\mathbb{C})\cong 
+    \underbrace{\mathcal{O}(1)\oplus\cdots\oplus\mathcal{O}(1)}_{m+1}
+  .\] Where \(\mathbb{C}\) denotes the trivial line bundle.
+
+  (Hint: See \emph{Griffiths-Harris}, page 408-409, or \emph{Milnor-Stasheff}, page
+  169-170).
+\end{problem}
+\begin{problem}
+  Show that the total Chern class of \(\mathbb{P}^m(\mathbb{C})\) is \[
+    c(T'\mathbb{P}^m(\mathbb{C}))=(1+a)^{m+1}
+  \] where \(a=c_1(\mathcal{O}(1))\) is the positive generator of 
+  \(H^*(\mathbb{P}^m(\mathbb{C}),Z)=\mathbb{Z}[a]/(a^{m+1})\).
+\end{problem}
+\end{document}

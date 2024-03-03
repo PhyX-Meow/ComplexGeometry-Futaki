@@ -1,0 +1,188 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+\begin{proof}
+  Let \(L_1\) and \(L_2\) be isomorphic line bundles, and suppose the transition
+  functions are respectively given by \(\{a_{\lambda\mu}\}\) and \(\{a'_{\lambda\mu}\}
+  \) with respect to local frames \(\{s_{\lambda}\}_{\lambda\in \Lambda}\) and
+  \(\{t_{\lambda}\}_{\lambda\in\Lambda}\) on an open covering \(\{U_\lambda\}_{\lambda
+  \in \Lambda}\). Thus \[
+    s_{\mu}=s_{\lambda}a_{\lambda\mu},\quad
+    t_{\mu}=t_{\lambda}a'_{\lambda\mu}
+  .\] The bundle isomorphism \(h\colon L_1\to L_2\) is expressed as \[
+    h(s_\lambda)=t_\lambda h_\lambda,\quad
+    h(s_\mu)=t_\mu h_\mu
+  .\] Thus \[
+    h(s_\mu)=h(s_\lambda a_{\lambda\mu})=h(s_\lambda)a_{\lambda\mu}
+    =t_\lambda h_\lambda a_{\lambda\mu}
+  .\] But also \[
+    h(s_\mu)=t_\mu h_\mu=t_\lambda a'_{\lambda\mu}h_\mu
+  .\] So \[
+    a'_{\lambda\mu}a_{\lambda\mu}^{-1}=h_\lambda h_\mu^{-1}
+  .\] Hence \(\{a'_{\lambda\mu}\}\{a_{\lambda\mu}^{-1}\}=\delta\{h_{\lambda}\}\).
+  That is to say, isomorphic line bundles assign cohomologous cocyle.
+  (Note that \(\mathscr{A}^*\) is multiplicatively Abelian).
+  
+  Conversely, following backward the above arguments, we see \(\{a_{\lambda\mu}\}\)
+  and \(\{a'_{\lambda\mu}\}\) are cohomologous. Then they define isomorphic line
+  bundle. More precisely, if we define \(h\) by \(h(s_\mu)=t_\mu h_\mu\). Then
+  using \(a'_{\lambda\mu}a_{\lambda\mu}^{-1}=h_\lambda h_\mu^{-1}\) we see
+  \(h(s_\lambda)=t_\lambda h_\lambda\), so \(h\) is well defined.
+\end{proof}
+
+Let \(\mathscr{A}\) (resp. \(\mathscr{A}^*\)) be the sheaf of germs of smooth
+(resp. non-vanishing smooth) complex-valued functions on a compact smooth manifold
+\(M\). Denote by \(\mathbb{Z}\) the constant sheaf with integer value. Then we have
+a short exact sequence 
+\[\begin{tikzcd}[row sep=tiny]
+	0 & {\mathbb{Z}} & {\mathscr{A}} & {\mathscr{A}^*} & 0 \\
+	&& a & {exp(2\pi ia)}
+	\arrow[from=1-1, to=1-2]
+	\arrow["j", from=1-2, to=1-3]
+	\arrow["e", from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[maps to, from=2-3, to=2-4]
+\end{tikzcd}\]
+Where \(j\) is the natural inclusion and \(e=\exp(2\pi i \cdot )\). Since
+\(\mathscr{A}\) is a fine sheaf and \[
+  H^i(M,\mathscr{A})=0\quad\text{ for }i\ge 1
+,\] we obtain from the long exact sequence induced from the above short exact
+sequence \[
+  \delta^*\colon H^i(M,\mathscr{A}^*)\cong H^{i+1}(M,\mathbb{Z})
+.\] In particular, for \(i=1\), \[
+  \delta^*\colon H^1(M,\mathscr{A}^*)\cong H^2(M,\mathbb{Z})
+.\] Recall in the last proposition we saw \(H^1(M,\mathscr{A}^*)\) is isomorphic
+to the Abelian group of isomorphism classes of complex line bundle over \(M\).
+\begin{definition}[A refined definition of Chern class of line bundles]
+  Let \(L\to M\) be a complex line bundle, and denote by \([L]\in H^1(M,\mathscr{A}^*)
+  \) the isomorphism class of \(L\). We define \[
+    c_1(L)=-\delta^*([L])\in H^2(M,\mathbb{Z})
+  .\] 
+\end{definition}
+This definition is consistent with the earlier definition using the curvature as
+we will see in the next proposition. However this new definition is more sensitive
+because it is in \(\mathbb{Z}\)-coefficient cohomology.
+\begin{prop}
+  Under \(H^2(M,\mathbb{Z})\to H^2(M,\mathbb{R})\cong H_{\mathrm{dR}}^2(M)\),
+  \(c_1(L)\) is sent to \(\left[\frac{\sqrt{-1}}{2\pi}\Omega\right]\) for some
+  connection \(\omega\) and its curvature \(\Omega\). Here \(\mathbb{R}\) denotes the
+  constant sheaf of \(\mathbb{R}\)-valued locally constant functions and \[
+    H^2(M,\mathbb{Z})\lrr H^2(M,\mathbb{R})
+  \] is induced by the natural inclusion \(\mathbb{Z}\to \mathbb{R}\) and 
+  \(H^2(M,\mathbb{R})\cong H^2_{\mathrm{dR}}(M)\) is the de Rham theorem.
+\end{prop}
+\begin{proof}
+  Let \(\{a_{\lambda\mu}\}\) be the transition function of \(L\) with respect to an
+  open covering \(\mathcal{U}=\{U\}_{\lambda}\). \(\{a_{\lambda\mu}\}\) satisfies the
+  cocycle condition \[
+    a_{\lambda\mu}a_{\mu\nu}a_{\nu\lambda}=1
+  .\] Taking logarithm we obtain \[
+    \log a_{\lambda\mu}+\log a_{\mu\nu}+\log a_{\nu\lambda}=0 \bmod{2\pi\sqrt{-1}}
+  .\] Here the logarithm is defined up to mod \(2\pi\sqrt{-1}\mathbb{Z}\) but we may
+  choose the branch of \(\log\) so that \[
+    \log a_{\mu\lambda}=-\log a_{\lambda\mu}
+  .\] Then we obtain \(c=\{c_{\lambda\mu\nu}\}\), \[
+    2\pi\sqrt{-1}c_{\lambda\mu\nu}=\log a_{\lambda\mu}
+    +\log a_{\mu\nu}+\log a_{\nu\lambda}
+  .\] One can check the cocycle condition \[
+    c_{\mu\nu\tau}-c_{\lambda\nu\tau}+c_{\lambda\mu\tau}-c_{\lambda\mu\nu}=0
+  .\] The connecting homomorphism \[
+    f^*\colon H^1(M,\mathscr{A}^*)\xrr{\sim}H^2(M,\mathbb{Z})
+  \] is given by \[
+  \delta^*([L])=\delta^*[\{a_{\lambda\mu}\}]=[\{c_{\lambda\mu\nu}\}]
+  .\] By the long exact sequence \[
+    H^2(M,\mathbb{Z})\lrr H^2(M,\mathbb{R})\lrr H^2(M,\mathscr{A})=0
+  \] induced by \(\mathbb{Z}\to \mathbb{R}\to \mathscr{A}\),
+  \([\{c_{\lambda\mu\nu}\}]\) should be a coboundary in \(H^2(M,\mathscr{A})\).
+  Indeed, putting \[
+    f_{\lambda\mu}=\log a_{\lambda\mu}
+  ,\] we have \[
+    2\pi i c_{\lambda\mu\nu}=f_{\mu\nu}-f_{\lambda\nu}+f_{\lambda\mu}
+  ,\] \ie\ \[
+    \delta\{\frac{f_{\lambda\mu}}{2\pi i}\}=\{c_{\lambda\mu\nu}\}
+  .\] Since \(c_{\lambda\mu\nu}\) are (locally) constant functions, \[
+    \dd{f_{\mu\nu}}-\dd{f_{\lambda\nu}}+\dd{f_{\lambda\mu}}=0
+  .\] Thus \(\{\dd{f_{\lambda\mu}}\}\in Z^1(\mathcal{U},\mathscr{A}^1)\), but since 
+  \(H^1(M,\mathscr{A}^1)=0\), there should exists \(\{\theta_\lambda\}\in
+  C^0(\mathcal{U},\mathscr{A}^1)\) such that \[
+    \frac{1}{2\pi i}\dd{f_{\lambda\mu}}=\theta_{\mu}-\theta_{\lambda}
+  .\] Thus \(\dd{\theta_\mu}=\dd{\theta_\lambda}\) and \(\{\dd{\theta_\lambda}\}\)
+  defines a global 2-form. Its de Rham class corresponds to \[
+    \delta^*[L]=-c \in H^2(M,\mathbb{Z})
+  .\] But recall that if we have a connection \(\omega=\{\omega_\lambda\}\), then
+  the condition for it to be globally defined is 
+  \begin{align*}
+    \omega_\mu&=a_{\lambda\mu}^{-1}\omega_\lambda a_{\lambda\mu}+a_{\lambda\mu}^{-1}
+    \dd{a_{\lambda\mu}} \\
+    &=\omega_\lambda+\dd{\log a_{\lambda\mu}}
+  .\end{align*}
+  Thus we can take \[
+    \theta_\lambda=\frac{1}{2\pi\sqrt{-1}}\omega_\lambda
+    =-\frac{\sqrt{-1}}{2\pi}\omega_\lambda
+  .\] Then \[
+    -\dd{\theta_\lambda}=\frac{\sqrt{-1}}{2\pi}\dd{\omega_\lambda}=
+    \frac{\sqrt{-1}}{2\pi}\Omega
+  \] defines a global 2-form, and is exactly the Chern form with respect to the
+  connection \(\{\omega_\lambda\}\).
+\end{proof}
+
+Next we consider the holomorphic category. \ie\ the holomorphic line bundles over
+a compact manifold \(M\).
+\begin{definition}
+  Denote by \(\op{Pic}(M)\) the group of all isomorphism classes of holomorphic
+  line bundles over \(M\), called \textbf{Picard group}. Multiplication is given
+  by the tensor product.
+\end{definition}
+Denote by \(\mathcal{O}_M\) (resp. \(\mathcal{O}_M^*\)) the sheaf of germs of
+holomorphic (resp. non-vanishing holomorphic) functions on \(M\). As in the \(C^\infty
+\)-case, we have a short exact sequence \[
+  0\lrr \mathbb{Z}\xrr{j}\mathcal{O}_M\xrr{e}\mathcal{O}_M^*\lrr 0
+\] and the induced long exact sequence \[
+  H^0(M,\mathcal{O}_M^*)\xrr{\delta^*}H^1(M,\mathbb{Z})\xrr{j^*}H^1(M,\mathcal{O}_M)
+  \xrr{e^*}H^1(M,\mathcal{O}_M^*)\xrr{\delta^*}H^2(M,\mathbb{Z})
+.\] Just as in the \(C^\infty\) case we have
+\begin{prop}
+  \(\op{Pic}(M)\cong H^1(M,\mathcal{O}_M^*)\).
+\end{prop}
+The natural inclusion \(\mathcal{O}_M^*\to \mathscr{A}^*\) induces the commutative
+diagram 
+\[\begin{tikzcd}
+  {H^1(M,\mathcal{O}_M^*)} & {H^2(M,\mathbb{Z})} \\
+  {H^1(M,\mathscr{A}^*)} & {H^2(M,\mathbb{Z})}
+	\arrow["{\delta^*}", from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow["\cong", from=2-1, to=2-2]
+	\arrow["{=}"{marking, allow upside down}, draw=none, from=1-2, to=2-2]
+\end{tikzcd}\]
+Thus \(\delta^*([L])=-c_1(L)\).
+
+\begin{definition}
+  The \textbf{Picard variety} \(\op{Pic}^0(M)\) of \(M\) is defined by \[
+    \op{Pic}^0(M)=\{L\in \op{Pic}(M):c_1(L)=0\}
+  .\]
+\end{definition}
+
+From the long exact sequence above there is an injection \[
+  \op{Pic}(M)/\op{Pic}^0(M)\lrr H^2(M,\mathbb{Z})
+\] and an isomorphism \[
+\op{Pic}^0(M)=H^1(M,\mathcal{O}_M)/j^*H^1(M,\mathbb{Z})
+.\] But as we are assuming \(M\) is compact, \[
+  H^0(M,\mathcal{O}^*)=\mathbb{C}^*\quad (\text{constant functions})
+.\] Thus \[
+  \delta^*\colon H^0(M,\mathcal{O}^*)\lrr H^1(M,\mathbb{Z})
+\] is a zero map by the definition of connecting homomorphism. \ie\ for an open
+covering \(\{U_\lambda\}\), \(c\in \mathbb{C}^*=H^0(M,\mathcal{O}^*)\) gives \[
+  c_{\lambda}=c\quad\text{ on }U_\lambda,\quad c=\{c_\lambda\}
+.\] Then \[
+  \delta(c)_{\lambda\mu}=c_\mu-c_\lambda=c-c=0
+.\] The long exact sequence shows \[
+  j^*\colon H^1(M,\mathbb{Z})\lrr H^1(M,\mathcal{O})
+\] is injective, and thus \[
+  \op{Pic}^0(M)=H^1(M,\mathcal{O}_M)/H^1(M,\mathbb{Z})
+.\] 
+
+\end{document}

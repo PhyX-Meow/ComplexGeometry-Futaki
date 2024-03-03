@@ -1,0 +1,142 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+Let \(E\to M\) be a \(C^\infty\) complex vector bundle over a compact manifold \(M\),
+and \(\nabla\) be a connection and \(R\) its curvature.
+
+\begin{definition}
+  The cohomology class \[
+    \op{ch}(E)=\left[\op{tr}\exp\biggl(\frac{\sqrt{-1}}{2\pi}R\biggr)\right]
+    =\left[\op{tr}\biggl(I+\frac{\sqrt{-1}}{2\pi}R+\frac{1}{2!}\biggl(
+    \frac{\sqrt{-1}}{2\pi}R\biggr)^2+\cdots\biggr)\right]
+  \] is called the \textbf{Chern character}.
+  According to the degree, we write \[
+    \op{ch}_k(E)=\frac{1}{k!}\left[\op{tr}\biggl(\frac{\sqrt{-1}}{2\pi}R\biggr)^k
+    \right]
+  .\] Because of \(\frac{1}{k!}\), this class belongs to \(\mathbb{Q}\)-coefficient
+  cohomology \(H^{2k}(M,\mathbb{Q})\).
+\end{definition}
+
+Chern character and the total Chern class is related by ``Newton formula'' and one 
+is recovered from the other. We will not go into the detail here, but just refer
+to \emph{Milnor-Stasheff}.
+
+Chern character has the following two nice properties: 
+\begin{lemma}\label{lem:25-chern-character}
+For \(E\to M\) and \(F\to M\),
+\begin{enumerate}[(1)]
+  \item \(\op{ch}(E\oplus F)=\op{ch}(E)+\op{ch}(F)\).
+  \item \(\op{ch}(E\otimes F)=\op{ch}(E)\cup\op{ch}(F)\).
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+To prove (1) and (2), let \(\nabla_E,\nabla_F\) be connections of \(E\) and \(F\),
+and \(R_E,R_F\) their curvatures. Then \[
+  \sum_{k\ge 0}\frac{1}{k!}\op{tr}\begin{pmatrix}
+    \frac{\sqrt{-1}}{2\pi}R_E & 0 \\
+    0 & \frac{\sqrt{-1}}{2\pi}R_F
+  \end{pmatrix}^k
+  =\sum_{k\ge 0}\frac{1}{k!}\op{tr}\biggl(\frac{\sqrt{-1}}{2\pi}R_E\biggr)^k
+  +\sum_{k\ge 0}\frac{1}{k!}\op{tr}\biggl(\frac{\sqrt{-1}}{2\pi}R_F\biggr)^k
+.\] This proves (1). The connection on \(E\otimes F\) is given by \[
+  \nabla_E\otimes\Id_F+\Id_E\otimes\nabla_F
+.\] Its curvature is then \[
+  R_E\otimes I_F+I_E\otimes R_F
+.\] Then
+\begin{align*}
+  &\exp\biggl(\frac{\sqrt{-1}}{2\pi}(R_E\otimes I_F+I_E\otimes R_F)\biggr) \\
+  &=\exp\biggl(\frac{\sqrt{-1}}{2\pi}(R_E\otimes I_F)\biggr)\wedge
+  \exp\biggl(\frac{\sqrt{-1}}{2\pi}(I_E\otimes R_F)\biggr) \\
+  &=\left(\sum_{k\ge 0}\frac{1}{k!}\biggl(\frac{\sqrt{-1}}{2\pi}R_E\otimes I_F\biggr)^k
+  \right)\wedge\sum_{l\ge 0}\frac{1}{l!}\biggl(\frac{\sqrt{-1}}{2\pi}I_E\otimes R_F
+  \biggr)^l \\
+  &=\sum_{k,l\ge 0}\frac{1}{k!l!}\biggl(\frac{\sqrt{-1}}{2\pi}R_E\biggr)^k\otimes 
+  \biggl(\frac{\sqrt{-1}}{2\pi}R_F\biggr)^l
+.\end{align*} 
+Since \(\op{tr}(A\otimes B)=\op{tr}A\cdot \op{tr}B\), we obtain the proof of (2).
+\end{proof}
+
+The ring \(K(M)\) consists of stable equivalence classes of vector bundles with
+addition defined by Whitney sum and multiplication by tensor product. See for example
+\emph{Atiyah, K-theory}. \cref{lem:25-chern-character} show that \[
+  \op{ch}\colon K(M)\lrr H^*(M,\mathbb{Q})
+\] is a ring homomorphism.
+
+Next we wish to define \textbf{Todd class} of \(M\). Consider the formal
+decomposition \[
+  \sum_{k}c_k(M)t^k=\prod_{i=1}^m(1+\xi_i t)
+.\] This is based on the splitting principle. (See e.g. \emph{Bott-Tu, Differential
+forms in algebraic topology} to justify it). We formally consider \(T'M\) splits
+into line bundles \[
+  T'M=L_1\oplus \cdots\oplus L_m
+.\] Then putting \(\xi_i=c_1(L_i)\) we obtain from the Axiom of Whitney sum formula \[
+  c(T'M)=c(L_1)\cup \cdots\cup c(L_m)
+.\] Then the decomposition follows.
+
+With this preparation we define \[
+  \op{Todd}(M)=\prod_{i=1}^{m}\frac{\xi_i}{1-e^{-\xi_i}}
+.\] Since \(\op{Todd}(M)\) is a symmetric function of \(\xi_1,\ldots,\xi_m\), it is
+expressed in terms of the elementary symmetric functions of \(\xi_i,\ldots,\xi_m\)
+which are \(c_1(M),\ldots,c_m(M)\). One can check \[
+  \op{Todd}(M)=1+\frac{1}{2}c_1(M)+\frac{1}{12}(c_1(M)^2+c_2(M))+\cdots
+.\] Let \[
+  \chi(M,E)=\sum_{k=0}^{m}(-1)^k \dim H^k(M,\mathcal{O}(E))
+.\] 
+
+\begin{theorem}[Riemann-Roch-Hirzebruch formula]
+  \[
+    \chi(M,E)=\int_{M}\op{Todd}(M)\op{ch}(E)
+  .\] Here on the right hand side we take the degree \(2m\) term and integrate it
+  over \(M\).
+\end{theorem}
+
+This formula has a long history, but Hirzebruch proved it on compact complex manifolds.
+Later, Atiyah-Singer extended it to more general elliptic complexes, e.g. Dirac
+operators. The book by Lawson-Michelsohn: ``Spin geometry'', may be good to read.
+But there are many other books about the Atiyah-Singer theorem.
+
+Let \(L\) be an ample line bundle. Then by Kodaira vanishing, for large \(n\),
+\(L^n\otimes K_M^{-1}\) is positive and \[
+  H^q(M,\mathcal{O}(L^n))=0\quad\text{ for }q>0
+.\] Then \[
+  \chi(M,L^n)=\dim H^0(M,L^n)
+.\] But by Riemannian-Roch, 
+\begin{align*}
+  \chi(M,L^n)&=\int_{M}\op{Todd}(M)e^{c_1(L^n)}=\int_{M}\op{Todd}(M)e^{nc_1(L)} \\
+  &=\int_{M}(1+\tau_1(M)+\cdots +\tau_m(M))(1+nc_1(L)+\cdots +\frac{n^m}{m!}c_1(L)^m)\\
+  &=\int_{M}\frac{c_1(L)^m}{m!}n^m+\frac{\tau_1(M)\cdot c_1(L)^{m-1}}{(m-1)!}+\cdots
+.\end{align*}
+This is a polynomial in \(n\) of degree \(m\) with positive top term
+\(\frac{n^m}{m!}\int_{M}c_1(L)^m\). Thus \(\dim H^0(M,L^n)\) is positive for large
+\(m\). We may put \[
+  N_n+1=\dim H^0(M,L^n),\quad \Phi_{L^n}\colon M\lrr \mathbb{P}^{N_n}(\mathbb{C})
+.\] This has been implicitly used in Kodaira embedding theorem.
+
+Next we will discuss the relation of complex line bundle, its Chern class and
+divisors in more detail.
+
+Consider smooth category first. Let \(L\to M\) and \(L'\to M\) be complex line
+bundles over a real smooth manifold \(M\). Then \(L\otimes L'\to M\) is also a line
+bundle. Obviously the set of all complex line bundles form a group by tensor product.
+The trivial line bundle is the identity. The dual line bundle is the inverse.
+
+If the transition functions of \(L\) and \(L'\) are given by \(\{a_{\lambda\mu}\}\) and
+\(\{a'_{\lambda\mu}\}\) in terms of an open covering \(\{U_{\lambda}\}_{\lambda\in
+\Lambda}\). Then the transition functions of \(L\otimes L'\) are given by 
+\(\{a_{\lambda\mu}a'_{\lambda\mu}\}\). On the other hand, \(\{a_{\lambda\mu}\}\)
+satisfies the cocycle condition \[
+  a_{\lambda\mu}a_{\mu\nu}a_{\nu\lambda}=1,\quad
+  a_{\mu\lambda}=a_{\lambda\mu}^{-1}
+.\] Thus it defines an element of \(H^1(M,\mathscr{A}^*)\), where \(\mathscr{A}^*\)
+is the sheaf of germs of non-vanishing complex valued functions.
+
+\begin{prop}
+  \(H^1(M,\mathscr{A}^*)\) is isomorphic to the group of all isomorphism classes 
+  of complex line bundle over \(M\).
+\end{prop}
+
+\end{document}
