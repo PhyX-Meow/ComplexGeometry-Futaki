@@ -1,0 +1,37 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+
+\title{Complex Geometry Homework 29}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{problem}
+  Prove the following Poincaré-Lelong equation: 
+
+  Let \(f\) be a holomorphic function on a domain \(U\) in \(\mathbb{C}^m\), and
+  \((f)\) the divisor defined by the zero locus of \(f\). Then as a current \[
+    (f)=\frac{1}{2\pi}\dd \dd^c \log|f|=\frac{\sqrt{-1}}{\pi}\partial\bar{\partial}
+    \log|f|,\quad \text{ where }\dd^c=\sqrt{-1}(\bar{\partial}-\partial)
+  .\] (See e.g. \emph{Griffiths-Harris}, page 388-389).
+\end{problem}
+\begin{problem}
+  Prove the following:
+
+  Let \(D\) be a divisor on a compact complex manifold \(M\) and \(s\) be a
+  meromorphic section of \([D]\). Then for a Hermitian metric \(h\) of \([D]\) we
+  have \[
+    \frac{1}{2\pi}\dd \dd^c \log|s|_h=-c_h+(s)
+  .\] Where 
+  \begin{align*}
+    |s|^2_h&=h(\bar{s},s) \\
+    c_h&=\text{the first Chern form w.r.t. }h \\
+    &=-\frac{\sqrt{-1}}{2\pi}\partial\bar{\partial}\log h \\
+    (s)&=\text{the divisor defined by zeros and poles of }s\text{ with their
+    multiplicity}
+  .\end{align*}
+\end{problem}
+\end{document}

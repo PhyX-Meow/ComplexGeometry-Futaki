@@ -1,0 +1,122 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+\begin{theorem}
+  If there exists an ample line bundle \(L\) on a compact complex manifold \(M\) then
+  \[
+    \op{Div}(M)/\op{Div}_\ell(M)\lrr \op{Pic}(M)
+  \] is an isomorphism.
+\end{theorem}
+\begin{proof}
+  Following the previous theorem, we only need to show the map is surjective.
+  Let \(G\) be any line bundle on \(M\). By 
+  \ifdefined\FullBook \cref{lem:21-immersion},
+  \else lemma 1 in lecture 21,
+  \fi there exist non-zero sections both on \(L^\mu\) and \(L^\mu\otimes G\) for
+  sufficiently large \(\mu\). Let \(s\in \Gamma(\mathcal{O}(L^m))\) and
+  \(t\in \Gamma(\mathcal{O}(L^m\otimes G))\) be non-zero sections.
+
+  Then \(\frac{t}{s}\) is a meromorphic section of \(G\). So \(\frac{t}{s}\) defines
+  meromorphic functions \(u_\alpha\) on \(U_\alpha\) such that \[
+    u_\alpha=f_{\alpha\beta}u_\beta
+  \] where \(f_{\alpha\beta}\) are the transition functions of \(G\). Thus \[
+    f_{\alpha\beta}=\frac{u_\alpha}{u_\beta}
+  .\] Let \(D=(\frac{t}{s})\) denote the divisor defined by the zeros of \(t\) and
+  the poles of \(s\). This divisor is the same as the divisor defined by
+  \(\{u_\alpha\}\). Thus \([D]=G\).
+\end{proof}
+
+It follows from the above theorem that if \(M\) is an algebraic manifold then \[
+  \op{Div}(M)/\op{Div}_{\ell}(M)\cong \op{Pic}(M)
+.\] Next we define \[
+  \op{Div}_h(M)=\{D\in \op{Div}_M:D\text{ is homologous to }D\}
+.\]
+\begin{prop}
+  \(\op{Div}_\ell(M)\subset \op{Div}_h(M)\).
+\end{prop}
+To prove this we recall the relation of \(c_1([D])\) and the Poincaré dual of the
+homology class of \(D\). We already saw it for divisors in Riemann surface in the
+lecture and smooth divisors in higher dimensional complex manifolds in the homework.
+
+For general possibly singular divisors one can use the following 
+\textbf{Poincaré-Lelong equation} (homework):
+
+Let \(f\) be a holomorphic function on domain \(U\subset \mathbb{C}^m\), and
+\((f)\) be the divisor defined by the zero locus of \(f\). Then as a current, \[
+  (f)=\frac{1}{2\pi}\dd\dd^c \log|f|=\frac{\sqrt{-1}}{\pi}\partial\bar{\partial}
+  \log|f|,\quad \dd^c=\sqrt{-1}(\bar{\partial}-\partial)
+.\] Here we say a current in the following sense: For any smooth \((m-1,m-1)\)-form
+\(\vphi\) with compact support in \(U\), we have \[
+  \int_{(f)}\vphi=\frac{1}{2\pi}\int_{U}\dd\dd^c \log|f|\wedge\vphi
+.\] We can use this to show the following (homework):
+
+Let \(D\) be a divisor on a compact complex manifold \(M\), and \(s\) be a meromorphic
+section of \([D]\). Then for a Hermitian metric \(h\) of \([D]\) we have \[
+  \frac{1}{2\pi}\dd \dd^c \log|s|_h=-c_h+(s)
+.\] Where
+\begin{align*}
+  |s|^2_h&=h(\bar{s},s) \\
+  c_h&=\text{the first Chern form w.r.t. }h \\
+  &=-\frac{\sqrt{-1}}{2\pi}\partial\bar{\partial}\log h \\
+  (s)&=\text{the divisor defined by zeros and poles of }s\text{ with their
+  multiplicity}
+.\end{align*}
+From this for any closed \((2m-2)\)-form \(\alpha\), we have \[
+  \int_{(s)}\alpha=\int \alpha\wedge c_h
+.\] This implies \(c_1([D])\) is the Poincaré dual of the homology class of \(D\).
+
+\begin{proof}[Proof of the Proposition]
+  Let \(D=(f)\) be a principal divisor. As we saw in the last lecture, \([D]\) is
+  isomorphic to the trivial bundle, and \(c_1([D])=0\). Thus the homology class
+  of \(D\) is 0.
+\end{proof}
+
+Note also the above proof implies \[
+  \op{Div}_h(M)=\{D\in \op{Div}(M):c_1([D])=0\}
+.\] Recall the Picard variety \(\op{Pic}^0(M)\) is defined by \[
+  \op{Pic}^0(M)=\{L\in \op{Pic}(M):c_1(L)=0\}
+.\] Thus the injective map \[
+  \op{Div}(M)/\op{Div}_\ell(M)\lrr \op{Pic}(M)
+\] induces injective map \[
+  \op{Div}_h(M)/\op{Div}_\ell(M)\lrr \op{Pic}^0(M)
+.\] And by the first theorem of this lecture we have the following:
+\begin{theorem}
+  If \(M\) is an algebraic manifold then \[
+    \op{Div}_h(M)/\op{Div}_\ell(M)\lrr \op{Pic}^0(M)
+  \] is an isomorphism.
+\end{theorem}
+We further define the \textbf{Néron-Severi group} \[
+  \op{NS}(M):=\op{Div}(M)/\op{Div}_h(M)
+.\] Then the natural map \[
+  \op{NS}(M)\lrr \op{Pic}(M)/\op{Pic}^0(M)
+\] is injective. But we also as above:
+\begin{theorem}
+  If \(M\) is an algebraic manifold then \[
+    \op{NS}(M)\cong\op{Pic}(M)/\op{Pic}^0(M)
+  .\]
+\end{theorem}
+
+\begin{remark}
+  In the literature there are other different definitions of Néron-Severi group.
+  But basically they are same as ours at least when \(M\) is algebraic.
+\end{remark}
+
+In summary,
+\begin{align*}
+  \op{Pic}(M)&=H^1(M,\mathcal{O}^*)\text{ isomorphism classes of line bundles}, \\
+  \op{Pic}^0(M)&=\{[L]\in H^1(M,\mathcal{O}^*):c_1(L)=0\}, \\
+  \op{cl}(M)&=\op{div}(M)/\op{Div}_\ell(M)\text{ divisor class group}, \\
+  \op{cl}(M)&\lrr \op{Pic}(M)\text{ injective}, \\
+  \op{Div}_h(M)&=\{D\in \op{Div}(M):c_1([D])=0\}, \\
+  \op{Div}_h(M)&/\op{Div}_\ell(M)\lrr \op{Pic}^0(M)\text{ injective}, \\
+  \op{NS}(M)&=\op{Div}(M)/\op{Div}_h(M)\xrr{\text{inj.}}
+  \op{Pic}(M)/\op{Pic}^0(M)
+.\end{align*}
+\(M\) algebraic \(\implies\op{NS}(M)\cong\op{Pic}(M)/\op{Pic}^0(M)\cong
+H^{1,1}(M,\mathbb{Z})\).
+
+\end{document}

@@ -1,0 +1,239 @@
+% !TeX program = xelatex
+\documentclass[12pt]{article}
+\input{../preamble.tex}
+\counterwithout{theorem}{section}
+\counterwithout{equation}{section}
+
+\begin{document}
+\section{Temporary title}
+Recall:
+\[\begin{tikzcd}[row sep=small]
+	{\mathscr{M}} & B \\
+	{\varpi^{-1}(N_\eps)} & {N_\eps}
+	\arrow["{\varpi}", from=1-1, to=1-2]
+	\arrow["\subset"{marking, allow upside down}, draw=none, from=2-1, to=1-1]
+	\arrow[from=2-1, to=2-2]
+	\arrow["\subset"{marking, allow upside down}, draw=none, from=2-2, to=1-2]
+\end{tikzcd}\]
+a complex analytic family of compact complex manifolds. Where
+\(\varpi^{-1}(N_\eps)=\bigcup_{\alpha\in A}\mathcal{U}_\alpha\), \[
+  \mathcal{U}_\alpha=\{(z_\alpha,t):z_\alpha=(z^1_\alpha,\ldots,z^m_\alpha),
+  |z_\alpha^i|<1,t\in N_\eps\}
+.\] And when \(\mathcal{U}_\alpha\cap \mathcal{U}_\beta\neq \emptyset\),
+\begin{align*}
+  &z_\alpha^i=f_{\alpha\beta}^i(z_\beta,t),\quad i=1,\ldots,m; \\
+  &\theta_{\alpha\beta}(t)=\sum \pdv{f_{\alpha\beta}^i}{t}\pd{z^i_\alpha},\quad
+  \text{1-cocycle of }\Theta_t; \\
+  &\pdv{M_t}{t}\bigg|_{t=0}=[\{\theta_{\alpha\beta}(0)\}]\in H^1(M,\Theta), \\
+  &\qquad\qquad\qquad\text{``infinitesimal deformation'' of }M=M_0=\varpi^{-1}(0)
+.\end{align*}
+But by Dolbeault theorem, \[
+  H^1(M,\Theta)\cong H^{0,1}_{\bar{\partial}}(M,T')
+\] where \(T'\) is the holomorphic tangent bundle and \(\Theta=\mathcal{O}(T')\).
+Recall in the Dolbeault isomorphism, \[
+  H^1(M,\Theta)=H^1(M,\mathcal{O}(T'))=H^{0,1}_{\bar{\partial}}(M,T')
+.\] \([\{\theta_{\alpha\beta}\}]\) corresponds to \([\eta]\in H^{0,1}_{\bar{\partial}}
+(M,T')\) as follows: \[
+  0\lrr \Theta\lrr \mathcal{A}^0(T')\xrr{\bar{\partial}}\mathcal{A}^{0,1}(T')
+  \xrr{\bar{\partial}}\mathcal{A}^{0,2}(T')\lrr \cdots
+\] is a fine resolution. We have
+\begin{align*}
+  Z_i&=\ker(\bar{\partial}\colon \mathcal{A}^{0,i}(T')\lrr \mathcal{A}^{0,i+1}(T')) \\
+  \Theta&=Z_0=\ker(\bar{\partial}\colon\mathcal{A}^{0}(T')
+    \lrr\mathcal{A}^{0,1}(T'))\\
+  &\mathrel{\phantom{=}}Z_1=\ker(\bar{\partial}\colon\mathcal{A}^{0,1}(T')
+    \lrr\mathcal{A}^{0,2}(T'))
+.\end{align*}
+\[
+  H^1(M,\Theta)\cong \frac{\Gamma(Z_1)}{\img(\bar{\partial}\colon \Gamma(\mathcal{A}^0)
+    \lrr \Gamma(Z_1))}=H^{0,1}_{\bar{\partial}}(M,T')
+.\] 
+\[\begin{tikzcd}[row sep=tiny]
+	0 & \Theta & {\mathcal{A}^0(T')} & {Z_1} & 0 \\
+	&& {\{\xi_\alpha\}} & {\{\bar{\partial}\xi_\alpha\}=\eta} \\
+	\\
+	\\
+	& {\{\theta_{\alpha\beta}\}} & {\{\theta_{\alpha\beta}\}}
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-4, to=1-5]
+	\arrow["{\bar{\partial}}", from=1-3, to=1-4]
+	\arrow["\delta", maps to, from=2-3, to=5-3]
+	\arrow[maps to, from=5-2, to=5-3]
+\end{tikzcd}\]
+Here \([\{\theta_{\alpha\beta}\}]\in H^1(M,\Theta)\) defines \([\{\theta_{\alpha\beta}
+\}]\in H^1(M,\mathcal{A}^0(T'))=0\). Thus there exists \(\{\xi_\alpha\}\in C^1(M,
+\mathcal{A}^{0}(T'))\) such that \(\delta\{\xi_{\alpha}\}=\xi_\beta-\xi_\alpha=
+\theta_{\alpha\beta}\). But since \(\bar{\partial}\theta_{\alpha\beta}=0\), \[
+  \bar{\partial}\xi_\alpha=\bar{\partial}\xi_\beta,\quad \forall\,\alpha,\beta
+.\] Thus \(\eta:=\bar{\partial}\xi_\alpha\) defines a \(\bar{\partial}\)-closed
+global \((0,1)\)-form.
+
+As a matter of notations for complex analytic family \(\{M_t\}_{t\in B}\), let
+\(z_0=(z^1_0,\ldots,z^m_0)\) be local holomorphic coordinate for \(M_0=\varpi^{-1}(0)\)
+on \((U_\alpha,0)\). (Strictly speaking, \(z_0\) and \(z^i_0\) should be written as 
+\(z_{0\alpha}\) and \(z_{0\alpha}^i\). But we omit \(\alpha\) just for notational
+convenience).
+
+We consider local holomorphic coordinate on \(M_t\), \[
+  z_\alpha=z_\alpha(z^0,t)=(z^1_\alpha(z_0,t),\ldots,z_\alpha^m(z^0,t))
+\] as smooth functions w.r.t.\ \(z_0\) and \(t\). We write \[
+  \partial_i=\pd{z^i_0},\quad \bar{\partial_i}=\pd{\bar{z}^i_0},\quad 
+  \bar{\partial}f=\sum \pdv{f}{\bar{z}^i_0}\dd{\bar{z}^i_0}
+.\] 
+\begin{prop}\label{prop:30-1-1}
+  \[
+    \eta=-\sum_{i=1}^{m}\bar{\partial}\left(\pdv{z^i_\alpha}{t}\bigg|_{t=0}\right)
+    \pd{z^i_0}
+  .\] 
+\end{prop}
+\begin{proof}
+  We write \[
+    \dot{z}^i_\alpha=\pdv{z^i_\alpha}{t}\bigg|_{t=0}
+  .\] Then, from \(z^i_\alpha=f_{\alpha\beta}^i(z_\beta(z^0,t),t)\), \[
+    \dot{z}^i_\alpha=\sum \pdv{f_{\alpha\beta}^i}{z^j_\beta}\dot{z^j_\beta}
+    +\pdv{f_{\alpha\beta}^i}{t}\bigg|_{t=0}
+  .\] Hence \[
+    \theta_{\alpha\beta}=\sum \pdv{f_{\alpha\beta}^i}{t}\pd{z^i_\alpha}\bigg|_{t=0}
+    =\sum\dot{z}^i_\alpha\pd{z^i_\alpha}-\sum\dot{z}^j_\beta\pd{z^j_\beta}\bigg|_{t=0}
+  .\] Thus, we can take the above \(\xi_\alpha\) to be \[
+    \xi_\alpha=-\dot{z}^i_\alpha\pd{z^i_0},\quad
+    \text{ and }\eta=\bar{\partial}\xi_\alpha=-(\bar{\partial}\dot{z}^i_\alpha)
+    \pd{z^i_0}
+  .\]
+\end{proof}
+Next, we take a different view point. For \(M_0=\varpi^{-1}(0)\), we have a splitting
+\[
+  T^*M\otimes\mathbb{C}=T^{\prime*}M_0\oplus T^{\prime\prime*}M_0,\quad
+  T^{\prime\prime*}M_0=\overline{T^{\prime*}M_0}
+\] of the complexified cotangent bundle \(T^*M_0\otimes\mathbb{C}\) into the
+Whitney sum of the holomorphic cotangent bundle and the anti-holomorphic cotangent
+bundle.
+
+If \(t\) is close to 0, then \(T^{\prime*}M_t\) and \(T^{\prime\prime}M_t\) is
+close to \(T^{\prime*}M_0\) and \(T^{\prime\prime}M_0\). In particular,
+\(T^{\prime*}M_t\) should be expressed as a graph over \(T^{\prime*}M_0\) in the form
+\[
+  \mathbb{x}_t=\mathbb{x}_0+\vphi(\mathbb{x}_0),\quad
+  \mathbb{x}_t\in T^{\prime*}M_t,\ \mathbb{x}_0\in T^{\prime*}M_0,\ 
+  \vphi(\mathbb{x}_0)\in T^{\prime\prime*}M_0
+.\] So \(\vphi_t\in \op{End}(T^{\prime*},T^{\prime\prime*}M_0)=T'M_0\otimes 
+T^{\prime\prime*}M_0\), \[
+  \vphi_t=\vphi\indices{^i_{\bar{j}}}(t)\pd{z^i_0}\otimes\dd{\bar{z}^j_0}
+.\] Thus \(T^{\prime*}M_t\) is spanned by \[
+  \dd{z^i_0}+\vphi\indices{^i_{\bar{j}}}\dd{\bar{z}^j_0},\quad i=1,\ldots,m
+.\] Equivalently, \(T''M_t\) is spanned by \[
+  \pd{\bar{z}^j_0}-\vphi\indices{^i_{\bar{j}}}\pd{z^i_0},\quad j=1,\ldots,m
+.\] Hence \[
+  \left<\dd{z}^i_0+\vphi\indices{^i_{\bar{k}}}\dd{\bar{z}^k_0},
+  \pd{\bar{z}^j_0}-\vphi\indices{^l_{\bar{j}}}\pd{z^l_0}\right> 
+  =\vphi\indices{^i_{\bar{j}}}-\vphi\indices{^i_{\bar{j}}}=0
+.\] 
+
+\begin{theorem}\hfill
+  \begin{enumerate}[(1)]
+  \item \(\vphi(0)=0\);
+  \item \(\bar{\partial}\vphi_t-\frac{1}{2}[\vphi_t,\vphi_t]=0\). ``Maurer-Cartan
+    equation'';
+  \item \[
+      H^1(M,\Theta)\ni\pdv{M_t}{t}\bigg|_{t=0}\longleftrightarrow
+      \eta=-\pdv{\vphi_t}{t}\bigg|_{t=0}\in H^{0,1}_{\bar{\partial}}(T'M)
+    \]
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  We write \(\vphi_t=\vphi^i\pd{z^i_0}\) with \(\vphi^i=\vphi\indices{^i_{\bar{j}}}(t)
+  \dd{\bar{z}^j_0}\).
+  \begin{enumerate}[(1)]
+  \item Obvious since \(M_t\big|_{t=0}=M\).
+  \item \(z^i_\alpha\) are holomorphic coordinate on \(M_t\). Thus \[
+      (\bar{\partial}-\vphi^j\partial_j)z^i_\alpha=\left(\left(\pd{\bar{z}^k_0}
+      -\vphi\indices{^j_{\bar{l}}}\pd{z^j_0}\right)z^i_\alpha\right)\dd{\bar{z}^k_0}=0
+    .\] Hence \[
+      \bar{\partial}(\vphi^j\partial_j z^i_\alpha)=\bar{\partial}\vphi^j\cdot
+      \partial_j z^i_\alpha-\vphi^j\wedge\bar{\partial}\partial_j z^i_\alpha
+      =\bar{\partial}\bar{\partial}z^i_0=0
+    .\] Then
+    \begin{align*}
+      (\bar{\partial}\vphi)z^i_\alpha=\bar{\partial}\vphi^j\cdot \partial_j z^i_\alpha
+      &=\vphi^j\wedge\partial_j \bar{\partial}z^i_\alpha=\vphi^j\wedge\partial_j
+      (\vphi^k\partial_k z^i_\alpha) \\
+      &=\vphi^j\wedge\partial_j\vphi^k\cdot \partial_k z^i_\alpha+\underbrace{
+      \vphi^j\wedge\vphi^k\cdot \partial_j\partial_k z^i_\alpha}_{=0} \\
+      &=\frac{1}{2}[\vphi,\vphi]z^i_\alpha
+    .\end{align*} 
+    (Note that \([\vphi,\psi]=\vphi\psi-(-1)^{pq}\psi\vphi\), and \(\vphi\wedge\vphi
+    =\frac{1}{2}[\vphi,\vphi]\)).
+  \item By \cref{prop:30-1-1}, \[
+      \eta=-(\bar{\partial}\dot{z}^i_\alpha)\pd{z^i_0}
+    .\] But since \(\bar{\partial}z^i_\alpha=\vphi^j\partial_j z^i_\alpha\), we have \[
+      \bar{\partial}\dot{z}^i_\alpha=\dot{\vphi}^j\big|_{t=0}\partial_j z_\alpha^i
+      +\underbrace{\vphi^j\big|_{t=0}}_{=0}\partial_j \dot{z}^i_\alpha
+    .\] Hence \[
+      \eta=-(\dot{\vphi}^j\partial_j z^i_\alpha)\Big|_{t=0}\pd{z^i_0}
+      =-\dot{\vphi}^j\pd{z^j_0}=-\pdv{\vphi}{t}\bigg|_{t=0}
+    .\] 
+  \end{enumerate}
+\end{proof}
+For \(\vphi\in \mathcal{A}^p(T'),\psi\in \mathcal{A}^q(T')\) with
+\(\bar{\partial}\vphi=0\), \(\bar{\partial}\psi=0\), we have \[
+  [\vphi,\psi]\in \mathcal{A}^{p+q}(T')\quad\text{ with }\bar{\partial}[\vphi,\psi]=0
+.\] This give rise to
+\begin{gather*}
+  H^{0,p}_{\bar{\partial}}(T')\times H^{0,q}_{\bar{\partial}}(T')
+  \lrr H^{0,p+q}_{\bar{\partial}}(T'). \\
+  H^{p}(M,\Theta)\times H^q(M,\Theta)\lrr H^{p+q}(M,\Theta).
+\end{gather*}
+\begin{theorem}
+  If \(\rho=\dv{M_t}{t}\Big|_{t=0}\in H^1(M,\Theta)\), then \([\rho,\rho]=0\).
+\end{theorem}
+\begin{proof}
+  \begin{align*}
+    &\bar{\partial}\vphi_t=\frac{1}{2}[\vphi_t,\vphi_t]=0 \\
+    &\bar{\partial}\dot{\vphi}_t=\frac{1}{2}[\dot{\vphi}_t,\vphi_t]+\frac{1}{2}
+    [\vphi_t,\dot{\vphi}_t] \\
+    &\bar{\partial}\ddot{\vphi}_t\big|_{t=0}=[\dot{\vphi}_0,\dot{\vphi}_0]
+    =[\eta,\eta]\quad(\text{since }\vphi_0=0)
+  .\end{align*}
+  Hence \([\eta,\eta]\) is cohomologous to 0. Thus \([\rho,\rho]=0\) in
+  \(H^2(M,\Theta)\).
+\end{proof}
+
+\begin{definition}
+  \[
+    \psi\colon H^1(M,\Theta)\lrr H^2(M,\Theta),\quad \psi(\rho)=[\rho,\rho]
+  .\] This is the map in Kuranishi's theorem.
+\end{definition}
+\begin{definition}
+  The deformations of \(M\) are \textbf{unobstructed} if \(\psi\equiv 0\).
+\end{definition}
+
+\begin{prop}
+  \begin{align*}
+    &\bar{\partial}\vphi-\frac{1}{2}[\vphi,\vphi]=0 \\
+    \iff & [\Gamma(T''M_t),\Gamma(T''M_t)]\subset \Gamma(T''M_t) \\
+    \iff & [\Gamma(T'M_t),\Gamma(T'M_t)]\subset \Gamma(T'M_t) \\
+    \iff & \text{Nijenhuis tensor vanishes} \\
+    \iff & \text{The almost complex structure defined by }\vphi\text{ is integrable}
+  .\end{align*}
+\end{prop}
+\begin{proof}
+  For \(X,Y\in T''M_0\), \(X-\vphi(X),Y-\vphi(Y)\in T''M_t\). \[
+    [X-\vphi(X),Y-\vphi(Y)]=[X,Y]-\vphi(X)Y+\vphi(Y)X+[\vphi(X),\vphi(Y)]
+    -X(\vphi(Y))+Y(\vphi(X))
+  .\] This lies in \(\Gamma(T''M_t)\iff\) \[
+    [\vphi(X),\vphi(Y)]-X(\vphi(Y))+Y(\vphi(X))=-\vphi([X,Y]-\vphi(X)Y+\vphi(Y)X)
+  .\] \(\iff \)
+  \begin{multline*}
+    X(\vphi(Y))-Y(\vphi(X))-\vphi([X,Y]) \\
+    -(\vphi(X))(\vphi(Y))+(\vphi(Y))(\vphi(X))+\vphi(\vphi(X)Y)-\vphi(\vphi(Y)X)
+    =0
+  .\end{multline*} 
+  \(\iff \) \[
+    (\bar{\partial}\vphi)(X,Y)-(\vphi(X)\vphi)(Y)+(\vphi(Y)\vphi)(X)=
+    (\bar{\partial}\vphi-\frac{1}{2}[\vphi,\vphi])(X,Y)=0
+  .\] 
+\end{proof}
+
+\end{document}
